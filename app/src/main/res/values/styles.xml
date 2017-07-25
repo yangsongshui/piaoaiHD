@@ -8,4 +8,35 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="TextBg">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:background">@drawable/weather_pm</item>
+        <item name="android:textColor">#065D72</item>
+    </style>
+    <style name="weatherTv">
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/weather_tv</item>
+    </style>
+    <style name="mainTv">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="mainTv2">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="mainTv3" parent="mainTv">
+       <item name="android:background">@drawable/main_tv</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,14 +8,21 @@
     tools:context=".MainActivity"
     tools:deviceIds="tv">
 
-    <fragment
-        android:id="@+id/main_browse_fragment"
+    <!-- <fragment
+         android:id="@+id/main_browse_fragment"
+         android:layout_width="0dp"
+         android:name="myapplication.com.piaoaihd.WeatherFragment"
+         android:layout_height="match_parent"
+         tools:context=".MainActivity"
+         tools:ignore="MergeRootFrame"
+         android:layout_weight="1" />-->
+    <LinearLayout
         android:layout_width="0dp"
-        android:name="myapplication.com.piaoaihd.WeatherFragment"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
-        tools:ignore="MergeRootFrame"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <include layout="@layout/fragment_weather" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -26,17 +34,206 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="4"
             android:background="@drawable/tianq14_02"
-            android:layout_weight="4">
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/main_ll"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp"
+                    android:text="飘爱城市除霾系统"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+                <TextClock
+                    android:id="@+id/riding_current_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:format12Hour="yyyy-MM-dd   EEEE  HH:MM"
+                    android:format24Hour="yyyy-MM-dd   EEEE  HH:MM"
+                    android:paddingEnd="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextBg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="会议室1(室内)"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/yuan_2"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PM2.5"
+                            android:textColor="@color/selected_background"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/weather_pm_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12"
+                            android:textColor="@color/white"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:id="@+id/weather_pm2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="优"
+                            android:textColor="@color/selected_background"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="2"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30℃"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/mainTv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="温度" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="58%"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/mainTv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="湿度" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/yuan_1" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+
+                            android:text="CO₂"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-
+        <!--   <fragment
+                  android:id="@+id/main_browse_fragment"
+                  android:layout_width="match_parent"
+                  android:name="myapplication.com.piaoaihd.DataFragment"
+                  tools:context=".MainActivity"
+                   android:layout_height="0dp"
+                  tools:ignore="MergeRootFrame"
+                  android:layout_weight="1" />-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/tianq14_04">
+            android:background="@drawable/tianq14_04"
+            android:orientation="vertical">
 
+            <include layout="@layout/fragment_data" />
         </LinearLayout>
 
     </LinearLayout>

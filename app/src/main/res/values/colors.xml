@@ -3,13 +3,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background_gradient_start">#000000</color>
-    <color name="background_gradient_end">#DDDDDD</color>
+    <color name="background_gradient_end">#66dddddd</color>
     <color name="fastlane_background">#0096a6</color>
-    <color name="search_opaque">#ffaa3f</color>
-    <color name="selected_background">#ffaa3f</color>
-    <color name="detail_background">#0096a6</color>
-    <color name="soft_opaque">#30000000</color>
-    <color name="img_soft_opaque">#30FF0000</color>
+    <color name="search_opaque">#6579A7</color>
+    <color name="selected_background">#73B0D5</color>
+    <color name="detail_background">#00F6FF</color>
+    <color name="soft_opaque">#244093</color>
+    <color name="img_soft_opaque">#5FBA35</color>
     <color name="img_full_opaque">#00000000</color>
     <color name="black_opaque">#AA000000</color>
     <color name="black">#59000000</color>
@@ -18,4 +18,6 @@
     <color name="orange">#FADCA7</color>
     <color name="yellow">#EEFF41</color>
     <color name="default_background">#3d3d3d</color>
+    <color name="silver_sand">#999999</color>
+    <color name="spindle">#BDD3F3</color>
 </resources>
