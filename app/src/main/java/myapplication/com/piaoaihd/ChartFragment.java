@@ -67,14 +67,14 @@ public class ChartFragment extends BaseFragment{
         mChart.setDoubleTapToZoomEnabled(false);
         //不画网格
         mChart.getAxisLeft().setDrawGridLines(false);
-        mChart.getAxisLeft().setTextColor(R.color.silver_sand);
+        mChart.getAxisLeft().setTextColor(R.color.white);
 
         XAxis xAxis = mChart.getXAxis();
 
         xAxis.setAxisMinimum(-0.2f);
         xAxis.setGranularity(0.3f);
         xAxis.setAxisMaximum(6);
-        xAxis.setTextColor(R.color.spindle);
+        xAxis.setTextColor(R.color.white);
 
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴在底部
         YAxis yAxis = mChart.getAxisRight();
@@ -114,7 +114,7 @@ public class ChartFragment extends BaseFragment{
             set1.setValues(values1);
         } else {
             set1 = new LineDataSet(values1, "");
-            set1.setLineWidth(2f);//设置线宽
+            set1.setLineWidth(1f);//设置线宽
             set1.setCircleRadius(3f);//设置焦点圆心的大小
             set1.setHighlightLineWidth(0.5f);//设置点击交点后显示高亮线宽
             set1.setHighlightEnabled(true);//是否禁用点击高亮线
@@ -123,7 +123,7 @@ public class ChartFragment extends BaseFragment{
             set1.setDrawValues(false);  //不显示数据
             set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER); //设置为曲线
             set1.setHighLightColor(Color.rgb(51, 51, 51));//设置点击交点后显示交高亮线的颜色
-            set1.setColor(Color.rgb(51, 153, 255));    //设置曲线的颜色
+            set1.setColor(Color.rgb(255, 255, 255));    //设置曲线的颜色
 
         }
         return new LineData(set1);

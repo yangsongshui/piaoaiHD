@@ -14,12 +14,19 @@
 
 package myapplication.com.piaoaihd;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+
 import myapplication.com.piaoaihd.base.BaseActivity;
+import myapplication.com.piaoaihd.base.BaseFragment;
 
 
 public class MainActivity extends BaseActivity {
 
 
+    private Fragment[] frags = new Fragment[3];
+    protected BaseFragment baseFragment;
+    private ChartFragment dataFragment;
 
     @Override
     protected int getContentView() {
@@ -28,6 +35,56 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        initData();
+    }
+
+    private void initData() {
+        if (dataFragment == null) {
+            dataFragment = new ChartFragment();
+        }
+
+        if (!dataFragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction().add(R.id.main_fl, dataFragment).commit();
+            baseFragment = dataFragment;
+        }
+    }
+
+    private Fragment getFrag(int index) {
+        switch (index) {
+            case 0:
+                if (dataFragment != null)
+                    return dataFragment;
+                else
+                    return new ChartFragment();
+            case 1:
+                return new ChartFragment();
+            case 2:
+                return new ChartFragment();
+            case 3:
+                return new ChartFragment();
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * 添加或者显示 fragment
+     *
+     * @param transaction
+     * @param fragment
+     */
+    protected void addOrShowFragment(FragmentTransaction transaction, Fragment fragment) {
+        if (baseFragment == fragment)
+            return;
+
+        if (!fragment.isAdded()) { // 如果当前fragment未被添加，则添加到Fragment管理器中
+            transaction.hide(baseFragment).add(R.id.main_fl, fragment).commit();
+        } else {
+            transaction.hide(baseFragment).show(fragment).commit();
+        }
+
+        baseFragment = (BaseFragment) fragment;
+
 
     }
 }
