@@ -122,13 +122,18 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_weight="2"
                     android:orientation="horizontal">
-                        <FrameLayout
-                            android:id="@+id/main_fl"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+
+                    <FrameLayout
+                        android:id="@+id/main_fl"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:background="@color/img_soft_opaque" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -178,17 +183,19 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center">
+
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
                         android:layout_height="match_parent"
-                        android:src="@drawable/yuan_1"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
@@ -221,10 +228,10 @@
                                 android:id="@+id/co2_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="空气清新"
                                 android:layout_marginTop="5dp"
+                                android:text="空气清新"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -234,17 +241,19 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center">
+
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
                         android:layout_height="match_parent"
-                        android:src="@drawable/yuan_1"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
@@ -277,10 +286,10 @@
                                 android:id="@+id/pm10_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="优"
                                 android:layout_marginTop="5dp"
+                                android:text="优"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -290,17 +299,19 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center">
+
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
                         android:layout_height="match_parent"
-                        android:src="@drawable/yuan_1"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
@@ -333,10 +344,10 @@
                                 android:id="@+id/jiaquan_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="优"
                                 android:layout_marginTop="5dp"
+                                android:text="优"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -346,17 +357,19 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center">
+
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
                         android:layout_height="match_parent"
-                        android:src="@drawable/yuan_1"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
                         android:gravity="center_horizontal"
                         android:orientation="vertical">
 
@@ -389,10 +402,10 @@
                                 android:id="@+id/tvoc_tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="优"
                                 android:layout_marginTop="5dp"
+                                android:text="优"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>

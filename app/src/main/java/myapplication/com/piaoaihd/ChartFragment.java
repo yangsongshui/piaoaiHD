@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.CombinedData;
@@ -14,6 +15,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import myapplication.com.piaoaihd.base.BaseFragment;
 
@@ -21,11 +23,12 @@ import myapplication.com.piaoaihd.base.BaseFragment;
  * Created by ys on 2017/7/25.
  */
 
-public class ChartFragment extends BaseFragment{
+public class ChartFragment extends BaseFragment {
     CombinedChart mChart;
+
     @Override
     protected void initData(View layout, Bundle savedInstanceState) {
-        mChart = (CombinedChart)layout.findViewById(R.id.week_chart);
+        mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
         initChart();
     }
 
@@ -33,6 +36,7 @@ public class ChartFragment extends BaseFragment{
     protected int getContentView() {
         return R.layout.ftagment_chart;
     }
+
     private void initChart() {
 
         /**
@@ -67,29 +71,56 @@ public class ChartFragment extends BaseFragment{
         mChart.setDoubleTapToZoomEnabled(false);
         //不画网格
         mChart.getAxisLeft().setDrawGridLines(false);
-        mChart.getAxisLeft().setTextColor(R.color.white);
+
 
         XAxis xAxis = mChart.getXAxis();
 
-        xAxis.setAxisMinimum(-0.2f);
+       // xAxis.setAxisMinimum(-0.1f);
         xAxis.setGranularity(0.3f);
-        xAxis.setAxisMaximum(6);
-        xAxis.setTextColor(R.color.white);
-
+        xAxis.setAxisMaximum(23);
+        xAxis.setLabelCount(23, true);
+        xAxis.setTextColor(Color.rgb(255, 255, 255));
+        xAxis.setAxisLineColor(Color.rgb(255, 255, 255));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴在底部
         YAxis yAxis = mChart.getAxisRight();
         yAxis.setAxisMinimum(0);
         yAxis.setAxisMaximum(500);
+        yAxis.setAxisLineColor(Color.rgb(255, 255, 255));
+        LimitLine yLimitLine = new LimitLine(35);
+        yLimitLine.setLineWidth(0.3f);
+        yLimitLine.setLineColor(Color.rgb(107, 237, 29));
+        yAxis.addLimitLine(yLimitLine);
+
+        LimitLine yLimitLine2 = new LimitLine(75);
+        yLimitLine2.setLineWidth(0.3f);
+        yLimitLine2.setLineColor(Color.rgb(255, 245, 69));
+        yAxis.addLimitLine(yLimitLine2);
+
+        LimitLine yLimitLine3 = new LimitLine(115);
+        yLimitLine3.setLineWidth(0.3f);
+        yLimitLine3.setLineColor(Color.rgb(245, 98, 35));
+        yAxis.addLimitLine(yLimitLine3);
+
+        LimitLine yLimitLine4 = new LimitLine(150);
+        yLimitLine4.setLineWidth(0.3f);
+        yLimitLine4.setLineColor(Color.rgb(245, 40, 9));
+        yAxis.addLimitLine(yLimitLine4);
+
+        LimitLine yLimitLine5 = new LimitLine(250);
+        yLimitLine5.setLineWidth(0.3f);
+        yLimitLine5.setLineColor(Color.rgb(173, 45, 21));
+        yAxis.addLimitLine(yLimitLine5);
+        LimitLine yLimitLine6 = new LimitLine(350);
+        yLimitLine6.setLineWidth(0.3f);
+        yLimitLine6.setLineColor(Color.rgb(134, 22, 0));
+        yAxis.addLimitLine(yLimitLine6);
         yAxis.setDrawLabels(false);
         yAxis.setDrawGridLines(false);
         mChart.getAxisLeft().setAxisMinimum(0);
         mChart.getAxisLeft().setAxisMaximum(500);
-
-
         //不画网格
         xAxis.setDrawGridLines(false);
         mChart.getLegend().setEnabled(false);
-        //  mChart.getAxisLeft().setValueFormatter();
         CombinedData data = new CombinedData();
         data.setData(getLineData());
         mChart.setData(data);
@@ -100,13 +131,11 @@ public class ChartFragment extends BaseFragment{
 
     private LineData getLineData() {
         ArrayList<Entry> values1 = new ArrayList<>();
-        values1.add(new Entry(0, 35));
-        values1.add(new Entry(1, 75));
-        values1.add(new Entry(2, 115));
-        values1.add(new Entry(3, 150));
-        values1.add(new Entry(4, 250));
-        values1.add(new Entry(5, 350));
-        values1.add(new Entry(6, 500));
+        for (int i = 0; i < 24; i++) {
+            values1.add(new Entry(i, new Random().nextInt(500)));
+
+        }
+
         LineDataSet set1;
         if (mChart.getData() != null &&
                 mChart.getData().getDataSetCount() > 0) {
@@ -117,12 +146,12 @@ public class ChartFragment extends BaseFragment{
             set1.setLineWidth(1f);//设置线宽
             set1.setCircleRadius(3f);//设置焦点圆心的大小
             set1.setHighlightLineWidth(0.5f);//设置点击交点后显示高亮线宽
-            set1.setHighlightEnabled(true);//是否禁用点击高亮线
-            set1.setDrawHorizontalHighlightIndicator(true);//设置不显示水平高亮线
+            set1.setHighlightEnabled(false);//是否禁用点击高亮线
+            set1.setDrawHorizontalHighlightIndicator(false);//设置不显示水平高亮线
             set1.setDrawCircles(false);  //设置有圆点
             set1.setDrawValues(false);  //不显示数据
             set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER); //设置为曲线
-            set1.setHighLightColor(Color.rgb(51, 51, 51));//设置点击交点后显示交高亮线的颜色
+            // set1.setHighLightColor(Color.rgb(51, 51, 51));//设置点击交点后显示交高亮线的颜色
             set1.setColor(Color.rgb(255, 255, 255));    //设置曲线的颜色
 
         }
