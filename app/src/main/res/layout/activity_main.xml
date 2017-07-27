@@ -8,27 +8,19 @@
     tools:context=".MainActivity"
     tools:deviceIds="tv">
 
-    <!-- <fragment
-         android:id="@+id/main_browse_fragment"
-         android:layout_width="0dp"
-         android:name="myapplication.com.piaoaihd.WeatherFragment"
-         android:layout_height="match_parent"
-         tools:context=".MainActivity"
-         tools:ignore="MergeRootFrame"
-         android:layout_weight="1" />-->
-    <LinearLayout
+    <fragment
+        android:id="@+id/main_browse_fragment"
+        android:name="myapplication.com.piaoaihd.WeatherFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <include layout="@layout/fragment_weather" />
-    </LinearLayout>
+        android:layout_weight="1"
+        tools:context=".MainActivity"
+        tools:ignore="MergeRootFrame" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
-
         android:orientation="vertical">
 
         <LinearLayout
@@ -55,7 +47,7 @@
                     android:textSize="17sp" />
 
                 <TextClock
-                    android:id="@+id/riding_current_date"
+                    android:id="@+id/main_time"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
@@ -80,6 +72,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/main_place"
                         style="@style/TextBg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -102,7 +95,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/weather_pm_tv"
+                            android:id="@+id/main_pm_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="12"
@@ -110,7 +103,7 @@
                             android:textSize="40sp" />
 
                         <TextView
-                            android:id="@+id/weather_pm2"
+                            android:id="@+id/main_pm"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="优"
@@ -151,6 +144,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/main_temperature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30℃"
@@ -172,6 +166,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/main_humidity"
                         style="@style/mainTv3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -411,23 +406,14 @@
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
-        <!--   <fragment
-                  android:id="@+id/main_browse_fragment"
-                  android:layout_width="match_parent"
-                  android:name="myapplication.com.piaoaihd.DataFragment"
-                  tools:context=".MainActivity"
-                   android:layout_height="0dp"
-                  tools:ignore="MergeRootFrame"
-                  android:layout_weight="1" />-->
-        <LinearLayout
+
+        <fragment
+            android:id="@+id/main_fragment"
+            android:name="myapplication.com.piaoaihd.DataFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/tianq14_04"
-            android:orientation="vertical">
-
-            <include layout="@layout/fragment_data" />
-        </LinearLayout>
-
+            tools:context=".MainActivity"
+            tools:ignore="RootFrame" />
     </LinearLayout>
 </LinearLayout>
