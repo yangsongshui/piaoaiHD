@@ -3,12 +3,12 @@ package myapplication.com.piaoaihd;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
 
 import myapplication.com.piaoaihd.base.BaseActivity;
 
 public class LoginActivity extends BaseActivity {
-    TextView login_tv;
+    Button login_tv;
     int id;
     Toastor toastor;
     @Override
@@ -19,13 +19,25 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void init() {
         toastor=new Toastor(this);
-        login_tv = (TextView) findViewById(R.id.login_tv);
+        login_tv = (Button) findViewById(R.id.login_tv);
         login_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     id = R.id.login_tv;
+                    toastor.showSingletonToast("按键获取焦点");
+                    login_tv.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    login_tv.setTextColor(getResources().getColor(R.color.white));
+                }else {
+                    login_tv.setBackgroundColor(getResources().getColor(R.color.orange_transparent));
+                    login_tv.setTextColor(getResources().getColor(R.color.black_opaque));
                 }
+            }
+        });
+        login_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
             }
         });
     }
