@@ -1,16 +1,28 @@
 package myapplication.com.piaoaihd;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import myapplication.com.piaoaihd.base.BaseActivity;
+import myapplication.com.piaoaihd.bean.User;
+import myapplication.com.piaoaihd.presenter.LoginPresenterImp;
+import myapplication.com.piaoaihd.util.MD5;
+import myapplication.com.piaoaihd.util.Toastor;
+import myapplication.com.piaoaihd.view.LoginView;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements LoginView {
     Button login_tv;
     int id;
     Toastor toastor;
+    private ProgressDialog progressDialog = null;
+    private LoginPresenterImp loginPresenterImp = null;
+    String psw;
+    EditText login_phone, login_psw;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_login;
@@ -18,8 +30,13 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        toastor=new Toastor(this);
+        toastor = new Toastor(this);
         login_tv = (Button) findViewById(R.id.login_tv);
+        login_phone = (EditText) findViewById(R.id.login_phone);
+        login_psw = (EditText) findViewById(R.id.login_psw);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("登陆中,请稍后");
+        loginPresenterImp = new LoginPresenterImp(this, this);
         login_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -28,7 +45,7 @@ public class LoginActivity extends BaseActivity {
                     toastor.showSingletonToast("按键获取焦点");
                     login_tv.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                     login_tv.setTextColor(getResources().getColor(R.color.white));
-                }else {
+                } else {
                     login_tv.setBackgroundColor(getResources().getColor(R.color.orange_transparent));
                     login_tv.setTextColor(getResources().getColor(R.color.black_opaque));
                 }
@@ -37,18 +54,23 @@ public class LoginActivity extends BaseActivity {
         login_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch(keyCode) {
+        switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_CENTER:
                 toastor.showSingletonToast("你按下中间键");
-                if (id==R.id.login_tv){
-                    startActivity(new Intent(this,MainActivity.class));
+                if (id == R.id.login_tv) {
+                    String phone = login_phone.getText().toString().trim();
+                    psw = login_psw.getText().toString().trim();
+                    if (phone.length() == 11 && psw.length() >= 6)
+                        loginPresenterImp.loadLogin(phone, MD5.getMD5(psw));
+                    else
+                        toastor.showSingletonToast("登陆信息有误");
                 }
                 break;
 
@@ -68,6 +90,47 @@ public class LoginActivity extends BaseActivity {
                 toastor.showSingletonToast("你按下上方向键");
                 break;
         }
-            return super.onKeyDown(keyCode, event);
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void showProgress() {
+        if (progressDialog != null && !progressDialog.isShowing()) {
+            progressDialog.show();
+        }
+
+    }
+
+    @Override
+    public void disimissProgress() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void loadDataSuccess(User tData) {
+        toastor.showSingletonToast(tData.getResMessage());
+        if (tData.getResCode().equals("0")) {
+            tData.getResBody().setPassWord(psw);
+            MyApplication.newInstance().setUser(tData);
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+    }
+
+    @Override
+    public void loadDataError(Throwable throwable) {
+        toastor.showSingletonToast("服务器连接失败");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (MyApplication.newInstance().getUser() != null) {
+            User user = MyApplication.newInstance().getUser();
+            psw = user.getResBody().getPassWord();
+            loginPresenterImp.loadLogin(user.getResBody().getPhoneNumber(), MD5.getMD5(psw));
+        }
     }
 }

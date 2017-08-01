@@ -1,4 +1,4 @@
-package myapplication.com.piaoaihd;
+package myapplication.com.piaoaihd.util;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -16,7 +16,7 @@ public class Toastor {
         this.context = context.getApplicationContext();
     }
 
-    private Toast getSingletonToast(int resId) {
+    public Toast getSingletonToast(int resId) {
         if (mToast == null) {
             mToast = Toast.makeText(context, resId, Toast.LENGTH_SHORT);
         }else{
@@ -25,7 +25,7 @@ public class Toastor {
         return mToast;
     }
 
-    private Toast getSingletonToast(String text) {
+    public Toast getSingletonToast(String text) {
         if (mToast == null) {
             mToast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
         }else{
@@ -34,21 +34,37 @@ public class Toastor {
         return mToast;
     }
 
+    public Toast getSingleLongToast(int resId) {
+        if (mToast == null) {
+            mToast = Toast.makeText(context, resId, Toast.LENGTH_LONG);
+        }else{
+            mToast.setText(resId);
+        }
+        return mToast;
+    }
 
+    public Toast getSingleLongToast(String text) {
+        if (mToast == null) {
+            mToast = Toast.makeText(context, text, Toast.LENGTH_LONG);
+        }else{
+            mToast.setText(text);
+        }
+        return mToast;
+    }
 
-    private Toast getToast(int resId) {
+    public Toast getToast(int resId) {
         return Toast.makeText(context, resId, Toast.LENGTH_SHORT);
     }
 
-    private Toast getToast(String text) {
+    public Toast getToast(String text) {
         return Toast.makeText(context, text, Toast.LENGTH_SHORT);
     }
 
-    private Toast getLongToast(int resId) {
+    public Toast getLongToast(int resId) {
         return Toast.makeText(context, resId, Toast.LENGTH_LONG);
     }
 
-    private Toast getLongToast(String text) {
+    public Toast getLongToast(String text) {
         return Toast.makeText(context, text, Toast.LENGTH_LONG);
     }
 
@@ -61,21 +77,5 @@ public class Toastor {
         getSingletonToast(text).show();
     }
 
-
-    public void showToast(int resId) {
-        getToast(resId).show();
-    }
-
-    public void showToast(String text) {
-        getToast(text).show();
-    }
-
-    public void showLongToast(int resId) {
-        getLongToast(resId).show();
-    }
-
-    public void showLongToast(String text) {
-        getLongToast(text).show();
-    }
 
 }

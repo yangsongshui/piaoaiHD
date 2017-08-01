@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import myapplication.com.piaoaihd.base.BaseActivity;
 import myapplication.com.piaoaihd.base.BaseFragment;
+import myapplication.com.piaoaihd.util.Toastor;
 
 import static myapplication.com.piaoaihd.R.id.login_tv;
 

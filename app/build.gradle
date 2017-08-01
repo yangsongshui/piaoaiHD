@@ -9,10 +9,27 @@ android {
         versionCode 1
         versionName "1.0"
     }
+    signingConfigs {
+        config {
+            keyAlias 'piaoaiTV'
+            keyPassword 'qq362927657'
+            storeFile file('piaoaiTV.jks')
+            storePassword 'qq362927657'
+        }
+        robert{
+            storePassword 'qq362927657'
+            storeFile file('piaoaiTV.jks')
+            keyPassword 'qq362927657'
+            keyAlias 'piaoaiTV'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            signingConfig signingConfigs.config
         }
     }
     productFlavors {
@@ -34,4 +51,5 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile files('libs/AMap3DMap_5.2.1_AMapLocation_3.5.0_20170731.jar')
 }

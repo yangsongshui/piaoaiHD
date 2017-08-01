@@ -28,6 +28,7 @@
             android:textSize="35sp" />
 
         <EditText
+            android:id="@+id/login_phone"
             style="@style/loginET"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -36,6 +37,7 @@
             android:inputType="phone" />
 
         <EditText
+            android:id="@+id/login_psw"
             style="@style/loginET"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
