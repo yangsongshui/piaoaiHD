@@ -14,32 +14,49 @@
 
 package myapplication.com.piaoaihd;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import myapplication.com.piaoaihd.base.BaseActivity;
 import myapplication.com.piaoaihd.base.BaseFragment;
+import myapplication.com.piaoaihd.bean.Facility;
+import myapplication.com.piaoaihd.presenter.FacilityPresenerImp;
+import myapplication.com.piaoaihd.util.Constan;
+import myapplication.com.piaoaihd.util.FragmentEvent;
 import myapplication.com.piaoaihd.util.Toastor;
+import myapplication.com.piaoaihd.view.FacilityView;
 
-import static myapplication.com.piaoaihd.R.id.login_tv;
+import static android.R.attr.id;
 
 
-public class MainActivity extends BaseActivity {
-
+public class MainActivity extends BaseActivity implements FacilityView {
+    private final static String TAG = MainActivity.class.getSimpleName();
 
     private Fragment[] frags = new Fragment[3];
     protected BaseFragment baseFragment;
     private ChartFragment dataFragment;
-    private TextView main_time, main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
+    private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
-    private Button main_set;
-    int id = 0;
-    Toastor toastor;
+    private Handler handler;
+    private Runnable myRunnable;
+    private Toastor toastor;
+    private FacilityPresenerImp facilityPresenerImp;
+    private ProgressDialog progressDialog = null;
+    private boolean isOne = true;
+    List<Facility.ResBodyBean.ListBean> mList;
+    Facility.ResBodyBean.ListBean listBean;
 
     @Override
     protected int getContentView() {
@@ -48,13 +65,26 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        mList = new ArrayList<>();
+        handler = new Handler();
+        facilityPresenerImp = new FacilityPresenerImp(this, this);
         toastor = new Toastor(this);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("数据更新中,请稍后");
         initView();
         initData();
+        myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                facilityPresenerImp.findUserDevice(MyApplication.newInstance().getUser().getResBody().getPhoneNumber());
+                handler.postDelayed(myRunnable, 60000);
+            }
+        };
     }
 
     private void initView() {
-        main_time = (TextView) findViewById(R.id.main_time);
+
+
         main_place = (TextView) findViewById(R.id.main_place);
         main_pm_tv = (TextView) findViewById(R.id.main_pm_tv);
         main_pm = (TextView) findViewById(R.id.main_pm);
@@ -70,25 +100,10 @@ public class MainActivity extends BaseActivity {
         tvoc = (TextView) findViewById(R.id.tvoc);
         tvoc_tv = (TextView) findViewById(R.id.tvoc_tv);
 
-        main_set = (Button) findViewById(R.id.main_set);
-        main_set.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    id = login_tv;
-                    toastor.showSingletonToast("按键获取焦点");
-                   // main_set.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-
-                }else {
-                   // main_set.setBackgroundColor(getResources().getColor(R.color.background_gradient_end));
-
-                }
-            }
-        });
-        main_set.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.main_set).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,SettingActivity.class));
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
             }
         });
     }
@@ -140,32 +155,96 @@ public class MainActivity extends BaseActivity {
 
         baseFragment = (BaseFragment) fragment;
     }
+
+    @Override
+    public void showProgress() {
+        if (progressDialog != null && !progressDialog.isShowing() && isOne) {
+            progressDialog.show();
+            isOne = false;
+        }
+    }
+
+    @Override
+    public void disimissProgress() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void loadDataSuccess(Facility tData) {
+        Log.e(TAG, tData.toString());
+        if (tData.getResCode().equals("0")) {
+            mList = tData.getResBody().getList();
+            EventBus.getDefault().post(new FragmentEvent(tData.getResBody().getList()));
+            if (listBean == null) {
+                listBean = mList.get(0);
+                initdata();
+            }
+
+        } else {
+            toastor.showSingletonToast(tData.getResMessage());
+        }
+    }
+
+    @Override
+    public void loadDataError(Throwable throwable) {
+        toastor.showSingletonToast("网络连接异常");
+
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch(keyCode) {
+        switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_CENTER:
                 toastor.showSingletonToast("你按下中间键");
-                if (id==R.id.main_set){
-                    startActivity(new Intent(this,SettingActivity.class));
+                if (id == R.id.main_set) {
+                    startActivity(new Intent(this, SettingActivity.class));
                 }
-                break;
-
-            case KeyEvent.KEYCODE_DPAD_DOWN:
-                toastor.showSingletonToast("你按下下方向键");
-                break;
-
-            case KeyEvent.KEYCODE_DPAD_LEFT:
-                toastor.showSingletonToast("你按下左方向键");
-                break;
-
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
-                toastor.showSingletonToast("你按下右方向键");
-                break;
-
-            case KeyEvent.KEYCODE_DPAD_UP:
-                toastor.showSingletonToast("你按下上方向键");
                 break;
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(myRunnable);
+        handler = null;
+        facilityPresenerImp = null;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        facilityPresenerImp.findUserDevice(MyApplication.newInstance().getUser().getResBody().getPhoneNumber());
+        handler.postDelayed(myRunnable, 60000);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacks(myRunnable);
+    }
+
+    private void initdata() {
+        if (listBean != null) {
+            main_place.setText(listBean.getDeviceName().trim().equals("") ? "——" : listBean.getDeviceName());
+            main_pm_tv.setText(listBean.get_$Pm25267().trim().equals("") ? "——" : listBean.get_$Pm25267());
+            Constan.PM2_5(main_pm, Integer.parseInt(listBean.get_$Pm25267()));
+            main_temperature.setText("——");
+            main_humidity.setText(listBean.getShidu().trim().equals("") ? "——" : listBean.getShidu());
+            co2.setText(listBean.getCo2().trim().equals("") ? "——" : listBean.getCo2());
+            Constan.CO2(co2_tv, Integer.parseInt(listBean.getCo2()));
+            pm10.setText(listBean.getPm10().trim().equals("") ? "——" : listBean.getPm10());
+            Constan.PM10(pm10_tv, Integer.parseInt(listBean.getPm10()));
+            jiaquan.setText(listBean.getJiaquan().trim().equals("") ? "——" : listBean.getJiaquan());
+            Constan.jiaquan(jiaquan_tv, Integer.parseInt(listBean.getJiaquan()));
+            tvoc.setText(listBean.getTvoc().trim().equals("") ? "——" : listBean.getTvoc());
+            Constan.TVOC(jiaquan_tv, Integer.parseInt(listBean.getTvoc()));
+
+        }
+    }
+
+
 }

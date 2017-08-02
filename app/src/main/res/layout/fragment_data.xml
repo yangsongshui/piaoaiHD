@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/tianq14_04"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -24,14 +25,15 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="CO₂" />
+            android:text="PM2.5" />
+
         <TextView
             style="@style/mainTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="PM2.5" />
+            android:text="CO₂" />
 
         <TextView
             style="@style/mainTv"
@@ -80,199 +82,208 @@
         android:layout_weight="1">
 
         <TextView
+            android:id="@+id/device1_name"
             style="@style/mainTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="办公室" />
+            android:text="————" />
 
         <TextView
+            android:id="@+id/device1_pm25"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="98" />
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="56" />
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="108" />
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device1_co2"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="0.06" />
+
+            android:text="——" />
+
 
         <TextView
+            android:id="@+id/device1_pm10"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="0.30" />
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device1_jiaquan"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="25.0" />
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device1_tvoc"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="52.6" />
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device1_wendu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device1_shidu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/device2_name"
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_pm25"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_co2"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_pm10"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_jiaquan"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_tvoc"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_wendu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_shidu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
         <TextView
+            android:id="@+id/device3_name"
             style="@style/mainTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="会议室1" />
+            android:text="——" />
         <TextView
+            android:id="@+id/device3_pm25"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="110" />
+            android:text="——" />
+        <TextView
+            android:id="@+id/device3_co2"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device3_pm10"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="86" />
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device3_jiaquan"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="98" />
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device3_tvoc"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="0.03" />
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device3_wendu"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="0.80" />
+            android:text="——" />
 
         <TextView
+            android:id="@+id/device3_shidu"
             style="@style/mainTv2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="30.0" />
-
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="40.6" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            style="@style/mainTv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="公共区域" />
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="130" />
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="26" />
-
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="134" />
-
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0.20" />
-
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="0.50" />
-
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="35.0" />
-
-        <TextView
-            style="@style/mainTv2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="35.6" />
+            android:text="——" />
     </LinearLayout>
 </LinearLayout>

@@ -75,7 +75,7 @@ public class ChartFragment extends BaseFragment {
 
         XAxis xAxis = mChart.getXAxis();
 
-       // xAxis.setAxisMinimum(-0.1f);
+        // xAxis.setAxisMinimum(-0.1f);
         xAxis.setGranularity(0.3f);
         xAxis.setAxisMaximum(23);
         xAxis.setLabelCount(23, true);

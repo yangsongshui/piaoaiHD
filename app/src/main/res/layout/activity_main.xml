@@ -49,13 +49,14 @@
                         android:textColor="@color/white"
                         android:textSize="17sp" />
 
-                    <TextView
+                    <TextClock
                         android:id="@+id/main_time"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginStart="20dp"
+                        android:format12Hour="yyyy-MM-dd   EEEE  HH:MM"
+                        android:format24Hour="yyyy-MM-dd   EEEE  HH:MM"
                         android:paddingEnd="20dp"
-                        android:text="2017-07-31 11:44"
                         android:textColor="@color/white"
                         android:textSize="17sp" />
                 </LinearLayout>

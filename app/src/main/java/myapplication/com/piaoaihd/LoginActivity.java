@@ -54,7 +54,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
         login_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                String phone = login_phone.getText().toString().trim();
+                psw = login_psw.getText().toString().trim();
+                if (phone.length() == 11 && psw.length() >= 6)
+                    loginPresenterImp.loadLogin(phone, MD5.getMD5(psw));
+                else
+                    toastor.showSingletonToast("登陆信息有误");
             }
         });
     }
