@@ -236,12 +236,12 @@ public class MainActivity extends BaseActivity implements FacilityView {
             main_humidity.setText(listBean.getShidu().trim().equals("") ? "——" : listBean.getShidu());
             co2.setText(listBean.getCo2().trim().equals("") ? "——" : listBean.getCo2());
             Constan.CO2(co2_tv, Integer.parseInt(listBean.getCo2()));
-            pm10.setText(listBean.getPm10().trim().equals("") ? "——" : listBean.getPm10());
+            pm10.setText(listBean.getPm10().equals("") ? "——" : listBean.getPm10());
             Constan.PM10(pm10_tv, Integer.parseInt(listBean.getPm10()));
             jiaquan.setText(listBean.getJiaquan().trim().equals("") ? "——" : listBean.getJiaquan());
             Constan.jiaquan(jiaquan_tv, Integer.parseInt(listBean.getJiaquan()));
             tvoc.setText(listBean.getTvoc().trim().equals("") ? "——" : listBean.getTvoc());
-            Constan.TVOC(jiaquan_tv, Integer.parseInt(listBean.getTvoc()));
+            Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()));
 
         }
     }

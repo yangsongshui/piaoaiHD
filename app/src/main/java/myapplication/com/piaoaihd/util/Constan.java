@@ -11,19 +11,19 @@ public class Constan {
     public static final String WEATHER_URL = "http://route.showapi.com/";
 
 
-    public static void TVOC( TextView textView, double tvoc) {
-        if (tvoc >= 0.0 && tvoc <= 0.6) {
+    public static void TVOC(TextView textView, double tvoc) {
+        if (tvoc >= 0 && tvoc <= 60) {
             textView.setText("良好");
-        } else if (tvoc > 0.6 && tvoc <= 1.0) {
+        } else if (tvoc > 60 && tvoc <= 100) {
             textView.setText("轻度污染");
-        } else if (tvoc > 1.1 && tvoc <= 1.6) {
+        } else if (tvoc > 110 && tvoc <= 160) {
             textView.setText("中度污染");
-        } else if (tvoc > 1.6 && tvoc <= 150) {
+        } else if (tvoc > 160) {
             textView.setText("重度污染");
         }
     }
 
-    public static void PM2_5( TextView textView, int pm) {
+    public static void PM2_5(TextView textView, int pm) {
         Log.e("PM2_5", " " + pm);
         if (pm >= 0 && pm <= 35) {
             textView.setText("优");
@@ -42,9 +42,9 @@ public class Constan {
         }
     }
 
-    public static void PM10( TextView textView, int pm) {
+    public static void PM10(TextView textView, int pm) {
         Log.e("PM10", " " + pm);
-        if (pm >= 0 && pm <=50) {
+        if (pm >= 0 && pm <= 50) {
             textView.setText("优");
         } else if (pm > 51 && pm <= 100) {
             textView.setText("良");
@@ -52,13 +52,14 @@ public class Constan {
             textView.setText("轻度污染");
         } else if (pm > 150 && pm <= 200) {
             textView.setText("中度污染");
-        } else if (pm > 200 ) {
+        } else if (pm > 200) {
             textView.setText("重度污染");
         }
     }
-    public static void CO2( TextView textView, int co2) {
+
+    public static void CO2(TextView textView, int co2) {
         if (co2 >= 0 && co2 <= 485) {
-            textView.setText("极优");
+            textView.setText("空气清新");
         } else if (co2 >= 486 && co2 <= 600) {
             textView.setText("优");
         } else if (co2 > 600 && co2 <= 800) {
@@ -74,7 +75,7 @@ public class Constan {
         }
     }
 
-    public static void jiaquan( TextView textView, int jiaquan) {
+    public static void jiaquan(TextView textView, int jiaquan) {
         if (jiaquan >= 0 && jiaquan <= 35) {
             textView.setText("优");
         } else if (jiaquan > 35 && jiaquan <= 75) {
@@ -92,7 +93,7 @@ public class Constan {
         }
     }
 
-    public static void wendu( TextView textView, int wendu) {
+    public static void wendu(TextView textView, int wendu) {
         if (wendu <= -20) {
             textView.setText("极寒");
         } else if (wendu > -20 && wendu <= 0) {
@@ -115,7 +116,7 @@ public class Constan {
         }
     }
 
-    public static void shidu( TextView textView, int shidu) {
+    public static void shidu(TextView textView, int shidu) {
         if (shidu >= 41 && shidu <= 60) {
             textView.setText("正常");
 

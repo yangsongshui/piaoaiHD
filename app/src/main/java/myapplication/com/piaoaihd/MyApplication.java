@@ -3,6 +3,9 @@ package myapplication.com.piaoaihd;
 import android.app.Activity;
 import android.app.Application;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +54,12 @@ public class MyApplication extends Application {
     public void addActyToList(Activity activity) {
         if (!activitiesList.contains(activity))
             activitiesList.add(activity);
+    }
+    public RequestManager getGlide() {
+
+        return Glide.with(this);
+
+
     }
 
     /**
