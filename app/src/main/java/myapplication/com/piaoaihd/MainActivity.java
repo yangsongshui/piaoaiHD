@@ -18,7 +18,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -35,28 +35,37 @@ import myapplication.com.piaoaihd.bean.Facility;
 import myapplication.com.piaoaihd.presenter.FacilityPresenerImp;
 import myapplication.com.piaoaihd.util.Constan;
 import myapplication.com.piaoaihd.util.FragmentEvent;
+import myapplication.com.piaoaihd.util.SpUtils;
 import myapplication.com.piaoaihd.util.Toastor;
 import myapplication.com.piaoaihd.view.FacilityView;
 
-import static android.R.attr.id;
+import static myapplication.com.piaoaihd.util.Constan.ACTION_BLE_NOTIFY_DATA;
 
 
 public class MainActivity extends BaseActivity implements FacilityView {
     private final static String TAG = MainActivity.class.getSimpleName();
 
-    private Fragment[] frags = new Fragment[3];
+    private List<Fragment> frags;
     protected BaseFragment baseFragment;
     private ChartFragment dataFragment;
     private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
+    private ViewPager pager;
     private Handler handler;
     private Runnable myRunnable;
+    private Runnable deviceRunnable;
+    private Runnable dataRunnable;
     private Toastor toastor;
     private FacilityPresenerImp facilityPresenerImp;
     private ProgressDialog progressDialog = null;
     private boolean isOne = true;
     List<Facility.ResBodyBean.ListBean> mList;
     Facility.ResBodyBean.ListBean listBean;
+    private int indext = 0;
+    private int deviceTime = 0;
+    private int dataTime = 0;
+    TestFragmentAdapter mAdapter;
+    private int mark = 0;
 
     @Override
     protected int getContentView() {
@@ -65,26 +74,25 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     @Override
     protected void init() {
+        initView();
         mList = new ArrayList<>();
         handler = new Handler();
         facilityPresenerImp = new FacilityPresenerImp(this, this);
         toastor = new Toastor(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("数据更新中,请稍后");
-        initView();
-        initData();
-        myRunnable = new Runnable() {
-            @Override
-            public void run() {
-                facilityPresenerImp.findUserDevice(MyApplication.newInstance().getUser().getResBody().getPhoneNumber());
-                handler.postDelayed(myRunnable, 60000);
-            }
-        };
+        frags = new ArrayList<>();
+        frags.add(new ChartFragment());
+        frags.add(new WeekFragment());
+        frags.add(new YearFragment());
+        mAdapter = new TestFragmentAdapter(getSupportFragmentManager(), frags);
+        pager.setAdapter(mAdapter);
+        initRunnable();
     }
 
     private void initView() {
 
-
+        pager = (ViewPager) findViewById(R.id.pager);
         main_place = (TextView) findViewById(R.id.main_place);
         main_pm_tv = (TextView) findViewById(R.id.main_pm_tv);
         main_pm = (TextView) findViewById(R.id.main_pm);
@@ -108,54 +116,6 @@ public class MainActivity extends BaseActivity implements FacilityView {
         });
     }
 
-    private void initData() {
-        if (dataFragment == null) {
-            dataFragment = new ChartFragment();
-        }
-
-        if (!dataFragment.isAdded()) {
-            getSupportFragmentManager().beginTransaction().add(R.id.main_fl, dataFragment).commit();
-            baseFragment = dataFragment;
-        }
-    }
-
-    private Fragment getFrag(int index) {
-        switch (index) {
-            case 0:
-                if (dataFragment != null)
-                    return dataFragment;
-                else
-                    return new ChartFragment();
-            case 1:
-                return new ChartFragment();
-            case 2:
-                return new ChartFragment();
-            case 3:
-                return new ChartFragment();
-            default:
-                return null;
-        }
-    }
-
-    /**
-     * 添加或者显示 fragment
-     *
-     * @param transaction
-     * @param fragment
-     */
-    protected void addOrShowFragment(FragmentTransaction transaction, Fragment fragment) {
-        if (baseFragment == fragment)
-            return;
-
-        if (!fragment.isAdded()) { // 如果当前fragment未被添加，则添加到Fragment管理器中
-            transaction.hide(baseFragment).add(R.id.main_fl, fragment).commit();
-        } else {
-            transaction.hide(baseFragment).show(fragment).commit();
-        }
-
-        baseFragment = (BaseFragment) fragment;
-    }
-
     @Override
     public void showProgress() {
         if (progressDialog != null && !progressDialog.isShowing() && isOne) {
@@ -176,13 +136,28 @@ public class MainActivity extends BaseActivity implements FacilityView {
         Log.e(TAG, tData.toString());
         if (tData.getResCode().equals("0")) {
             mList = tData.getResBody().getList();
-            EventBus.getDefault().post(new FragmentEvent(tData.getResBody().getList()));
-            if (listBean == null) {
-                listBean = mList.get(0);
+            if (mList.size() > 0) {
+                EventBus.getDefault().post(new FragmentEvent(mList));
+                if (listBean == null) {
+                    mark = 1;
+                    listBean = mList.get(0);
+                    initdata();
+
+                } else {
+                    if (mList.size() > mark)
+                        listBean = mList.get((mark - 1));
+                    else {
+                        mark = 0;
+                        listBean = mList.get(0);
+                    }
+                    initdata();
+                }
+            } else {
+                listBean = null;
                 initdata();
             }
-
         } else {
+
             toastor.showSingletonToast(tData.getResMessage());
         }
     }
@@ -197,10 +172,8 @@ public class MainActivity extends BaseActivity implements FacilityView {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_CENTER:
-                toastor.showSingletonToast("你按下中间键");
-                if (id == R.id.main_set) {
-                    startActivity(new Intent(this, SettingActivity.class));
-                }
+                //toastor.showSingletonToast("你按下中间键");
+
                 break;
         }
         return super.onKeyDown(keyCode, event);
@@ -210,6 +183,8 @@ public class MainActivity extends BaseActivity implements FacilityView {
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacks(myRunnable);
+        handler.removeCallbacks(dataRunnable);
+        handler.removeCallbacks(deviceRunnable);
         handler = null;
         facilityPresenerImp = null;
     }
@@ -219,6 +194,19 @@ public class MainActivity extends BaseActivity implements FacilityView {
         super.onResume();
         facilityPresenerImp.findUserDevice(MyApplication.newInstance().getUser().getResBody().getPhoneNumber());
         handler.postDelayed(myRunnable, 60000);
+        if (deviceTime != SpUtils.getInt("device", 15)) {
+            if (deviceTime > 0)
+                handler.removeCallbacks(deviceRunnable);
+            deviceTime = SpUtils.getInt("device", 15);
+            handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
+        }
+        if (dataTime != SpUtils.getInt("data", 40)) {
+            if (dataTime > 0)
+                handler.removeCallbacks(dataRunnable);
+            dataTime = SpUtils.getInt("data", 40);
+            handler.postDelayed(dataRunnable, (dataTime * 1000));
+
+        }
     }
 
     @Override
@@ -243,7 +231,69 @@ public class MainActivity extends BaseActivity implements FacilityView {
             tvoc.setText(listBean.getTvoc().trim().equals("") ? "——" : listBean.getTvoc());
             Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()));
 
+        } else {
+            main_place.setText("——");
+            main_pm_tv.setText("——");
+            main_pm.setText("——");
+            main_humidity.setText("——");
+            co2.setText("——");
+            co2_tv.setText("——");
+            pm10.setText("——");
+            pm10_tv.setText("——");
+            jiaquan.setText("——");
+            jiaquan_tv.setText("——");
+            tvoc.setText("——");
+            tvoc_tv.setText("——");
         }
+    }
+
+    private void initRunnable() {
+        myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                facilityPresenerImp.findUserDevice(MyApplication.newInstance().getUser().getResBody().getPhoneNumber());
+                handler.postDelayed(myRunnable, 60000);
+            }
+        };
+        dataRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (indext == 3) {
+                    indext = 0;
+                    pager.setCurrentItem(indext);
+                } else {
+                    indext++;
+                    pager.setCurrentItem(indext);
+                }
+
+                //切换页面历史数据
+                handler.postDelayed(this, (dataTime * 1000));
+                Log.e("MainAcitvity", "切换历史数据");
+            }
+        };
+        deviceRunnable = new Runnable() {
+            @Override
+            public void run() {
+                //切换设备
+                if (mList.size() > mark) {
+                    listBean = mList.get(mark);
+                    mark++;
+                    initdata();
+                } else if (mList.size() <= mark && mList.size() != 0) {
+                    mark = 0;
+                    listBean = mList.get(mark);
+                    initdata();
+                } else {
+                    listBean = null;
+                    initdata();
+                }
+                Intent intent = new Intent();
+                intent.setAction(ACTION_BLE_NOTIFY_DATA);
+                sendBroadcast(intent);
+                handler.postDelayed(this, (deviceTime * 60 * 1000));
+                // Log.e("MainAcitvity", "切换设备");
+            }
+        };
     }
 
 

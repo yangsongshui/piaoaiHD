@@ -28,8 +28,8 @@
             android:id="@+id/text_ll"
             android:layout_width="20dp"
             android:layout_height="160dp"
-            android:layout_marginTop="-5dp"
             android:layout_alignTop="@+id/iv_ll"
+            android:layout_marginTop="-5dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -175,109 +175,62 @@
         <LinearLayout
             android:id="@+id/iv_ll"
             android:layout_width="10dp"
-            android:layout_height="170dp"
+            android:layout_height="160dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/text_ll"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="10dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="3dp"
                 android:layout_weight="0.3"
-                android:orientation="horizontal">
+                android:background="@drawable/wwwwwwww_30" />
 
 
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:background="@drawable/wwwwwwww_30" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="10dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="3dp"
                 android:layout_weight="0.2"
-                android:orientation="horizontal">
+                android:background="@drawable/wwwwwwww_28" />
 
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:background="@drawable/wwwwwwww_28" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="10dp"
                 android:layout_height="0dp"
-
+                android:layout_marginStart="3dp"
                 android:layout_weight="0.2"
-                android:orientation="horizontal">
+                android:background="@drawable/wwwwwwww_25" />
 
 
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:background="@drawable/wwwwwwww_25" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="10dp"
                 android:layout_height="0dp"
-
+                android:layout_marginStart="3dp"
                 android:layout_weight="0.07"
-                android:orientation="horizontal">
+                android:background="@drawable/wwwwwwww_23" />
 
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:background="@drawable/wwwwwwww_23" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="10dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="3dp"
                 android:layout_weight="0.08"
-                android:orientation="horizontal">
+                android:background="@drawable/wwwwwwww_21" />
 
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:background="@drawable/wwwwwwww_21" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="10dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="3dp"
                 android:layout_weight="0.08"
-                android:orientation="horizontal">
+                android:background="@drawable/wwwwwwww_19" />
 
-
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:background="@drawable/wwwwwwww_19" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="10dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="3dp"
                 android:layout_weight="0.07"
-                android:orientation="horizontal">
+                android:background="@drawable/wwwwwwww_17" />
 
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="3dp"
-                    android:background="@drawable/wwwwwwww_17" />
-            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 
