@@ -28,7 +28,7 @@ import static myapplication.com.piaoaihd.util.Constan.WEATHER_URL;
 
 
 public class WeatherFragment extends BaseFragment {
-    TextView weather_pm,weatherTv,temperature_tv,city_tv,weather_pm_tv,weather_pm2_tv,weather_pm2,weather_no2_tv,weather_pm10_tv,weather_so2_tv,weather_o3_tv,weather_co_tv;
+    TextView weather_pm, weatherTv, temperature_tv, city_tv, weather_pm_tv, weather_pm2_tv, weather_pm2, weather_no2_tv, weather_pm10_tv, weather_so2_tv, weather_o3_tv, weather_co_tv;
     ImageView weather_iv;
 
     //声明AMapLocationClient类对象
@@ -38,6 +38,7 @@ public class WeatherFragment extends BaseFragment {
     ProgressDialog progressDialog;
     Retrofit retrofit;
     Toastor toastor;
+
     @Override
     protected void initData(View layout, Bundle savedInstanceState) {
         progressDialog = new ProgressDialog(getActivity());
@@ -65,22 +66,21 @@ public class WeatherFragment extends BaseFragment {
         toastor = new Toastor(getActivity());
         progressDialog.show();
 
-        weather_pm= (TextView) layout.findViewById(R.id.weather_pm);
-        weather_pm_tv= (TextView) layout.findViewById(R.id.weather_pm_tv);
-        weatherTv= (TextView) layout.findViewById(R.id.weatherTv);
-        temperature_tv= (TextView) layout.findViewById(R.id.temperature_tv);
-        city_tv= (TextView) layout.findViewById(R.id.city_tv);
+        weather_pm = (TextView) layout.findViewById(R.id.weather_pm);
+        weather_pm_tv = (TextView) layout.findViewById(R.id.weather_pm_tv);
+        weatherTv = (TextView) layout.findViewById(R.id.weatherTv);
+        temperature_tv = (TextView) layout.findViewById(R.id.temperature_tv);
+        city_tv = (TextView) layout.findViewById(R.id.city_tv);
 
-        weather_pm2_tv= (TextView) layout.findViewById(R.id.weather_pm2_tv);
-        weather_pm2= (TextView) layout.findViewById(R.id.weather_pm2);
-        weather_no2_tv= (TextView) layout.findViewById(R.id.weather_no2_tv);
-        weather_pm10_tv= (TextView) layout.findViewById(R.id.weather_pm10_tv);
-        weather_so2_tv= (TextView) layout.findViewById(R.id.weather_so2_tv);
-        weather_o3_tv= (TextView) layout.findViewById(R.id.weather_o3_tv);
-        weather_co_tv= (TextView) layout.findViewById(R.id.weather_co_tv);
+        weather_pm2_tv = (TextView) layout.findViewById(R.id.weather_pm2_tv);
+        weather_pm2 = (TextView) layout.findViewById(R.id.weather_pm2);
+        weather_no2_tv = (TextView) layout.findViewById(R.id.weather_no2_tv);
+        weather_pm10_tv = (TextView) layout.findViewById(R.id.weather_pm10_tv);
+        weather_so2_tv = (TextView) layout.findViewById(R.id.weather_so2_tv);
+        weather_o3_tv = (TextView) layout.findViewById(R.id.weather_o3_tv);
+        weather_co_tv = (TextView) layout.findViewById(R.id.weather_co_tv);
 
-        weather_iv= (ImageView) layout.findViewById(R.id.weather_iv);
-
+        weather_iv = (ImageView) layout.findViewById(R.id.weather_iv);
 
 
         city_tv.setText("深圳");
@@ -160,19 +160,20 @@ public class WeatherFragment extends BaseFragment {
             }
         }
     };
+
     private void initWeather(Weather weather) {
         MyApplication.newInstance().getGlide().load(weather.getShowapi_res_body().getNow().getWeather_pic()).into(weather_iv);
         int pm = Integer.parseInt(weather.getShowapi_res_body().getNow().getAqiDetail().getPm2_5());
-        weather_pm2_tv.setText(weather.getShowapi_res_body().getNow().getAqiDetail().getPm2_5());
+        weather_pm2_tv.setText(weather.getShowapi_res_body().getNow().getSd());
         weather_pm_tv.setText(weather.getShowapi_res_body().getNow().getAqiDetail().getPm2_5());
         BigDecimal b = new BigDecimal(weather.getShowapi_res_body().getNow().getAqiDetail().getCo());
         double f1 = b.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
-        weather_co_tv.setText(f1+"");
+        weather_co_tv.setText(f1 + "");
         weather_no2_tv.setText(weather.getShowapi_res_body().getNow().getAqiDetail().getNo2());
         weather_pm10_tv.setText(weather.getShowapi_res_body().getNow().getAqiDetail().getPm10());
         weather_so2_tv.setText(weather.getShowapi_res_body().getNow().getAqiDetail().getSo2());
         weather_o3_tv.setText(weather.getShowapi_res_body().getNow().getAqiDetail().getO3());
-        temperature_tv.setText(weather.getShowapi_res_body().getNow().getTemperature()+"℃");
+        temperature_tv.setText(weather.getShowapi_res_body().getNow().getTemperature() + "℃");
         weatherTv.setText(weather.getShowapi_res_body().getNow().getWeather());
         if (pm >= 0 || pm <= 35) {
             weather_pm.setText("优");
@@ -197,7 +198,7 @@ public class WeatherFragment extends BaseFragment {
             weather_pm.setText("严重污染");
             weather_pm2.setText("严重污染");
             weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_yanzhong));
-        }else {
+        } else {
             weather_pm.setText("污染爆表");
             weather_pm2.setText("污染爆表");
             weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_yanzhong));

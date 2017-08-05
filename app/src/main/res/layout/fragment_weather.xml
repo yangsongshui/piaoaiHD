@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shubg"
+    android:background="@color/img_soft_opaque"
     android:orientation="horizontal"
     tools:context="myapplication.com.piaoaihd.WeatherFragment">
 
@@ -62,12 +62,12 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -84,9 +84,10 @@
 
             <ImageView
                 android:id="@+id/weather_iv"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="5dp"
+                android:layout_weight="1"
                 android:src="@drawable/tianqi" />
 
             <TextView
@@ -95,6 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="——"
+
                 android:textSize="14sp" />
 
             <TextView
@@ -103,6 +105,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="——"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
                 android:textSize="14sp" />
 
             <TextView
@@ -133,7 +137,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -148,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="PM2.5"
+                    android:text="湿度"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -156,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/pm"
-                    android:text="细颗粒物"
+                    android:text="RH"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -197,7 +200,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/weather_pm10"
-                    android:text="细颗粒物"
+                    android:text="mg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -222,7 +225,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -245,7 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/no2"
-                    android:text="二氧化氮"
+                    android:text="mg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -286,7 +289,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/SO2"
-                    android:text="二氧化硫"
+                    android:text="ug/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -311,7 +314,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -334,7 +337,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/O3"
-                    android:text="臭氧"
+                    android:text="ug/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -375,7 +378,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/CO"
-                    android:text="细颗粒物"
+                    android:text="mg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 

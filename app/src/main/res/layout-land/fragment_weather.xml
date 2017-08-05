@@ -154,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="PM2.5"
+                    android:text="RH"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -162,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/pm"
-                    android:text="细颗粒物"
+                    android:text="湿度"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
