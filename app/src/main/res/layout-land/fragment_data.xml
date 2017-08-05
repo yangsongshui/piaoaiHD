@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tianq14_04"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="场所" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="PM2.5" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="CO₂" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="PM10" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="甲醛" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TVOC" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="温度" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="湿度" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/device1_name"
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="————" />
+
+        <TextView
+            android:id="@+id/device1_pm25"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device1_co2"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:text="——" />
+
+
+        <TextView
+            android:id="@+id/device1_pm10"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device1_jiaquan"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device1_tvoc"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device1_wendu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device1_shidu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/device2_name"
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_pm25"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_co2"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_pm10"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_jiaquan"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_tvoc"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_wendu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device2_shidu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/device3_name"
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+        <TextView
+            android:id="@+id/device3_pm25"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+        <TextView
+            android:id="@+id/device3_co2"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device3_pm10"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device3_jiaquan"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device3_tvoc"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device3_wendu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+
+        <TextView
+            android:id="@+id/device3_shidu"
+            style="@style/mainTv2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="——" />
+    </LinearLayout>
+</LinearLayout>

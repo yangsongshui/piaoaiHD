@@ -25,7 +25,14 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/weather_tv</item>
     </style>
-
+    <style name="weatherTv2">
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/weather_tv3</item>
+    </style>
     <style name="mainTv">
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
