@@ -55,6 +55,7 @@ public class DataFragment extends BaseFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(FragmentEvent event) {
+        mList.clear();
         for (int i = 0; i < event.getMsg().size(); i++) {
             if (event.getMsg().get(i).getType().equals("1") || event.getMsg().get(i).getType().equals("2")) {
                 mList.add(event.getMsg().get(i));
@@ -89,6 +90,7 @@ public class DataFragment extends BaseFragment {
                 Facility.ResBodyBean.ListBean data3 = mList.get(1);
                 getData3(data3);
             }
+
         } else if (markMax == 2) {
             if (markMax <= mark) {
                 mark = 0;
@@ -103,6 +105,7 @@ public class DataFragment extends BaseFragment {
                 getData2(data2);
             }
             getData3(data);
+
         } else if (markMax == 1) {
             Facility.ResBodyBean.ListBean data1 = mList.get(0);
             getData1(data1);

@@ -10,6 +10,8 @@ import android.widget.RadioGroup;
 import myapplication.com.piaoaihd.base.BaseActivity;
 import myapplication.com.piaoaihd.util.SpUtils;
 
+import static myapplication.com.piaoaihd.R.id.data_20;
+
 public class SettingActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener {
     RadioGroup device_rg, data_rg;
     ImageButton set_back_ib;
@@ -24,13 +26,14 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         device_rg = (RadioGroup) findViewById(R.id.device_rg);
         data_rg = (RadioGroup) findViewById(R.id.data_rg);
         set_back_ib = (ImageButton) findViewById(R.id.set_back_ib);
+        initView();
         findViewById(R.id.device_1).setOnFocusChangeListener(this);
         findViewById(R.id.device_15).setOnFocusChangeListener(this);
         findViewById(R.id.device_30).setOnFocusChangeListener(this);
         findViewById(R.id.device_1h).setOnFocusChangeListener(this);
         findViewById(R.id.device_2h).setOnFocusChangeListener(this);
 
-        findViewById(R.id.data_20).setOnFocusChangeListener(this);
+        findViewById(data_20).setOnFocusChangeListener(this);
         findViewById(R.id.data_40).setOnFocusChangeListener(this);
         findViewById(R.id.data_1).setOnFocusChangeListener(this);
         findViewById(R.id.data_2).setOnFocusChangeListener(this);
@@ -46,39 +49,78 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
 
     }
 
+    private void initView() {
+        int deviceTime = SpUtils.getInt("device", 15);
+        int dataTime = SpUtils.getInt("data", 40);
+        switch (deviceTime) {
+            case 1:
+                device_rg.check(R.id.device_1);
+                break;
+            case 15:
+                device_rg.check(R.id.device_15);
+                break;
+            case 30:
+                device_rg.check(R.id.device_30);
+                break;
+            case 60:
+                device_rg.check(R.id.device_1h);
+                break;
+            case 120:
+                device_rg.check(R.id.device_2h);
+                break;
+        }
+        switch (dataTime) {
+            case 20:
+                data_rg.check(R.id.data_20);
+                break;
+            case 40:
+                data_rg.check(R.id.data_40);
+                break;
+            case 60:
+                data_rg.check(R.id.data_1);
+                break;
+            case 120:
+                data_rg.check(R.id.data_2);
+                break;
+            case 300:
+                data_rg.check(R.id.data_5);
+                break;
+        }
+    }
+
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
 
         switch (checkedId) {
             case R.id.device_1:
-                SpUtils.putInt("device",1);
+                SpUtils.putInt("device", 1);
                 break;
             case R.id.device_15:
-                SpUtils.putInt("device",15);
+                SpUtils.putInt("device", 15);
                 break;
             case R.id.device_30:
-                SpUtils.putInt("device",30);
+                SpUtils.putInt("device", 30);
                 break;
             case R.id.device_1h:
-                SpUtils.putInt("device",60);
+                SpUtils.putInt("device", 60);
                 break;
             case R.id.device_2h:
-                SpUtils.putInt("device",120);
+                SpUtils.putInt("device", 120);
                 break;
-            case R.id.data_20:
-                SpUtils.putInt("data",20);
+            case data_20:
+                SpUtils.putInt("data", 20);
                 break;
             case R.id.data_40:
-                SpUtils.putInt("data",40);
+                SpUtils.putInt("data", 40);
                 break;
             case R.id.data_1:
-                SpUtils.putInt("data",60);
+                SpUtils.putInt("data", 60);
                 break;
             case R.id.data_2:
-                SpUtils.putInt("data",120);
+                SpUtils.putInt("data", 120);
                 break;
             case R.id.data_5:
-                SpUtils.putInt("data",300);
+                SpUtils.putInt("data", 300);
                 break;
         }
     }

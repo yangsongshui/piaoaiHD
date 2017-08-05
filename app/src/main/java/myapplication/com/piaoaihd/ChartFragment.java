@@ -1,10 +1,15 @@
 package myapplication.com.piaoaihd;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.CombinedChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
@@ -13,23 +18,59 @@ import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import myapplication.com.piaoaihd.base.BaseFragment;
+import myapplication.com.piaoaihd.bean.PMBean;
+import myapplication.com.piaoaihd.presenter.PMdataPresenterImp;
+import myapplication.com.piaoaihd.util.DateUtil;
+import myapplication.com.piaoaihd.util.FragmentEvent;
+import myapplication.com.piaoaihd.util.Toastor;
+import myapplication.com.piaoaihd.view.PMView;
+
+import static myapplication.com.piaoaihd.util.Constan.ACTION_BLE_NOTIFY_DATA;
+import static myapplication.com.piaoaihd.util.DateUtil.LONG_DATE_FORMAT;
 
 /**
  * Created by ys on 2017/7/25.
  */
 
-public class ChartFragment extends BaseFragment {
+public class ChartFragment extends BaseFragment implements PMView {
     CombinedChart mChart;
+    PMdataPresenterImp pMdataPresenterImp;
+    private Toastor toastor;
+    private Map<String, String> map;
+    List<String> mList;
 
     @Override
     protected void initData(View layout, Bundle savedInstanceState) {
+        pMdataPresenterImp = new PMdataPresenterImp(this, getActivity());
+        //注册EventBus
+        EventBus.getDefault().register(this);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ACTION_BLE_NOTIFY_DATA);
+        getActivity().registerReceiver(notifyReceiver, intentFilter);
+
+        mList = new ArrayList<>();
+        toastor = new Toastor(getActivity());
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
+        map = new HashMap<>();
+        map.put("type", "1");
+        //通过格式化输出日期
+        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
+        map.put("endDate", time + " 24:00");
+        map.put("beginDate", time + " 00:00");
         initChart();
+
     }
 
     @Override
@@ -78,7 +119,7 @@ public class ChartFragment extends BaseFragment {
         // xAxis.setAxisMinimum(-0.1f);
         xAxis.setGranularity(0.3f);
         xAxis.setAxisMaximum(23);
-        xAxis.setLabelCount(23, true);
+        xAxis.setLabelCount(8, true);
         xAxis.setTextColor(Color.rgb(255, 255, 255));
         xAxis.setAxisLineColor(Color.rgb(255, 255, 255));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴在底部
@@ -120,20 +161,33 @@ public class ChartFragment extends BaseFragment {
         mChart.getAxisLeft().setAxisMaximum(500);
         //不画网格
         xAxis.setDrawGridLines(false);
+        IAxisValueFormatter formatter = new IAxisValueFormatter() {
+            String[] day = new String[]{"01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"
+                    , "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"};
+
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return day[(int) value % day.length];
+            }
+
+        };
+        xAxis.setValueFormatter(formatter);
         mChart.getLegend().setEnabled(false);
         CombinedData data = new CombinedData();
         data.setData(getLineData());
         mChart.setData(data);
         mChart.invalidate();
 
-
     }
 
     private LineData getLineData() {
         ArrayList<Entry> values1 = new ArrayList<>();
         for (int i = 0; i < 24; i++) {
-            values1.add(new Entry(i, new Random().nextInt(500)));
-
+            // Log.e(TAG, mList.get(i)+" " + i );
+            if (i >= (mList.size())) {
+                values1.add(new Entry(i, 0));
+            } else
+                values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
         }
 
         LineDataSet set1;
@@ -156,5 +210,64 @@ public class ChartFragment extends BaseFragment {
 
         }
         return new LineData(set1);
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void disimissProgress() {
+
+    }
+
+    @Override
+    public void loadDataSuccess(PMBean tData) {
+       // toastor.showSingletonToast(tData.getResMessage());
+        if (tData.getResCode().equals("0")) {
+            if (tData.getResBody().getList().size() > 0) {
+                mList = tData.getResBody().getList();
+
+            }
+            CombinedData data = new CombinedData();
+            data.setData(getLineData());
+            mChart.setData(data);
+            mChart.invalidate();
+        }
+    }
+
+    @Override
+    public void loadDataError(Throwable throwable) {
+        toastor.showSingletonToast("网络连接异常");
+    }
+
+    private BroadcastReceiver notifyReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //设备
+            if (ACTION_BLE_NOTIFY_DATA.equals(intent.getAction())) {
+                if (MyApplication.newInstance().getListBean() != null) {
+                    map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+                    pMdataPresenterImp.binding(map);
+                }
+            }
+        }
+    };
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(FragmentEvent event) {
+        if (MyApplication.newInstance().getListBean() != null) {
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);//反注册EventBus
+        getActivity().unregisterReceiver(notifyReceiver);
     }
 }

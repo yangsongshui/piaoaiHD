@@ -9,6 +9,7 @@ import com.bumptech.glide.RequestManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import myapplication.com.piaoaihd.bean.Facility;
 import myapplication.com.piaoaihd.bean.User;
 import myapplication.com.piaoaihd.util.AppContextUtil;
 import myapplication.com.piaoaihd.util.Log;
@@ -23,6 +24,7 @@ public class MyApplication extends Application {
     public User user;
     private static MyApplication instance;
     public static List<Activity> activitiesList = new ArrayList<Activity>(); // 活动管理集合
+    private   Facility.ResBodyBean.ListBean listBean;
 
 
     /**
@@ -108,5 +110,13 @@ public class MyApplication extends Application {
         return user;
 
 
+    }
+
+    public Facility.ResBodyBean.ListBean getListBean() {
+        return listBean;
+    }
+
+    public void setListBean(Facility.ResBodyBean.ListBean listBean) {
+        this.listBean = listBean;
     }
 }

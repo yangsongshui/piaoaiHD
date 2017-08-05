@@ -176,20 +176,30 @@ public class WeatherFragment extends BaseFragment {
         weatherTv.setText(weather.getShowapi_res_body().getNow().getWeather());
         if (pm >= 0 || pm <= 35) {
             weather_pm.setText("优");
+            weather_pm2.setText("优");
         } else if (pm > 35 || pm <= 75) {
             weather_pm.setText("良");
+            weather_pm2.setText("良");
             weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_liang));
         } else if (pm > 75 || pm <= 115) {
             weather_pm.setText("轻度污染");
             weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_qingdu));
         } else if (pm > 116 || pm <= 150) {
             weather_pm.setText("中度污染");
+            weather_pm2.setText("中度污染");
             weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_zhongdu));
         } else if (pm > 151 || pm <= 250) {
+
             weather_pm.setText("重度污染");
+            weather_pm2.setText("重度污染");
             weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_zhong));
         } else if (pm > 251 || pm <= 500) {
             weather_pm.setText("严重污染");
+            weather_pm2.setText("严重污染");
+            weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_yanzhong));
+        }else {
+            weather_pm.setText("污染爆表");
+            weather_pm2.setText("污染爆表");
             weather_pm.setBackground(getResources().getDrawable(R.drawable.pm_yanzhong));
         }
         progressDialog.dismiss();

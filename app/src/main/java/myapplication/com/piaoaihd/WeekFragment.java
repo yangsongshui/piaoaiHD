@@ -1,10 +1,15 @@
 package myapplication.com.piaoaihd;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
 import com.github.mikephil.charting.charts.CombinedChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
@@ -13,23 +18,64 @@ import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import myapplication.com.piaoaihd.base.BaseFragment;
+import myapplication.com.piaoaihd.bean.PMBean;
+import myapplication.com.piaoaihd.presenter.PMdataPresenterImp;
+import myapplication.com.piaoaihd.util.DateUtil;
+import myapplication.com.piaoaihd.util.FragmentEvent;
+import myapplication.com.piaoaihd.util.Toastor;
+import myapplication.com.piaoaihd.view.PMView;
+
+import static myapplication.com.piaoaihd.util.Constan.ACTION_BLE_NOTIFY_DATA;
+import static myapplication.com.piaoaihd.util.DateUtil.LONG_DATE_FORMAT;
 
 /**
  * Created by ys on 2017/7/25.
  */
 
-public class WeekFragment extends BaseFragment {
+public class WeekFragment extends BaseFragment implements PMView {
     CombinedChart mChart;
-
+    List<String> week;
+    List<String> mList;
+    PMdataPresenterImp pMdataPresenterImp;
+    private Toastor toastor;
+    private Map<String, String> map;
     @Override
     protected void initData(View layout, Bundle savedInstanceState) {
+        pMdataPresenterImp = new PMdataPresenterImp(this, getActivity());
+        //注册EventBus
+        EventBus.getDefault().register(this);
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ACTION_BLE_NOTIFY_DATA);
+        getActivity().registerReceiver(notifyReceiver, intentFilter);
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
+        week = new ArrayList<>();
+        mList = new ArrayList<>();
+        initWeek();
         initChart();
+        map = new HashMap<>();
+        //通过格式化输出日期
+        Calendar cal = Calendar.getInstance();//使用默认时区和语言环境获得一个日历。
+        //通过格式化输出日期
+        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
+        String time2 = DateUtil.dateToString(DateUtil.nextDay(cal.getTime(), -6), LONG_DATE_FORMAT);
+        map.put("endDate", time + " 24:00");
+        map.put("beginDate", time2 + " 00:00");
+        map.put("type", "2");
     }
 
     @Override
@@ -119,6 +165,14 @@ public class WeekFragment extends BaseFragment {
         mChart.getAxisLeft().setAxisMaximum(500);
         //不画网格
         xAxis.setDrawGridLines(false);
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return week.get((int) value % week.size());
+            }
+
+
+        });
         mChart.getLegend().setEnabled(false);
         CombinedData data = new CombinedData();
         data.setData(getLineData());
@@ -131,8 +185,11 @@ public class WeekFragment extends BaseFragment {
     private LineData getLineData() {
         ArrayList<Entry> values1 = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-            values1.add(new Entry(i, new Random().nextInt(500)));
 
+            if (i >= (mList.size())) {
+                values1.add(new Entry(i, 0));
+            } else
+                values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
         }
 
         LineDataSet set1;
@@ -155,5 +212,74 @@ public class WeekFragment extends BaseFragment {
 
         }
         return new LineData(set1);
+    }
+
+    private void initWeek() {
+        String string = "";
+        Date data = new Date();
+        SimpleDateFormat format2 = new SimpleDateFormat("EEEE");
+        for (int i = 0; i < 7; i++) {
+            string = format2.format(DateUtil.nextDay(data, -i));
+            week.add(0, string);
+
+        }
+    }
+
+    private BroadcastReceiver notifyReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //设备
+            if (ACTION_BLE_NOTIFY_DATA.equals(intent.getAction())) {
+                if (MyApplication.newInstance().getListBean() != null) {
+                    map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+                    pMdataPresenterImp.binding(map);
+                }
+            }
+        }
+    };
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(FragmentEvent event) {
+        if (MyApplication.newInstance().getListBean() != null) {
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);//反注册EventBus
+        getActivity().unregisterReceiver(notifyReceiver);
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void disimissProgress() {
+
+    }
+
+    @Override
+    public void loadDataSuccess(PMBean tData) {
+        if (tData.getResCode().equals("0")) {
+            if (tData.getResBody().getList().size() > 0) {
+                mList = tData.getResBody().getList();
+
+            }
+            CombinedData data = new CombinedData();
+            data.setData(getLineData());
+            mChart.setData(data);
+            mChart.invalidate();
+        }
+    }
+
+    @Override
+    public void loadDataError(Throwable throwable) {
+
     }
 }

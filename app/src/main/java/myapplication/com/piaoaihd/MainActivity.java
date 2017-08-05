@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import myapplication.com.piaoaihd.base.BaseActivity;
-import myapplication.com.piaoaihd.base.BaseFragment;
 import myapplication.com.piaoaihd.bean.Facility;
 import myapplication.com.piaoaihd.presenter.FacilityPresenerImp;
 import myapplication.com.piaoaihd.util.Constan;
@@ -46,8 +45,6 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private final static String TAG = MainActivity.class.getSimpleName();
 
     private List<Fragment> frags;
-    protected BaseFragment baseFragment;
-    private ChartFragment dataFragment;
     private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
     private ViewPager pager;
@@ -65,7 +62,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private int deviceTime = 0;
     private int dataTime = 0;
     TestFragmentAdapter mAdapter;
-    private int mark = 0;
+    private int mark = 1;
 
     @Override
     protected int getContentView() {
@@ -133,31 +130,35 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     @Override
     public void loadDataSuccess(Facility tData) {
+
         Log.e(TAG, tData.toString());
         if (tData.getResCode().equals("0")) {
-            mList = tData.getResBody().getList();
+            mList.clear();
+            for (int i = 0; i < tData.getResBody().getList().size(); i++) {
+                if (tData.getResBody().getList().get(i).getType().equals("1") || tData.getResBody().getList().get(i).getType().equals("2")) {
+                    mList.add(tData.getResBody().getList().get(i));
+                }
+            }
             if (mList.size() > 0) {
-                EventBus.getDefault().post(new FragmentEvent(mList));
                 if (listBean == null) {
-                    mark = 1;
                     listBean = mList.get(0);
                     initdata();
-
                 } else {
                     if (mList.size() > mark)
-                        listBean = mList.get((mark - 1));
+                        listBean = mList.get(mark);
                     else {
                         mark = 0;
                         listBean = mList.get(0);
                     }
                     initdata();
                 }
+                MyApplication.newInstance().setListBean(listBean);
+                EventBus.getDefault().post(new FragmentEvent(mList));
             } else {
                 listBean = null;
                 initdata();
             }
         } else {
-
             toastor.showSingletonToast(tData.getResMessage());
         }
     }
@@ -199,6 +200,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 handler.removeCallbacks(deviceRunnable);
             deviceTime = SpUtils.getInt("device", 15);
             handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
+          //  handler.postDelayed(deviceRunnable, 10000);
         }
         if (dataTime != SpUtils.getInt("data", 40)) {
             if (dataTime > 0)
@@ -219,17 +221,34 @@ public class MainActivity extends BaseActivity implements FacilityView {
         if (listBean != null) {
             main_place.setText(listBean.getDeviceName().trim().equals("") ? "——" : listBean.getDeviceName());
             main_pm_tv.setText(listBean.get_$Pm25267().trim().equals("") ? "——" : listBean.get_$Pm25267());
-            Constan.PM2_5(main_pm, Integer.parseInt(listBean.get_$Pm25267()));
+            if (listBean.get_$Pm25267().trim().equals(""))
+                main_pm.setText("——");
+            else
+                Constan.PM2_5(main_pm, Integer.parseInt(listBean.get_$Pm25267()));
             main_temperature.setText("——");
             main_humidity.setText(listBean.getShidu().trim().equals("") ? "——" : listBean.getShidu());
             co2.setText(listBean.getCo2().trim().equals("") ? "——" : listBean.getCo2());
-            Constan.CO2(co2_tv, Integer.parseInt(listBean.getCo2()));
+            if (listBean.getCo2().trim().equals(""))
+                co2_tv.setText("——");
+            else
+                Constan.CO2(co2_tv, Integer.parseInt(listBean.getCo2()));
             pm10.setText(listBean.getPm10().equals("") ? "——" : listBean.getPm10());
-            Constan.PM10(pm10_tv, Integer.parseInt(listBean.getPm10()));
+            if (listBean.getPm10().trim().equals(""))
+                pm10_tv.setText("——");
+            else
+                Constan.PM10(pm10_tv, Integer.parseInt(listBean.getPm10()));
+
             jiaquan.setText(listBean.getJiaquan().trim().equals("") ? "——" : listBean.getJiaquan());
-            Constan.jiaquan(jiaquan_tv, Integer.parseInt(listBean.getJiaquan()));
+            if (listBean.getJiaquan().trim().equals(""))
+                jiaquan_tv.setText("——");
+            else
+                Constan.jiaquan(jiaquan_tv, Integer.parseInt(listBean.getJiaquan()));
             tvoc.setText(listBean.getTvoc().trim().equals("") ? "——" : listBean.getTvoc());
-            Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()));
+            if (listBean.getTvoc().trim().equals(""))
+                tvoc_tv.setText("——");
+            else
+                Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()));
+
 
         } else {
             main_place.setText("——");
@@ -279,19 +298,24 @@ public class MainActivity extends BaseActivity implements FacilityView {
                     listBean = mList.get(mark);
                     mark++;
                     initdata();
+                    Log.e("MainAcitvity", "切换设备:" + mark + "" + listBean.getDeviceName());
                 } else if (mList.size() <= mark && mList.size() != 0) {
-                    mark = 0;
-                    listBean = mList.get(mark);
+                    mark = 1;
+                    listBean = mList.get(0);
                     initdata();
+                    Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
                 } else {
                     listBean = null;
                     initdata();
                 }
+                Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
+                MyApplication.newInstance().setListBean(listBean);
                 Intent intent = new Intent();
                 intent.setAction(ACTION_BLE_NOTIFY_DATA);
                 sendBroadcast(intent);
                 handler.postDelayed(this, (deviceTime * 60 * 1000));
-                // Log.e("MainAcitvity", "切换设备");
+               // handler.postDelayed(this, 10000);
+
             }
         };
     }
