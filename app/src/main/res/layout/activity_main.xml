@@ -102,38 +102,40 @@
         android:name="myapplication.com.piaoaihd.WeatherFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.1"
+        android:layout_weight="1.2"
         tools:context=".MainActivity"
         tools:ignore="MergeRootFrame" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.1"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1.2"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/main_place"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginTop="15dp"
                 android:background="@drawable/weather_tv2"
                 android:gravity="center"
                 android:paddingEnd="20dp"
                 android:paddingStart="20dp"
-                android:text="会议室设备"
+                android:text="会议室"
                 android:textColor="@color/soft_opaque"
                 android:textSize="18sp" />
 
             <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/yuan_2"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -167,284 +169,297 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:gravity="center">
+            android:layout_weight="1.3"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/main_temperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30℃"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <TextView
-                    style="@style/mainTv3"
+                    style="@style/mainTv4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="温度" />
 
                 <TextView
+                    android:id="@+id/main_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="——"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/mainTv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:text="湿度" />
+
+                <TextView
                     android:id="@+id/main_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="58%"
+                    android:layout_marginStart="5dp"
+                    android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
-                <TextView
 
-                    style="@style/mainTv3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="湿度" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/yuan_1" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="CO₂ ppm"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="4"
-                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-
                         <TextView
-                            android:id="@+id/co2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="——"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/co2_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="——"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="CO₂ ppm"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="4"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/co2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/co2_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/yuan_1" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="PM10 mg/m³"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="4"
-                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-
                         <TextView
-                            android:id="@+id/pm10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="——"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/pm10_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="——"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="PM10 mg/m³"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="4"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/pm10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/pm10_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/yuan_1" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="甲醛 μg/m³"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="4"
-                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical">
 
-
                         <TextView
-                            android:id="@+id/jiaquan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="——"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/jiaquan_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="——"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="甲醛 μg/m³"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="4"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/jiaquan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/jiaquan_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/yuan_1" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_horizontal"
-
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="TVOC μg/m³"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/yuan_1" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="4"
-                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_horizontal"
+
                         android:orientation="vertical">
 
-
                         <TextView
-                            android:id="@+id/tvoc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="——"
-                            android:textColor="@color/white"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/tvoc_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="——"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="TVOC μg/m³"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="4"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/tvoc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvoc_tv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="10sp" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -506,7 +521,7 @@
         android:name="myapplication.com.piaoaihd.DataFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_weight="0.6"
         tools:context=".MainActivity"
         tools:ignore="RootFrame" />
 </LinearLayout>

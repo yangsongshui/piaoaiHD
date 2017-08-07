@@ -3,32 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="#08419D"
     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="历史记录"
-        android:textColor="@color/white"
-        android:textSize="20sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        android:layout_marginTop="-10dp">
-
+        android:layout_marginTop="-5dp">
+        <TextView
+            android:id="@+id/chart_lishi"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="历  史  记  录"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:textSize="21sp" />
         <com.github.mikephil.charting.charts.CombinedChart
             android:id="@+id/week_chart"
             android:layout_width="match_parent"
+            android:layout_toEndOf="@+id/chart_lishi"
             android:layout_height="190dp"
             android:layout_marginStart="15dp" />
-
         <LinearLayout
             android:id="@+id/text_ll"
             android:layout_width="20dp"
             android:layout_height="160dp"
             android:layout_alignTop="@+id/iv_ll"
+            android:layout_toEndOf="@+id/chart_lishi"
             android:layout_marginTop="-5dp"
             android:orientation="vertical">
 
@@ -250,7 +252,7 @@
             android:textSize="14sp" />
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:background="@color/white" />
@@ -277,7 +279,7 @@
                     android:layout_marginStart="4dp"
                     android:text="优"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
             </LinearLayout>
 
             <TextView
@@ -286,11 +288,11 @@
                 android:gravity="center"
                 android:text="0-35"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:background="@color/white" />
@@ -317,7 +319,7 @@
                     android:layout_marginStart="4dp"
                     android:text="良"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
             </LinearLayout>
 
             <TextView
@@ -326,11 +328,11 @@
                 android:gravity="center"
                 android:text="36-75"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:background="@color/white" />
@@ -357,7 +359,7 @@
                     android:layout_marginStart="4dp"
                     android:text="轻度污染"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
             </LinearLayout>
 
             <TextView
@@ -366,11 +368,11 @@
                 android:gravity="center"
                 android:text="76-115"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:background="@color/white" />
@@ -397,7 +399,7 @@
                     android:layout_marginStart="4dp"
                     android:text="中度污染"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
             </LinearLayout>
 
             <TextView
@@ -406,11 +408,11 @@
                 android:gravity="center|end"
                 android:text="116-150"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:background="@color/white" />
@@ -437,7 +439,7 @@
                     android:layout_marginStart="4dp"
                     android:text="重度污染"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
             </LinearLayout>
 
             <TextView
@@ -446,11 +448,11 @@
                 android:gravity="center|end"
                 android:text="151-250"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:background="@color/white" />
@@ -477,7 +479,7 @@
                     android:layout_marginStart="4dp"
                     android:text="严重污染"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
             </LinearLayout>
 
             <TextView
@@ -486,11 +488,11 @@
                 android:gravity="center|end"
                 android:text="250-500"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:background="@color/white" />
@@ -517,7 +519,7 @@
                     android:layout_marginStart="4dp"
                     android:text="爆表"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="8sp" />
             </LinearLayout>
 
             <TextView
@@ -526,7 +528,7 @@
                 android:gravity="center|end"
                 android:text=">500"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="8sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

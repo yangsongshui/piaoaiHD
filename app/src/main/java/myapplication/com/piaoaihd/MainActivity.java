@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private int deviceTime = 0;
     private int dataTime = 0;
     TestFragmentAdapter mAdapter;
-    private int mark = 1;
+    private int mark = 0;
 
     @Override
     protected int getContentView() {

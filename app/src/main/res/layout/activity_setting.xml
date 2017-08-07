@@ -48,36 +48,42 @@
 
         <RadioButton
             android:id="@+id/device_1"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="1分钟" />
 
         <RadioButton
             android:id="@+id/device_15"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="15分钟" />
 
         <RadioButton
             android:id="@+id/device_30"
-            style="@style/setRadioButton"
-            android:layout_width="wrap_content"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="30分钟" />
 
         <RadioButton
             android:id="@+id/device_1h"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="1小时" />
 
         <RadioButton
             android:id="@+id/device_2h"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
             android:layout_height="match_parent"
             android:text="2小时" />
     </RadioGroup>
@@ -99,36 +105,42 @@
 
         <RadioButton
             android:id="@+id/data_20"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="20秒" />
 
         <RadioButton
             android:id="@+id/data_40"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="40秒" />
 
         <RadioButton
             android:id="@+id/data_1"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="1分钟" />
 
         <RadioButton
             android:id="@+id/data_2"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="2分钟" />
 
         <RadioButton
             android:id="@+id/data_5"
-            style="@style/setRadioButton"
-            android:layout_width="100dp"
+            style="@style/setRadioButton2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
             android:layout_height="match_parent"
             android:text="5分钟" />
     </RadioGroup>
