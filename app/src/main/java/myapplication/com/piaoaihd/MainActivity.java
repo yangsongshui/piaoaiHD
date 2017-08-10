@@ -135,7 +135,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         if (tData.getResCode().equals("0")) {
             mList.clear();
             for (int i = 0; i < tData.getResBody().getList().size(); i++) {
-                if (tData.getResBody().getList().get(i).getType().equals("1") || tData.getResBody().getList().get(i).getType().equals("2")) {
+                if (tData.getResBody().getList().get(i).getType().equals("1") || tData.getResBody().getList().get(i).getType().equals("2")|| tData.getResBody().getList().get(i).getType().equals("4")) {
                     mList.add(tData.getResBody().getList().get(i));
                 }
             }
