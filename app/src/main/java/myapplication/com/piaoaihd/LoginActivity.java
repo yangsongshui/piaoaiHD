@@ -135,7 +135,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         if (MyApplication.newInstance().getUser() != null) {
             User user = MyApplication.newInstance().getUser();
             psw = user.getResBody().getPassWord();
-            loginPresenterImp.loadLogin(user.getResBody().getPhoneNumber(), MD5.getMD5(psw));
+          loginPresenterImp.loadLogin(user.getResBody().getPhoneNumber(), MD5.getMD5(psw));
         }
     }
 }

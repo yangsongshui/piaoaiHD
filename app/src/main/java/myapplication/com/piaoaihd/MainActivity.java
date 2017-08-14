@@ -135,7 +135,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         if (tData.getResCode().equals("0")) {
             mList.clear();
             for (int i = 0; i < tData.getResBody().getList().size(); i++) {
-                if (tData.getResBody().getList().get(i).getType().equals("1") || tData.getResBody().getList().get(i).getType().equals("2")|| tData.getResBody().getList().get(i).getType().equals("4")) {
+                if (tData.getResBody().getList().get(i).getType().equals("1") || tData.getResBody().getList().get(i).getType().equals("2") || tData.getResBody().getList().get(i).getType().equals("4")) {
                     mList.add(tData.getResBody().getList().get(i));
                 }
             }
@@ -195,19 +195,19 @@ public class MainActivity extends BaseActivity implements FacilityView {
         super.onResume();
         facilityPresenerImp.findUserDevice(MyApplication.newInstance().getUser().getResBody().getPhoneNumber());
         handler.postDelayed(myRunnable, 60000);
+
         if (deviceTime != SpUtils.getInt("device", 15)) {
             if (deviceTime > 0)
                 handler.removeCallbacks(deviceRunnable);
             deviceTime = SpUtils.getInt("device", 15);
             handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
-          //  handler.postDelayed(deviceRunnable, 10000);
+           //handler.postDelayed(deviceRunnable, 3000);
         }
         if (dataTime != SpUtils.getInt("data", 40)) {
             if (dataTime > 0)
                 handler.removeCallbacks(dataRunnable);
             dataTime = SpUtils.getInt("data", 40);
             handler.postDelayed(dataRunnable, (dataTime * 1000));
-
         }
     }
 
@@ -297,24 +297,24 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 if (mList.size() > mark) {
                     listBean = mList.get(mark);
                     mark++;
-                    initdata();
-                    Log.e("MainAcitvity", "切换设备:" + mark + "" + listBean.getDeviceName());
+                  //  Log.e("MainAcitvity", "切换设备:" + mark + "" + listBean.getDeviceName());
                 } else if (mList.size() <= mark && mList.size() != 0) {
                     mark = 1;
                     listBean = mList.get(0);
-                    initdata();
-                    Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
+
+                   // Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
                 } else {
                     listBean = null;
-                    initdata();
+
                 }
-                Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
+                initdata();
+                //Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
                 MyApplication.newInstance().setListBean(listBean);
                 Intent intent = new Intent();
                 intent.setAction(ACTION_BLE_NOTIFY_DATA);
                 sendBroadcast(intent);
                 handler.postDelayed(this, (deviceTime * 60 * 1000));
-               // handler.postDelayed(this, 10000);
+                //handler.postDelayed(this, 3000);
 
             }
         };

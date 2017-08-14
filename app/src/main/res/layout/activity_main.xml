@@ -32,12 +32,12 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginEnd="-8dp"
-            android:layout_marginStart="-8dp"
+            android:layout_marginEnd="-15dp"
+            android:layout_marginStart="-15dp"
             android:layout_toEndOf="@+id/banner1"
             android:layout_toStartOf="@+id/banner2"
             android:background="@color/background_gradient_end2"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -113,7 +113,7 @@
         android:layout_weight="1.2"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -123,20 +123,26 @@
             <TextView
                 android:id="@+id/main_place"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+
                 android:background="@drawable/weather_tv2"
                 android:gravity="center"
                 android:paddingEnd="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:paddingStart="20dp"
                 android:text="会议室"
                 android:textColor="@color/soft_opaque"
-                android:textSize="18sp" />
+                android:textSize="25sp" />
 
             <LinearLayout
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/yuan_2"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -145,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:text="PM2.5"
                     android:textColor="@color/selected_background"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/main_pm_tv"
@@ -153,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="55sp" />
 
                 <TextView
                     android:id="@+id/main_pm"
@@ -161,10 +167,10 @@
                     android:layout_height="wrap_content"
                     android:text="——"
                     android:textColor="@color/selected_background"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
             </LinearLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -193,7 +199,7 @@
                     android:layout_marginStart="5dp"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
 
                 <TextView
                     style="@style/mainTv4"
@@ -209,7 +215,7 @@
                     android:layout_marginStart="5dp"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="25sp" />
 
 
             </LinearLayout>
@@ -247,7 +253,7 @@
                             android:gravity="center"
                             android:text="CO₂ ppm"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="18sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -263,7 +269,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="25sp" />
 
                             <TextView
                                 android:id="@+id/co2_tv"
@@ -271,7 +277,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="10sp" />
+                                android:textSize="20sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -305,7 +311,7 @@
                             android:gravity="center"
                             android:text="PM10 mg/m³"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="18sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -321,7 +327,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="25sp" />
 
                             <TextView
                                 android:id="@+id/pm10_tv"
@@ -330,7 +336,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="10sp" />
+                                android:textSize="20sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -370,7 +376,7 @@
                             android:gravity="center"
                             android:text="甲醛 μg/m³"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="18sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -386,7 +392,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="25sp" />
 
                             <TextView
                                 android:id="@+id/jiaquan_tv"
@@ -395,7 +401,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="10sp" />
+                                android:textSize="20sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -430,7 +436,7 @@
                             android:gravity="center"
                             android:text="TVOC μg/m³"
                             android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:textSize="18sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -446,7 +452,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="14sp" />
+                                android:textSize="25sp" />
 
                             <TextView
                                 android:id="@+id/tvoc_tv"
@@ -455,7 +461,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="10sp" />
+                                android:textSize="20sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -481,8 +487,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/erweima" />
 
             <TextView
@@ -490,14 +496,14 @@
                 android:layout_height="wrap_content"
                 android:text="扫一扫"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="微信关注"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="25sp" />
         </LinearLayout>
 
         <android.support.v4.view.ViewPager

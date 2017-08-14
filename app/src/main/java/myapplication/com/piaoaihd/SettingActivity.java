@@ -45,7 +45,8 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 finish();
             }
         });
-
+        data_rg.setOnCheckedChangeListener(this);
+        device_rg.setOnCheckedChangeListener(this);
 
     }
 
@@ -90,7 +91,6 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
 
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-
         switch (checkedId) {
             case R.id.device_1:
                 SpUtils.putInt("device", 1);

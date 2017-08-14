@@ -57,7 +57,7 @@ public class DataFragment extends BaseFragment {
     public void onEventMainThread(FragmentEvent event) {
         mList.clear();
         for (int i = 0; i < event.getMsg().size(); i++) {
-            if (event.getMsg().get(i).getType().equals("1") || event.getMsg().get(i).getType().equals("2")) {
+            if (event.getMsg().get(i).getType().equals("1") || event.getMsg().get(i).getType().equals("2")|| event.getMsg().get(i).getType().equals("4")) {
                 mList.add(event.getMsg().get(i));
             }
         }
