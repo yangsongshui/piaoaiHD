@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="飘  爱  云"
             android:textColor="@color/white"
-            android:textSize="35sp" />
+            android:textSize="80sp" />
 
         <EditText
             android:id="@+id/login_phone"

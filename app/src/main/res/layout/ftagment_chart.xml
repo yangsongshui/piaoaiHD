@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="350dp"
         android:layout_marginTop="-5dp">
         <TextView
             android:id="@+id/chart_lishi"
@@ -18,17 +18,17 @@
             android:text="历  史  记  录"
             android:layout_marginStart="10dp"
             android:textColor="@color/white"
-            android:textSize="21sp" />
+            android:textSize="30sp" />
         <com.github.mikephil.charting.charts.CombinedChart
             android:id="@+id/week_chart"
             android:layout_width="match_parent"
             android:layout_toEndOf="@+id/chart_lishi"
-            android:layout_height="450dp"
+            android:layout_height="350dp"
             android:layout_marginStart="15dp" />
         <LinearLayout
             android:id="@+id/text_ll"
             android:layout_width="30dp"
-            android:layout_height="420dp"
+            android:layout_height="320dp"
             android:layout_alignTop="@+id/iv_ll"
             android:layout_toEndOf="@+id/chart_lishi"
             android:layout_marginTop="-5dp"
@@ -48,7 +48,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="500"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -67,7 +67,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="350"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -86,7 +86,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="250"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -104,7 +104,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="150"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -123,7 +123,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="115"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -150,7 +150,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="75"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:text="035"
                     android:textColor="@color/white"
-                    android:textSize="8sp"
+                    android:textSize="20sp"
                     android:visibility="invisible" />
 
 
@@ -177,7 +177,7 @@
         <LinearLayout
             android:id="@+id/iv_ll"
             android:layout_width="10dp"
-            android:layout_height="420dp"
+            android:layout_height="320dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/text_ll"
             android:orientation="vertical">
@@ -238,7 +238,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -249,7 +249,7 @@
             android:gravity="center"
             android:text="PM2.5曲线图"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="25sp" />
 
         <ImageView
             android:layout_width="0.5dp"
@@ -269,8 +269,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/wwwwwwww_17" />
 
                 <TextView
@@ -279,7 +279,7 @@
                     android:layout_marginStart="4dp"
                     android:text="优"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -288,7 +288,7 @@
                 android:gravity="center"
                 android:text="0-35"
                 android:textColor="@color/white"
-                android:textSize="8sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
@@ -309,8 +309,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/wwwwwwww_19" />
 
                 <TextView
@@ -319,7 +319,7 @@
                     android:layout_marginStart="4dp"
                     android:text="良"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -328,7 +328,7 @@
                 android:gravity="center"
                 android:text="36-75"
                 android:textColor="@color/white"
-                android:textSize="8sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
@@ -349,8 +349,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/wwwwwwww_21" />
 
                 <TextView
@@ -359,7 +359,7 @@
                     android:layout_marginStart="4dp"
                     android:text="轻度污染"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -368,7 +368,7 @@
                 android:gravity="center"
                 android:text="76-115"
                 android:textColor="@color/white"
-                android:textSize="8sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
@@ -389,8 +389,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/wwwwwwww_23" />
 
                 <TextView
@@ -399,7 +399,7 @@
                     android:layout_marginStart="4dp"
                     android:text="中度污染"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -408,7 +408,7 @@
                 android:gravity="center|end"
                 android:text="116-150"
                 android:textColor="@color/white"
-                android:textSize="8sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
@@ -429,8 +429,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/wwwwwwww_25" />
 
                 <TextView
@@ -439,7 +439,7 @@
                     android:layout_marginStart="4dp"
                     android:text="重度污染"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -448,7 +448,7 @@
                 android:gravity="center|end"
                 android:text="151-250"
                 android:textColor="@color/white"
-                android:textSize="8sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
@@ -469,8 +469,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/wwwwwwww_28" />
 
                 <TextView
@@ -479,7 +479,7 @@
                     android:layout_marginStart="4dp"
                     android:text="严重污染"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -488,7 +488,7 @@
                 android:gravity="center|end"
                 android:text="250-500"
                 android:textColor="@color/white"
-                android:textSize="8sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
@@ -509,8 +509,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:src="@drawable/wwwwwwww_28" />
 
                 <TextView
@@ -519,7 +519,7 @@
                     android:layout_marginStart="4dp"
                     android:text="爆表"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <TextView
@@ -528,7 +528,7 @@
                 android:gravity="center|end"
                 android:text=">500"
                 android:textColor="@color/white"
-                android:textSize="8sp" />
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
