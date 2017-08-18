@@ -23,7 +23,7 @@ public class Constan {
         }
     }
 
-    public static void PM2_5(TextView textView, int pm) {
+    public static void PM2_5(TextView textView, double pm) {
         Log.e("PM2_5", " " + pm);
         if (pm >= 0 && pm <= 35) {
             textView.setText("优");
@@ -42,7 +42,7 @@ public class Constan {
         }
     }
 
-    public static void PM10(TextView textView, int pm) {
+    public static void PM10(TextView textView, double pm) {
         Log.e("PM10", " " + pm);
         if (pm >= 0 && pm <= 50) {
             textView.setText("优");
@@ -57,7 +57,7 @@ public class Constan {
         }
     }
 
-    public static void CO2(TextView textView, int co2) {
+    public static void CO2(TextView textView, double co2) {
         if (co2 >= 0 && co2 <= 485) {
             textView.setText("空气清新");
         } else if (co2 >= 486 && co2 <= 600) {
@@ -75,7 +75,7 @@ public class Constan {
         }
     }
 
-    public static void jiaquan(TextView textView, int jiaquan) {
+    public static void jiaquan(TextView textView, double jiaquan) {
         if (jiaquan >= 0 && jiaquan <= 35) {
             textView.setText("优");
         } else if (jiaquan > 35 && jiaquan <= 75) {
@@ -93,7 +93,7 @@ public class Constan {
         }
     }
 
-    public static void wendu(TextView textView, int wendu) {
+    public static void wendu(TextView textView, double wendu) {
         if (wendu <= -20) {
             textView.setText("极寒");
         } else if (wendu > -20 && wendu <= 0) {

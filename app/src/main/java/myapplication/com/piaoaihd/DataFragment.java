@@ -56,11 +56,7 @@ public class DataFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(FragmentEvent event) {
         mList.clear();
-        for (int i = 0; i < event.getMsg().size(); i++) {
-            if (event.getMsg().get(i).getType().equals("1") || event.getMsg().get(i).getType().equals("2")|| event.getMsg().get(i).getType().equals("4")) {
-                mList.add(event.getMsg().get(i));
-            }
-        }
+        mList.addAll(event.getMsg());
         markMax = mList.size();
         setView(mList);
     }
@@ -132,7 +128,7 @@ public class DataFragment extends BaseFragment {
     };
 
     private void getData3(Facility.ResBodyBean.ListBean data3) {
-        if (data3!= null) {
+        if (data3 != null) {
             device3_name.setText(data3.getDeviceName().trim().equals("") ? "——" : data3.getDeviceName());
             device3_co2.setText(data3.getCo2().trim().equals("") ? "——" : data3.getCo2());
             device3_pm25.setText(data3.get_$Pm25267().trim().equals("") ? "——" : data3.get_$Pm25267());

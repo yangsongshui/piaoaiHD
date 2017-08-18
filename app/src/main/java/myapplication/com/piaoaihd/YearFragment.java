@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -26,7 +27,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -67,14 +67,9 @@ public class YearFragment extends BaseFragment implements PMView {
         month = new ArrayList<>();
         toastor = new Toastor(getActivity());
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
+        ((TextView) layout.findViewById(R.id.chart_msg)).setText("PM2.5月曲线图");
         map = new HashMap<>();
-        //通过格式化输出日期
-        Calendar cal = Calendar.getInstance();//使用默认时区和语言环境获得一个日历。
-        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
-        String time2 = DateUtil.dateToString(DateUtil.nextDay(cal.getTime(), -29), LONG_DATE_FORMAT);
-        map.put("type", "3");
-        map.put("endDate", time + " 24:00");
-        map.put("beginDate", time2 + " 00:00");
+
         initMonth();
         initChart();
 
@@ -125,7 +120,7 @@ public class YearFragment extends BaseFragment implements PMView {
 
         // xAxis.setAxisMinimum(-0.1f);
         xAxis.setGranularity(0.3f);
-        xAxis.setAxisMaximum(29);
+        xAxis.setAxisMaximum(30);
         xAxis.setLabelCount(10, true);
         xAxis.setTextColor(Color.rgb(255, 255, 255));
         xAxis.setAxisLineColor(Color.rgb(255, 255, 255));
@@ -188,7 +183,7 @@ public class YearFragment extends BaseFragment implements PMView {
 
     private LineData getLineData() {
         ArrayList<Entry> values1 = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 31; i++) {
             if (i >= mList.size() ) {
                // Log.e(TAG, i + "");
                 values1.add(new Entry(i, 0));
@@ -222,9 +217,16 @@ public class YearFragment extends BaseFragment implements PMView {
     }
 
     private void initMonth() {
-        String string = "";
         Date data = new Date();
+        //通过格式化输出日期
+        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
+        String time2 = DateUtil.dateToString(DateUtil.nextDay(data, -29), LONG_DATE_FORMAT);
+        map.put("type", "3");
+        map.put("endDate", time + " 24:00");
+        map.put("beginDate", time2 + " 00:00");
+        String string = "";
         SimpleDateFormat format2 = new SimpleDateFormat("dd");
+        month.add(0, DateUtil.getCurrDate("dd") + "号");
         for (int i = 0; i < 30; i++) {
             string = format2.format(DateUtil.nextDay(data, -i)) + "号";
 

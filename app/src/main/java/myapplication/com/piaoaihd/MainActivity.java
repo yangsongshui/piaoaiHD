@@ -130,8 +130,6 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     @Override
     public void loadDataSuccess(Facility tData) {
-
-        Log.e(TAG, tData.toString());
         if (tData.getResCode().equals("0")) {
             mList.clear();
             for (int i = 0; i < tData.getResBody().getList().size(); i++) {
@@ -165,6 +163,8 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     @Override
     public void loadDataError(Throwable throwable) {
+        Log.e(TAG,throwable.toString());
+
         toastor.showSingletonToast("网络连接异常");
 
     }
@@ -224,25 +224,25 @@ public class MainActivity extends BaseActivity implements FacilityView {
             if (listBean.get_$Pm25267().trim().equals(""))
                 main_pm.setText("——");
             else
-                Constan.PM2_5(main_pm, Integer.parseInt(listBean.get_$Pm25267()));
+                Constan.PM2_5(main_pm,  Double.parseDouble(listBean.get_$Pm25267()));
             main_temperature.setText("——");
             main_humidity.setText(listBean.getShidu().trim().equals("") ? "——" : listBean.getShidu());
             co2.setText(listBean.getCo2().trim().equals("") ? "——" : listBean.getCo2());
             if (listBean.getCo2().trim().equals(""))
                 co2_tv.setText("——");
             else
-                Constan.CO2(co2_tv, Integer.parseInt(listBean.getCo2()));
+                Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()));
             pm10.setText(listBean.getPm10().equals("") ? "——" : listBean.getPm10());
             if (listBean.getPm10().trim().equals(""))
                 pm10_tv.setText("——");
             else
-                Constan.PM10(pm10_tv, Integer.parseInt(listBean.getPm10()));
+                Constan.PM10(pm10_tv,  Double.parseDouble(listBean.getPm10()));
 
             jiaquan.setText(listBean.getJiaquan().trim().equals("") ? "——" : listBean.getJiaquan());
             if (listBean.getJiaquan().trim().equals(""))
                 jiaquan_tv.setText("——");
             else
-                Constan.jiaquan(jiaquan_tv, Integer.parseInt(listBean.getJiaquan()));
+                Constan.jiaquan(jiaquan_tv,  Double.parseDouble(listBean.getJiaquan()));
             tvoc.setText(listBean.getTvoc().trim().equals("") ? "——" : listBean.getTvoc());
             if (listBean.getTvoc().trim().equals(""))
                 tvoc_tv.setText("——");
@@ -293,6 +293,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         deviceRunnable = new Runnable() {
             @Override
             public void run() {
+                handler.removeCallbacks(dataRunnable);
                 //切换设备
                 if (mList.size() > mark) {
                     listBean = mList.get(mark);
@@ -307,13 +308,14 @@ public class MainActivity extends BaseActivity implements FacilityView {
                     listBean = null;
 
                 }
+                Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
                 initdata();
-                //Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
                 MyApplication.newInstance().setListBean(listBean);
                 Intent intent = new Intent();
                 intent.setAction(ACTION_BLE_NOTIFY_DATA);
                 sendBroadcast(intent);
                 handler.postDelayed(this, (deviceTime * 60 * 1000));
+                handler.postDelayed(dataRunnable, (dataTime * 1000));
                 //handler.postDelayed(this, 3000);
 
             }

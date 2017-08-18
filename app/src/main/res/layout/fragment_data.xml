@@ -17,8 +17,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
-            android:text="场所" />
+            android:text="场所"
+            android:textSize="25sp" />
 
         <TextView
             style="@style/mainTv"
@@ -26,8 +26,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
-            android:text="PM2.5" />
+            android:text="PM2.5"
+            android:textSize="25sp" />
 
         <TextView
             style="@style/mainTv"
@@ -35,8 +35,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
-            android:text="CO₂" />
+            android:text="CO₂"
+            android:textSize="25sp" />
 
         <TextView
             style="@style/mainTv"
@@ -44,26 +44,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
-            android:text="PM10" />
-
-        <TextView
-            style="@style/mainTv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:text="甲醛" />
-
-        <TextView
-            style="@style/mainTv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:text="TVOC" />
+            android:text="PM10"
+            android:textSize="25sp" />
 
         <TextView
             style="@style/mainTv"
@@ -71,17 +53,35 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
-            android:text="温度" />
+            android:text="甲醛"
+            android:textSize="25sp" />
 
         <TextView
             style="@style/mainTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="25sp"
             android:gravity="center"
-            android:text="湿度" />
+            android:text="TVOC"
+            android:textSize="25sp" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="温度"
+            android:textSize="25sp" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="湿度"
+            android:textSize="25sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,10 +93,10 @@
             android:id="@+id/device1_name"
             style="@style/mainTv"
             android:layout_width="0dp"
-            android:textSize="25sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="——" />
+            android:text="——"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/device1_pm25"
@@ -168,9 +168,9 @@
             style="@style/mainTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textSize="25sp"
             android:layout_weight="1"
-            android:text="——" />
+            android:text="——"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/device2_pm25"
@@ -240,8 +240,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="25sp"
-            android:text="——" />
+            android:text="——"
+            android:textSize="25sp" />
+
         <TextView
             android:id="@+id/device3_pm25"
             style="@style/mainTv2"
@@ -249,6 +250,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="——" />
+
         <TextView
             android:id="@+id/device3_co2"
             style="@style/mainTv2"
@@ -296,5 +298,35 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="——" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="深圳市飘爱健康科技有限公司"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="www.piaoai365.com"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

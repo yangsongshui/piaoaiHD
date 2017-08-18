@@ -132,7 +132,6 @@ public class WeatherFragment extends BaseFragment {
                         public void onResponse(Call<Weather> call, Response<Weather> response) {
                             //请求成功操作
                             Weather weather = response.body();
-                            Log.e("weather", weather.toString());
                             if (weather.getShowapi_res_code() == 0) {
                                 initWeather(weather);
                             } else {

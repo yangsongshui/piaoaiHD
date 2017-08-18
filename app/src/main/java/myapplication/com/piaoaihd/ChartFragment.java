@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -63,12 +65,13 @@ public class ChartFragment extends BaseFragment implements PMView {
         mList = new ArrayList<>();
         toastor = new Toastor(getActivity());
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
+        ((TextView) layout.findViewById(R.id.chart_msg)).setText("PM2.5天曲线图");
         map = new HashMap<>();
         map.put("type", "1");
         //通过格式化输出日期
         String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
-        map.put("endDate", time + " 24:00");
-        map.put("beginDate", time + " 00:00");
+        map.put("endDate", time + " 24");
+        map.put("beginDate", time + " 00");
         initChart();
 
     }
@@ -118,8 +121,8 @@ public class ChartFragment extends BaseFragment implements PMView {
 
         // xAxis.setAxisMinimum(-0.1f);
         xAxis.setGranularity(0.3f);
-        xAxis.setAxisMaximum(23);
-        xAxis.setLabelCount(8, true);
+        xAxis.setAxisMaximum(24);
+        //xAxis.setLabelCount(8, true);
         xAxis.setTextColor(Color.rgb(255, 255, 255));
         xAxis.setAxisLineColor(Color.rgb(255, 255, 255));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴在底部
@@ -162,8 +165,8 @@ public class ChartFragment extends BaseFragment implements PMView {
         //不画网格
         xAxis.setDrawGridLines(false);
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
-            String[] day = new String[]{"01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00"
-                    , "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"};
+            String[] day = new String[]{"00","01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
+                    , "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
 
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -182,7 +185,7 @@ public class ChartFragment extends BaseFragment implements PMView {
 
     private LineData getLineData() {
         ArrayList<Entry> values1 = new ArrayList<>();
-        for (int i = 0; i < 24; i++) {
+        for (int i = 0; i < 25; i++) {
             // Log.e(TAG, mList.get(i)+" " + i );
             if (i >= (mList.size())) {
                 values1.add(new Entry(i, 0));
@@ -228,6 +231,7 @@ public class ChartFragment extends BaseFragment implements PMView {
         if (tData.getResCode().equals("0")) {
             if (tData.getResBody().getList().size() > 0) {
                 mList = tData.getResBody().getList();
+                mList.add(0,"0");
 
             }
             CombinedData data = new CombinedData();
@@ -239,6 +243,7 @@ public class ChartFragment extends BaseFragment implements PMView {
 
     @Override
     public void loadDataError(Throwable throwable) {
+        Log.e("ChartFragment",throwable.toString());
         toastor.showSingletonToast("网络连接异常");
     }
 

@@ -15,17 +15,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:background="@drawable/weather_tv2"
             android:gravity="center"
-            android:paddingEnd="20dp"
-            android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:paddingStart="20dp"
+            android:paddingEnd="30dp"
+            android:paddingStart="30dp"
+            android:paddingTop="5dp"
             android:text="室外"
             android:textColor="@color/soft_opaque"
-            android:textSize="45sp" />
+            android:textSize="40sp" />
 
 
         <LinearLayout
@@ -33,7 +33,6 @@
             android:layout_height="300dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="20dp"
             android:background="@drawable/yuan_3"
             android:gravity="center"
             android:orientation="vertical">
@@ -100,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="——"
-                android:textSize="45sp" />
+                android:textSize="35sp" />
 
             <TextView
                 android:id="@+id/city_tv"
@@ -110,7 +109,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="20dp"
                 android:text="——"
-                android:textSize="45sp" />
+                android:textSize="35sp" />
 
             <TextView
                 android:id="@+id/weather_pm"
@@ -161,6 +160,7 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/rh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/pm"
@@ -174,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:text="——"
                     android:textColor="@color/white"
                     android:textSize="65sp" />
@@ -182,7 +182,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/weather_pm2_tv"
+
+                    android:layout_below="@+id/rh"
                     android:background="@color/selected_background" />
             </RelativeLayout>
 
@@ -203,6 +204,7 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/mg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/weather_pm10"
@@ -216,7 +218,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:text="——"
                     android:textColor="@color/white"
                     android:textSize="65sp" />
@@ -224,7 +226,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/weather_pm10_tv"
+                    android:layout_below="@+id/mg"
                     android:background="@color/selected_background" />
             </RelativeLayout>
         </LinearLayout>
@@ -254,11 +256,12 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/mg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/no2"
-                    android:text="mg/m³"
                     android:layout_marginTop="10dp"
+                    android:text="mg/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -267,7 +270,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:text="——"
                     android:textColor="@color/white"
                     android:textSize="65sp" />
@@ -275,7 +278,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/weather_no2_tv"
+                    android:layout_below="@+id/mg2"
                     android:background="@color/selected_background" />
             </RelativeLayout>
 
@@ -296,11 +299,12 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/ug"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/SO2"
-                    android:text="ug/m³"
                     android:layout_marginTop="10dp"
+                    android:text="ug/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -309,7 +313,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:text="——"
                     android:textColor="@color/white"
                     android:textSize="65sp" />
@@ -317,7 +321,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/weather_so2_tv"
+                    android:layout_below="@+id/ug"
                     android:background="@color/selected_background" />
             </RelativeLayout>
         </LinearLayout>
@@ -347,6 +351,7 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/ug2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/O3"
@@ -360,15 +365,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
                     android:text="——"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/white"
                     android:textSize="65sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/weather_o3_tv"
+                    android:layout_below="@+id/ug2"
                     android:background="@color/selected_background" />
             </RelativeLayout>
 
@@ -389,11 +394,12 @@
                     android:textSize="40sp" />
 
                 <TextView
+                    android:id="@+id/mg3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/CO"
+                    android:layout_marginTop="10dp"
                     android:text="mg/m³"
-                android:layout_marginTop="10dp"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -402,7 +408,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
                     android:text="——"
                     android:textColor="@color/white"
                     android:textSize="65sp" />
@@ -410,7 +416,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/weather_co_tv"
+                    android:layout_below="@+id/mg3"
                     android:background="@color/selected_background" />
             </RelativeLayout>
         </LinearLayout>

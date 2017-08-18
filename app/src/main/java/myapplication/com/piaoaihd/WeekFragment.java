@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -26,7 +27,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -63,19 +63,14 @@ public class WeekFragment extends BaseFragment implements PMView {
         intentFilter.addAction(ACTION_BLE_NOTIFY_DATA);
         getActivity().registerReceiver(notifyReceiver, intentFilter);
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
+        ((TextView) layout.findViewById(R.id.chart_msg)).setText("PM2.5周曲线图");
         week = new ArrayList<>();
         mList = new ArrayList<>();
+        map = new HashMap<>();
         initWeek();
         initChart();
-        map = new HashMap<>();
-        //通过格式化输出日期
-        Calendar cal = Calendar.getInstance();//使用默认时区和语言环境获得一个日历。
-        //通过格式化输出日期
-        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
-        String time2 = DateUtil.dateToString(DateUtil.nextDay(cal.getTime(), -6), LONG_DATE_FORMAT);
-        map.put("endDate", time + " 24:00");
-        map.put("beginDate", time2 + " 00:00");
-        map.put("type", "2");
+
+
     }
 
     @Override
@@ -217,11 +212,16 @@ public class WeekFragment extends BaseFragment implements PMView {
     private void initWeek() {
         String string = "";
         Date data = new Date();
+        //通过格式化输出日期
+        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
+        String time2 = DateUtil.dateToString(DateUtil.nextDay(data, -6), LONG_DATE_FORMAT);
+        map.put("endDate", time + " 24:00");
+        map.put("beginDate", time2 + " 00:00");
+        map.put("type", "2");
         SimpleDateFormat format2 = new SimpleDateFormat("EEEE");
         for (int i = 0; i < 7; i++) {
             string = format2.format(DateUtil.nextDay(data, -i));
             week.add(0, string);
-
         }
     }
 

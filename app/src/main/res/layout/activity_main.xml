@@ -102,7 +102,7 @@
         android:name="myapplication.com.piaoaihd.WeatherFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.2"
+        android:layout_weight="1.1"
         tools:context=".MainActivity"
         tools:ignore="MergeRootFrame" />
 
@@ -110,7 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="1.2"
+        android:layout_weight="1.3"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -128,21 +128,20 @@
 
                 android:background="@drawable/weather_tv2"
                 android:gravity="center"
-                android:paddingEnd="20dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingBottom="3dp"
+                android:paddingEnd="30dp"
                 android:paddingStart="20dp"
+                android:paddingTop="5dp"
                 android:text="会议室"
                 android:textColor="@color/soft_opaque"
-                android:textSize="45sp" />
+                android:textSize="40sp" />
 
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/yuan_2"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:background="@drawable/yuan_2"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -181,7 +180,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -196,7 +196,7 @@
                     android:id="@+id/main_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="10dp"
                     android:text="——"
                     android:textColor="@color/white"
                     android:textSize="45sp" />
@@ -212,7 +212,7 @@
                     android:id="@+id/main_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="10dp"
                     android:text="——"
                     android:textColor="@color/white"
                     android:textSize="45sp" />
@@ -249,6 +249,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="15dp"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="CO₂ ppm"
@@ -277,7 +278,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="35sp" />
+                                android:textSize="23sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -307,6 +308,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="15dp"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="PM10 mg/m³"
@@ -336,7 +338,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="35sp" />
+                                android:textSize="23sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -372,6 +374,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="15dp"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="甲醛 μg/m³"
@@ -401,7 +404,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="35sp" />
+                                android:textSize="23sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -435,6 +438,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="TVOC μg/m³"
+                            android:layout_marginTop="15dp"
                             android:textColor="@color/white"
                             android:textSize="30sp" />
 
@@ -461,7 +465,7 @@
                                 android:layout_marginTop="5dp"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="35sp" />
+                                android:textSize="23sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
