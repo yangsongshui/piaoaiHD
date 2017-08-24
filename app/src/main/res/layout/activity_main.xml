@@ -178,47 +178,60 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    style="@style/mainTv4"
-                    android:layout_width="wrap_content"
+            <!--    <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="温度" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/main_temperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="——"
-                    android:textColor="@color/white"
-                    android:textSize="45sp" />
+                    <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
 
-                <TextView
-                    style="@style/mainTv4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:text="湿度" />
+                            <TextView
+                                style="@style/mainTv4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="温度" />
 
-                <TextView
-                    android:id="@+id/main_humidity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="——"
-                    android:textColor="@color/white"
-                    android:textSize="45sp" />
+                            <TextView
+                                android:id="@+id/main_temperature"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="45sp" />
+                        </LinearLayout>
 
+                     <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+                            <TextView
+                                style="@style/mainTv4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="50dp"
+                                android:text="湿度" />
 
-            </LinearLayout>
+                            <TextView
+                                android:id="@+id/main_humidity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:text="——"
+                                android:textColor="@color/white"
+                                android:textSize="45sp" />
+
+                        </LinearLayout>
+
+                </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -229,9 +242,34 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1">
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@+id/iv"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/mainTv4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="温度" />
+
+                        <TextView
+                            android:id="@+id/main_temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="——"
+                            android:textColor="@color/white"
+                            android:textSize="45sp" />
+                    </LinearLayout>
+
                     <ImageView
+                        android:id="@+id/iv"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_centerHorizontal="true"
@@ -290,7 +328,33 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignStart="@+id/iv2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/mainTv4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="50dp"
+                            android:text="湿度" />
+
+                        <TextView
+                            android:id="@+id/main_humidity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="——"
+                            android:textColor="@color/white"
+                            android:textSize="45sp" />
+
+                    </LinearLayout>
+
                     <ImageView
+                        android:id="@+id/iv2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_centerHorizontal="true"
@@ -435,10 +499,10 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:layout_marginTop="15dp"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="TVOC μg/m³"
-                            android:layout_marginTop="15dp"
                             android:textColor="@color/white"
                             android:textSize="30sp" />
 

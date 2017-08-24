@@ -70,8 +70,8 @@ public class ChartFragment extends BaseFragment implements PMView {
         map.put("type", "1");
         //通过格式化输出日期
         String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
-        map.put("endDate", time + " 24");
-        map.put("beginDate", time + " 00");
+        map.put("endDate", time);
+        map.put("beginDate", time );
         initChart();
 
     }

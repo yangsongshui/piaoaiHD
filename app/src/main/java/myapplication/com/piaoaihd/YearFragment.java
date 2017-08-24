@@ -222,8 +222,8 @@ public class YearFragment extends BaseFragment implements PMView {
         String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
         String time2 = DateUtil.dateToString(DateUtil.nextDay(data, -29), LONG_DATE_FORMAT);
         map.put("type", "3");
-        map.put("endDate", time + " 24:00");
-        map.put("beginDate", time2 + " 00:00");
+        map.put("endDate", time);
+        map.put("beginDate", time2 );
         String string = "";
         SimpleDateFormat format2 = new SimpleDateFormat("dd");
         month.add(0, DateUtil.getCurrDate("dd") + "号");

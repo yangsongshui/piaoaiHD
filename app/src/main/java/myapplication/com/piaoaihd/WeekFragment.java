@@ -215,8 +215,8 @@ public class WeekFragment extends BaseFragment implements PMView {
         //通过格式化输出日期
         String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
         String time2 = DateUtil.dateToString(DateUtil.nextDay(data, -6), LONG_DATE_FORMAT);
-        map.put("endDate", time + " 24:00");
-        map.put("beginDate", time2 + " 00:00");
+        map.put("endDate", time);
+        map.put("beginDate", time2);
         map.put("type", "2");
         SimpleDateFormat format2 = new SimpleDateFormat("EEEE");
         for (int i = 0; i < 7; i++) {

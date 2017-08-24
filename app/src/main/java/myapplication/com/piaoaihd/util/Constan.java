@@ -12,13 +12,13 @@ public class Constan {
     public static final String ACTION_BLE_NOTIFY_DATA = "myapplication.com.piaoaihd.ACTION_BLE_NOTIFY_DATA";
 
     public static void TVOC(TextView textView, double tvoc) {
-        if (tvoc >= 0 && tvoc <= 60) {
+        if (tvoc >= 0 && tvoc <= 0.6) {
             textView.setText("良好");
-        } else if (tvoc > 60 && tvoc <= 100) {
+        } else if (tvoc > 0.6 && tvoc <= 1.0) {
             textView.setText("轻度污染");
-        } else if (tvoc > 110 && tvoc <= 160) {
+        } else if (tvoc > 1.0 && tvoc <= 1.6) {
             textView.setText("中度污染");
-        } else if (tvoc > 160) {
+        } else if (tvoc > 1.6) {
             textView.setText("重度污染");
         }
     }
@@ -31,13 +31,11 @@ public class Constan {
             textView.setText("良");
         } else if (pm > 75 && pm <= 115) {
             textView.setText("轻度污染");
-        } else if (pm > 116 && pm <= 150) {
+        } else if (pm > 115 && pm <= 150) {
             textView.setText("中度污染");
-        } else if (pm > 151 && pm <= 250) {
+        } else if (pm > 150 && pm <= 250) {
             textView.setText("重度污染");
-        } else if (pm > 251 && pm <= 500) {
-            textView.setText("严重污染");
-        } else {
+        } else if (pm > 250 ) {
             textView.setText("严重污染");
         }
     }
@@ -48,47 +46,39 @@ public class Constan {
             textView.setText("优");
         } else if (pm > 51 && pm <= 100) {
             textView.setText("良");
-        } else if (pm > 100 && pm <= 150) {
+        } else if (pm > 100 && pm <= 200) {
             textView.setText("轻度污染");
-        } else if (pm > 150 && pm <= 200) {
+        } else if (pm > 200 && pm <= 300) {
             textView.setText("中度污染");
-        } else if (pm > 200) {
+        } else if (pm >300) {
             textView.setText("重度污染");
         }
     }
 
     public static void CO2(TextView textView, double co2) {
-        if (co2 >= 0 && co2 <= 485) {
-            textView.setText("空气清新");
-        } else if (co2 >= 486 && co2 <= 600) {
-            textView.setText("优");
-        } else if (co2 > 600 && co2 <= 800) {
-            textView.setText("良");
-        } else if (co2 > 800 && co2 <= 1000) {
-            textView.setText("轻度污染");
-        } else if (co2 > 1000 && co2 <= 1200) {
-            textView.setText("中度污染");
-        } else if (co2 > 1200 && co2 <= 1500) {
-            textView.setText("重度污染");
+        if (co2 >= 0 && co2 <= 700) {
+            textView.setText("清新");
+        } else if (co2 > 700 && co2 <= 1000) {
+            textView.setText("较好");
+        } else if (co2 > 1000 && co2 <= 1500) {
+            textView.setText("较浊");
         } else if (co2 > 1500) {
-            textView.setText("严重污染");
+            textView.setText("浑浊");
         }
     }
 
     public static void jiaquan(TextView textView, double jiaquan) {
-        if (jiaquan >= 0 && jiaquan <= 35) {
+        if (jiaquan >= 0 && jiaquan <= 0.03) {
             textView.setText("优");
-        } else if (jiaquan > 35 && jiaquan <= 75) {
+        } else if (jiaquan > 0.03 && jiaquan <= 0.1) {
             textView.setText("良");
-        } else if (jiaquan > 75 && jiaquan <= 115) {
+        } else if (jiaquan > 0.1 && jiaquan <= 0.2) {
             textView.setText("轻度污染");
-        } else if (jiaquan > 116 && jiaquan <= 150) {
+        } else if (jiaquan > 0.2 && jiaquan <= 0.3) {
             textView.setText("中度污染");
-        } else if (jiaquan > 151 && jiaquan <= 250) {
+        } else if (jiaquan > 0.3 && jiaquan <= 0.8) {
             textView.setText("重度污染");
-        } else if (jiaquan > 251 && jiaquan <= 500) {
-            textView.setText("严重污染");
-        } else {
+        } else if (jiaquan > 0.8) {
             textView.setText("严重污染");
         }
     }
