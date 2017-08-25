@@ -22,6 +22,8 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,6 +49,8 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private List<Fragment> frags;
     private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
+    private ImageView iv, iv2, iv3, iv4;
+    private LinearLayout pm_ll;
     private ViewPager pager;
     private Handler handler;
     private Runnable myRunnable;
@@ -95,6 +99,12 @@ public class MainActivity extends BaseActivity implements FacilityView {
         main_pm = (TextView) findViewById(R.id.main_pm);
         main_temperature = (TextView) findViewById(R.id.main_temperature);
         main_humidity = (TextView) findViewById(R.id.main_humidity);
+
+        pm_ll = (LinearLayout) findViewById(R.id.pm_ll);
+        iv = (ImageView) findViewById(R.id.iv);
+        iv2 = (ImageView) findViewById(R.id.iv2);
+        iv3 = (ImageView) findViewById(R.id.iv3);
+        iv4 = (ImageView) findViewById(R.id.iv4);
 
         co2 = (TextView) findViewById(R.id.co2);
         co2_tv = (TextView) findViewById(R.id.co2_tv);
@@ -163,7 +173,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     @Override
     public void loadDataError(Throwable throwable) {
-        Log.e(TAG,throwable.toString());
+        Log.e(TAG, throwable.toString());
 
         toastor.showSingletonToast("网络连接异常");
 
@@ -201,7 +211,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 handler.removeCallbacks(deviceRunnable);
             deviceTime = SpUtils.getInt("device", 15);
             handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
-           //handler.postDelayed(deviceRunnable, 3000);
+            //handler.postDelayed(deviceRunnable, 3000);
         }
         if (dataTime != SpUtils.getInt("data", 40)) {
             if (dataTime > 0)
@@ -224,30 +234,30 @@ public class MainActivity extends BaseActivity implements FacilityView {
             if (listBean.get_$Pm25267().trim().equals(""))
                 main_pm.setText("——");
             else
-                Constan.PM2_5(main_pm,  Double.parseDouble(listBean.get_$Pm25267()));
+                Constan.PM2_5(main_pm, Double.parseDouble(listBean.get_$Pm25267()), pm_ll);
             main_temperature.setText("——");
             main_humidity.setText(listBean.getShidu().trim().equals("") ? "——" : listBean.getShidu());
             co2.setText(listBean.getCo2().trim().equals("") ? "——" : listBean.getCo2());
             if (listBean.getCo2().trim().equals(""))
                 co2_tv.setText("——");
             else
-                Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()));
+                Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()), iv);
             pm10.setText(listBean.getPm10().equals("") ? "——" : listBean.getPm10());
             if (listBean.getPm10().trim().equals(""))
                 pm10_tv.setText("——");
             else
-                Constan.PM10(pm10_tv,  Double.parseDouble(listBean.getPm10()));
+                Constan.PM10(pm10_tv, Double.parseDouble(listBean.getPm10()), iv2);
 
             jiaquan.setText(listBean.getJiaquan().trim().equals("") ? "——" : listBean.getJiaquan());
             if (listBean.getJiaquan().trim().equals(""))
                 jiaquan_tv.setText("——");
             else
-                Constan.jiaquan(jiaquan_tv,  Double.parseDouble(listBean.getJiaquan()));
+                Constan.jiaquan(jiaquan_tv, Double.parseDouble(listBean.getJiaquan()), iv3);
             tvoc.setText(listBean.getTvoc().trim().equals("") ? "——" : listBean.getTvoc());
             if (listBean.getTvoc().trim().equals(""))
                 tvoc_tv.setText("——");
             else
-                Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()));
+                Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
 
 
         } else {
@@ -298,12 +308,12 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 if (mList.size() > mark) {
                     listBean = mList.get(mark);
                     mark++;
-                  //  Log.e("MainAcitvity", "切换设备:" + mark + "" + listBean.getDeviceName());
+                    //  Log.e("MainAcitvity", "切换设备:" + mark + "" + listBean.getDeviceName());
                 } else if (mList.size() <= mark && mList.size() != 0) {
                     mark = 1;
                     listBean = mList.get(0);
 
-                   // Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
+                    // Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
                 } else {
                     listBean = null;
 
