@@ -235,8 +235,9 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 main_pm.setText("——");
             else
                 Constan.PM2_5(main_pm, Double.parseDouble(listBean.get_$Pm25267()), pm_ll);
-            main_temperature.setText("——");
+
             main_humidity.setText(listBean.getShidu().trim().equals("") ? "——" : listBean.getShidu());
+            main_temperature.setText(listBean.getWendu().trim().equals("") ? "——" : listBean.getWendu());
             co2.setText(listBean.getCo2().trim().equals("") ? "——" : listBean.getCo2());
             if (listBean.getCo2().trim().equals(""))
                 co2_tv.setText("——");

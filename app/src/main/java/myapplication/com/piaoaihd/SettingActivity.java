@@ -1,8 +1,10 @@
 package myapplication.com.piaoaihd;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.IdRes;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -12,9 +14,10 @@ import myapplication.com.piaoaihd.util.SpUtils;
 
 import static myapplication.com.piaoaihd.R.id.data_20;
 
-public class SettingActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener {
+public class SettingActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener, View.OnClickListener {
     RadioGroup device_rg, data_rg;
     ImageButton set_back_ib;
+    Button out_tv;
 
     @Override
     protected int getContentView() {
@@ -26,18 +29,21 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         device_rg = (RadioGroup) findViewById(R.id.device_rg);
         data_rg = (RadioGroup) findViewById(R.id.data_rg);
         set_back_ib = (ImageButton) findViewById(R.id.set_back_ib);
+        out_tv = (Button) findViewById(R.id.out_tv);
         initView();
         findViewById(R.id.device_1).setOnFocusChangeListener(this);
         findViewById(R.id.device_15).setOnFocusChangeListener(this);
         findViewById(R.id.device_30).setOnFocusChangeListener(this);
         findViewById(R.id.device_1h).setOnFocusChangeListener(this);
         findViewById(R.id.device_2h).setOnFocusChangeListener(this);
+        out_tv.setOnFocusChangeListener(this);
 
         findViewById(data_20).setOnFocusChangeListener(this);
         findViewById(R.id.data_40).setOnFocusChangeListener(this);
         findViewById(R.id.data_1).setOnFocusChangeListener(this);
         findViewById(R.id.data_2).setOnFocusChangeListener(this);
         findViewById(R.id.data_5).setOnFocusChangeListener(this);
+        findViewById(R.id.out_tv).setOnClickListener(this);
         set_back_ib.setOnFocusChangeListener(this);
         set_back_ib.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,7 +146,20 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 ((RadioButton) v).setTextColor(getResources().getColor(R.color.white));
             }
         }
+        if (hasFocus && v.getId() == R.id.out_tv) {
+            out_tv.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            out_tv.setTextColor(getResources().getColor(R.color.white));
+        } else {
+            out_tv.setBackgroundColor(getResources().getColor(R.color.orange_transparent));
+            out_tv.setTextColor(getResources().getColor(R.color.black_opaque));
+        }
 
     }
 
+    @Override
+    public void onClick(View view) {
+        MyApplication.newInstance().outLogin();
+        startActivity(new Intent(this,LoginActivity.class));
+        finish();
+    }
 }

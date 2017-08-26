@@ -111,6 +111,13 @@ public class MyApplication extends Application {
 
 
     }
+    public void outLogin() {
+        user.setResBody(null);
+        SpUtils.putString("phone", "");
+        SpUtils.putString("password", "");
+        clearAllActies();
+
+    }
 
     public Facility.ResBodyBean.ListBean getListBean() {
         return listBean;

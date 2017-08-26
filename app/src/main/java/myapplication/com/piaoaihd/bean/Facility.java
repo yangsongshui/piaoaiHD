@@ -90,7 +90,7 @@ public class Facility implements Serializable{
             @SerializedName("switch")
             private String switchX;
             private int num;
-
+            private String wendu;
             public String getDeviceid() {
 
                 return  deviceid.toLowerCase();
@@ -178,6 +178,14 @@ public class Facility implements Serializable{
 
             public void setJiaquan(String jiaquan) {
                 this.jiaquan = jiaquan;
+            }
+
+            public String getWendu() {
+                return wendu;
+            }
+
+            public void setWendu(String wendu) {
+                this.wendu = shidu;
             }
 
             public String getSwitchX() {

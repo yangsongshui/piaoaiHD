@@ -129,13 +129,14 @@ public class DataFragment extends BaseFragment {
 
     private void getData3(Facility.ResBodyBean.ListBean data3) {
         if (data3 != null) {
-            device3_name.setText(data3.getDeviceName().trim().equals("") ? "——" : data3.getDeviceName());
-            device3_co2.setText(data3.getCo2().trim().equals("") ? "——" : data3.getCo2());
-            device3_pm25.setText(data3.get_$Pm25267().trim().equals("") ? "——" : data3.get_$Pm25267());
-            device3_pm10.setText(data3.getPm10().trim().equals("") ? "——" : data3.getPm10());
-            device3_jiaquan.setText(data3.getJiaquan().trim().equals("") ? "——" : data3.getJiaquan());
-            device3_tvoc.setText(data3.getTvoc().trim().equals("") ? "——" : data3.getTvoc());
-            device3_shidu.setText(data3.getShidu().trim().equals("") ? "——" : data3.getShidu());
+            device3_name.setText(data3.getDeviceName()==null ? "——" : data3.getDeviceName());
+            device3_co2.setText(data3.getCo2()==null  ? "——" : data3.getCo2());
+            device3_pm25.setText(data3.get_$Pm25267()==null ? "——" : data3.get_$Pm25267());
+            device3_pm10.setText(data3.getPm10()==null ? "——" : data3.getPm10());
+            device3_jiaquan.setText(data3.getJiaquan()==null ? "——" : data3.getJiaquan());
+            device3_tvoc.setText(data3.getTvoc()==null ? "——" : data3.getTvoc());
+            device3_shidu.setText(data3.getShidu()==null? "——" : data3.getShidu());
+            device3_wendu.setText(data3.getWendu()==null? "——" : data3.getWendu());
         } else {
             device3_name.setText("——");
             device3_co2.setText("——");
@@ -144,20 +145,23 @@ public class DataFragment extends BaseFragment {
             device3_jiaquan.setText("——");
             device3_tvoc.setText("——");
             device3_shidu.setText("——");
+            device3_wendu.setText("——");
         }
 
-        device3_wendu.setText("——");
+
     }
 
     private void getData2(Facility.ResBodyBean.ListBean data2) {
         if (data2 != null) {
-            device2_name.setText(data2.getDeviceName().trim().equals("") ? "——" : data2.getDeviceName());
-            device2_co2.setText(data2.getCo2().trim().equals("") ? "——" : data2.getCo2());
-            device2_pm25.setText(data2.get_$Pm25267().trim().equals("") ? "——" : data2.get_$Pm25267());
-            device2_pm10.setText(data2.getPm10().trim().equals("") ? "——" : data2.getPm10());
-            device2_jiaquan.setText(data2.getJiaquan().trim().equals("") ? "——" : data2.getJiaquan());
-            device2_tvoc.setText(data2.getTvoc().trim().equals("") ? "——" : data2.getTvoc());
-            device2_shidu.setText(data2.getShidu().trim().equals("") ? "——" : data2.getShidu());
+            device2_name.setText(data2.getDeviceName()==null? "——" : data2.getDeviceName());
+            device2_co2.setText(data2.getCo2()==null? "——" : data2.getCo2());
+            device2_pm25.setText(data2.get_$Pm25267()==null? "——" : data2.get_$Pm25267());
+            device2_pm10.setText(data2.getPm10()==null? "——" : data2.getPm10());
+            device2_jiaquan.setText(data2.getJiaquan()==null? "——" : data2.getJiaquan());
+            device2_tvoc.setText(data2.getTvoc()==null? "——" : data2.getTvoc());
+            device2_shidu.setText(data2.getShidu()==null? "——" : data2.getShidu());
+            device2_wendu.setText(data2.getWendu()==null? "——" : data2.getWendu());
+
         } else {
             device2_name.setText("——");
             device2_co2.setText("——");
@@ -166,19 +170,22 @@ public class DataFragment extends BaseFragment {
             device2_jiaquan.setText("——");
             device2_tvoc.setText("——");
             device2_shidu.setText("——");
+            device2_wendu.setText("——");
         }
-        device2_wendu.setText("——");
+
     }
 
     private void getData1(Facility.ResBodyBean.ListBean data1) {
         if (data1 != null) {
-            device1_name.setText(data1.getDeviceName().trim().equals("") ? "——" : data1.getDeviceName());
-            device1_co2.setText(data1.getCo2().trim().equals("") ? "——" : data1.getCo2());
-            device1_pm25.setText(data1.get_$Pm25267().trim().equals("") ? "——" : data1.get_$Pm25267());
-            device1_pm10.setText(data1.getPm10().trim().equals("") ? "——" : data1.getPm10());
-            device1_jiaquan.setText(data1.getJiaquan().trim().equals("") ? "——" : data1.getJiaquan());
-            device1_tvoc.setText(data1.getTvoc().trim().equals("") ? "——" : data1.getTvoc());
-            device1_shidu.setText(data1.getShidu().trim().equals("") ? "——" : data1.getShidu());
+            device1_name.setText(data1.getDeviceName()==null? "——" : data1.getDeviceName());
+            device1_co2.setText(data1.getCo2()==null? "——" : data1.getCo2());
+            device1_pm25.setText(data1.get_$Pm25267()==null? "——" : data1.get_$Pm25267());
+            device1_pm10.setText(data1.getPm10()==null? "——" : data1.getPm10());
+            device1_jiaquan.setText(data1.getJiaquan()==null? "——" : data1.getJiaquan());
+            device1_tvoc.setText(data1.getTvoc()==null? "——" : data1.getTvoc());
+            device1_shidu.setText(data1.getShidu()==null? "——" : data1.getShidu());
+            device1_wendu.setText(data1.getWendu()==null? "——" : data1.getWendu());
+
         } else {
             device1_name.setText("——");
             device1_co2.setText("——");
@@ -187,9 +194,10 @@ public class DataFragment extends BaseFragment {
             device1_jiaquan.setText("——");
             device1_tvoc.setText("——");
             device1_shidu.setText("——");
+            device1_wendu.setText("——");
         }
 
-        device1_wendu.setText("——");
+
     }
 
     private void initView(View layout) {
