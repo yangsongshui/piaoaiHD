@@ -43,9 +43,13 @@
     <style name="mainTv2">
         <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">24sp</item>
     </style>
-
+    <style name="mainTv5">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
     <style name="mainTv3" parent="mainTv">
         <item name="android:background">@drawable/main_tv</item>
         <item name="android:paddingTop">2dp</item>

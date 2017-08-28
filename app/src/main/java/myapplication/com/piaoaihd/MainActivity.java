@@ -210,7 +210,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
             if (deviceTime > 0)
                 handler.removeCallbacks(deviceRunnable);
             deviceTime = SpUtils.getInt("device", 15);
-            handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
+           handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
             //handler.postDelayed(deviceRunnable, 3000);
         }
         if (dataTime != SpUtils.getInt("data", 40)) {
@@ -230,35 +230,53 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private void initdata() {
         if (listBean != null) {
             main_place.setText(listBean.getDeviceName().trim().equals("") ? "——" : listBean.getDeviceName());
-            main_pm_tv.setText(listBean.get_$Pm25267().trim().equals("") ? "——" : listBean.get_$Pm25267());
-            if (listBean.get_$Pm25267().trim().equals(""))
+
+            if (listBean.get_$Pm25267() == null || listBean.get_$Pm25267().trim().equals("")) {
                 main_pm.setText("——");
-            else
+                main_pm_tv.setText("——");
+            } else {
                 Constan.PM2_5(main_pm, Double.parseDouble(listBean.get_$Pm25267()), pm_ll);
+                main_pm_tv.setText(listBean.get_$Pm25267().trim().equals("0") ? "——" : listBean.get_$Pm25267());
+            }
 
-            main_humidity.setText(listBean.getShidu().trim().equals("") ? "——" : listBean.getShidu());
-            main_temperature.setText(listBean.getWendu().trim().equals("") ? "——" : listBean.getWendu());
-            co2.setText(listBean.getCo2().trim().equals("") ? "——" : listBean.getCo2());
-            if (listBean.getCo2().trim().equals(""))
-                co2_tv.setText("——");
+            if (listBean.getShidu() != null && !listBean.getShidu().trim().equals(""))
+                main_humidity.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu());
             else
+                main_humidity.setText("——");
+            if (listBean.getWendu() != null && !listBean.getWendu().trim().equals(""))
+                main_temperature.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu());
+            else
+                main_temperature.setText("——");
+            if (listBean.getCo2() != null && !listBean.getCo2().equals("")) {
                 Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()), iv);
-            pm10.setText(listBean.getPm10().equals("") ? "——" : listBean.getPm10());
-            if (listBean.getPm10().trim().equals(""))
-                pm10_tv.setText("——");
-            else
+                co2.setText(listBean.getCo2().trim().equals("0") ? "——" : listBean.getCo2());
+            } else {
+                co2.setText("——");
+                co2_tv.setText("——");
+            }
+            if (listBean.getPm10() != null && !listBean.getPm10().equals("")) {
+                pm10.setText(listBean.getPm10().trim().equals("0") ? "——" : listBean.getPm10());
                 Constan.PM10(pm10_tv, Double.parseDouble(listBean.getPm10()), iv2);
-
-            jiaquan.setText(listBean.getJiaquan().trim().equals("") ? "——" : listBean.getJiaquan());
-            if (listBean.getJiaquan().trim().equals(""))
-                jiaquan_tv.setText("——");
-            else
+            } else {
+                pm10_tv.setText("——");
+                pm10.setText("——");
+            }
+            if (listBean.getJiaquan() != null && !listBean.getJiaquan().equals("")) {
+                jiaquan.setText(listBean.getJiaquan().trim().equals("0") ? "——" : listBean.getJiaquan());
                 Constan.jiaquan(jiaquan_tv, Double.parseDouble(listBean.getJiaquan()), iv3);
-            tvoc.setText(listBean.getTvoc().trim().equals("") ? "——" : listBean.getTvoc());
-            if (listBean.getTvoc().trim().equals(""))
+            } else {
+                jiaquan_tv.setText("——");
+                jiaquan.setText("——");
+            }
+
+            if (listBean.getTvoc() != null && !listBean.getTvoc().equals("")) {
+                tvoc.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
+                Constan.jiaquan(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
+            } else {
                 tvoc_tv.setText("——");
-            else
-                Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
+                tvoc.setText("——");
+            }
+
 
 
         } else {
@@ -325,9 +343,9 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 Intent intent = new Intent();
                 intent.setAction(ACTION_BLE_NOTIFY_DATA);
                 sendBroadcast(intent);
-                handler.postDelayed(this, (deviceTime * 60 * 1000));
+                  handler.postDelayed(this, (deviceTime * 60 * 1000));
                 handler.postDelayed(dataRunnable, (dataTime * 1000));
-                //handler.postDelayed(this, 3000);
+               // handler.postDelayed(this, 3000);
 
             }
         };

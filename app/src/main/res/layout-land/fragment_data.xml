@@ -91,7 +91,7 @@
 
         <TextView
             android:id="@+id/device1_pm25"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -99,7 +99,7 @@
 
         <TextView
             android:id="@+id/device1_co2"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -109,7 +109,7 @@
 
         <TextView
             android:id="@+id/device1_pm10"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -117,7 +117,7 @@
 
         <TextView
             android:id="@+id/device1_jiaquan"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -125,7 +125,7 @@
 
         <TextView
             android:id="@+id/device1_tvoc"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -133,7 +133,7 @@
 
         <TextView
             android:id="@+id/device1_wendu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -141,7 +141,7 @@
 
         <TextView
             android:id="@+id/device1_shidu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -164,7 +164,7 @@
 
         <TextView
             android:id="@+id/device2_pm25"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -172,7 +172,7 @@
 
         <TextView
             android:id="@+id/device2_co2"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -180,7 +180,7 @@
 
         <TextView
             android:id="@+id/device2_pm10"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -188,7 +188,7 @@
 
         <TextView
             android:id="@+id/device2_jiaquan"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -196,7 +196,7 @@
 
         <TextView
             android:id="@+id/device2_tvoc"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -204,7 +204,7 @@
 
         <TextView
             android:id="@+id/device2_wendu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -212,7 +212,7 @@
 
         <TextView
             android:id="@+id/device2_shidu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -233,14 +233,14 @@
             android:text="——" />
         <TextView
             android:id="@+id/device3_pm25"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="——" />
         <TextView
             android:id="@+id/device3_co2"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -248,7 +248,7 @@
 
         <TextView
             android:id="@+id/device3_pm10"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -256,7 +256,7 @@
 
         <TextView
             android:id="@+id/device3_jiaquan"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -264,7 +264,7 @@
 
         <TextView
             android:id="@+id/device3_tvoc"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -272,7 +272,7 @@
 
         <TextView
             android:id="@+id/device3_wendu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -280,7 +280,7 @@
 
         <TextView
             android:id="@+id/device3_shidu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

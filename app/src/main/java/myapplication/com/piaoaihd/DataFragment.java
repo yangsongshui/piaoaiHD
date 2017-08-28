@@ -129,14 +129,38 @@ public class DataFragment extends BaseFragment {
 
     private void getData3(Facility.ResBodyBean.ListBean data3) {
         if (data3 != null) {
-            device3_name.setText(data3.getDeviceName()==null ? "——" : data3.getDeviceName());
-            device3_co2.setText(data3.getCo2()==null  ? "——" : data3.getCo2());
-            device3_pm25.setText(data3.get_$Pm25267()==null ? "——" : data3.get_$Pm25267());
-            device3_pm10.setText(data3.getPm10()==null ? "——" : data3.getPm10());
-            device3_jiaquan.setText(data3.getJiaquan()==null ? "——" : data3.getJiaquan());
-            device3_tvoc.setText(data3.getTvoc()==null ? "——" : data3.getTvoc());
-            device3_shidu.setText(data3.getShidu()==null? "——" : data3.getShidu());
-            device3_wendu.setText(data3.getWendu()==null? "——" : data3.getWendu());
+            if (data3.getDeviceName() != null && !data3.getDeviceName().trim().equals(""))
+                device3_name.setText(data3.getDeviceName().trim().equals("0") ? "——" : data3.getDeviceName());
+            else
+                device3_name.setText("——");
+            if (data3.getCo2() != null && !data3.getCo2().trim().equals(""))
+                device3_co2.setText(data3.getCo2().trim().equals("0") ? "——" : data3.getCo2());
+            else
+                device3_co2.setText("——");
+            if (data3.get_$Pm25267() != null && !data3.get_$Pm25267().trim().equals(""))
+                device3_pm25.setText(data3.get_$Pm25267().trim().equals("0") ? "——" : data3.get_$Pm25267());
+            else
+                device3_pm25.setText("——");
+            if (data3.getPm10() != null && !data3.getPm10().trim().equals(""))
+                device3_pm10.setText(data3.getPm10().trim().equals("0") ? "——" : data3.getPm10());
+            else
+                device3_pm10.setText("——");
+            if (data3.getJiaquan() != null && !data3.getJiaquan().trim().equals(""))
+                device3_jiaquan.setText(data3.getJiaquan().trim().equals("0") ? "——" : data3.getJiaquan());
+            else
+                device3_jiaquan.setText("——");
+            if (data3.getTvoc() != null && !data3.getTvoc().trim().equals(""))
+                device3_tvoc.setText(data3.getTvoc().trim().equals("0") ? "——" : data3.getTvoc());
+            else
+                device3_tvoc.setText("——");
+            if (data3.getShidu() != null && !data3.getShidu().trim().equals(""))
+                device3_shidu.setText(data3.getShidu().trim().equals("0") ? "——" : data3.getShidu());
+            else
+                device3_shidu.setText("——");
+            if (data3.getWendu() != null)
+                device3_wendu.setText(data3.getWendu().trim().equals("0") ? "——" : data3.getWendu());
+            else
+                device3_wendu.setText("——");
         } else {
             device3_name.setText("——");
             device3_co2.setText("——");
@@ -153,15 +177,38 @@ public class DataFragment extends BaseFragment {
 
     private void getData2(Facility.ResBodyBean.ListBean data2) {
         if (data2 != null) {
-            device2_name.setText(data2.getDeviceName()==null? "——" : data2.getDeviceName());
-            device2_co2.setText(data2.getCo2()==null? "——" : data2.getCo2());
-            device2_pm25.setText(data2.get_$Pm25267()==null? "——" : data2.get_$Pm25267());
-            device2_pm10.setText(data2.getPm10()==null? "——" : data2.getPm10());
-            device2_jiaquan.setText(data2.getJiaquan()==null? "——" : data2.getJiaquan());
-            device2_tvoc.setText(data2.getTvoc()==null? "——" : data2.getTvoc());
-            device2_shidu.setText(data2.getShidu()==null? "——" : data2.getShidu());
-            device2_wendu.setText(data2.getWendu()==null? "——" : data2.getWendu());
-
+            if (data2.getDeviceName() != null && !data2.getDeviceName().trim().equals(""))
+                device2_name.setText(data2.getDeviceName().trim().equals("0") ? "——" : data2.getDeviceName());
+            else
+                device2_name.setText("——");
+            if (data2.getCo2() != null && !data2.getCo2().trim().equals(""))
+                device2_co2.setText(data2.getCo2().trim().equals("0") ? "——" : data2.getCo2());
+            else
+                device2_co2.setText("——");
+            if (data2.get_$Pm25267() != null && !data2.get_$Pm25267().trim().equals(""))
+                device2_pm25.setText(data2.get_$Pm25267().trim().equals("0") ? "——" : data2.get_$Pm25267());
+            else
+                device2_pm25.setText("——");
+            if (data2.getPm10() != null && !data2.getPm10().trim().equals(""))
+                device2_pm10.setText(data2.getPm10().trim().equals("0") ? "——" : data2.getPm10());
+            else
+                device2_pm10.setText("——");
+            if (data2.getJiaquan() != null && !data2.getJiaquan().trim().equals(""))
+                device2_jiaquan.setText(data2.getJiaquan().trim().equals("0") ? "——" : data2.getJiaquan());
+            else
+                device2_jiaquan.setText("——");
+            if (data2.getTvoc() != null && !data2.getTvoc().trim().equals(""))
+                device2_tvoc.setText(data2.getTvoc().trim().equals("0") ? "——" : data2.getTvoc());
+            else
+                device2_tvoc.setText("——");
+            if (data2.getShidu() != null && !data2.getShidu().trim().equals(""))
+                device2_shidu.setText(data2.getShidu().trim().equals("0") ? "——" : data2.getShidu());
+            else
+                device2_shidu.setText("——");
+            if (data2.getWendu() != null && !data2.getWendu().trim().equals(""))
+                device2_wendu.setText(data2.getWendu().trim().equals("0") ? "——" : data2.getWendu());
+            else
+                device2_wendu.setText("——");
         } else {
             device2_name.setText("——");
             device2_co2.setText("——");
@@ -177,14 +224,38 @@ public class DataFragment extends BaseFragment {
 
     private void getData1(Facility.ResBodyBean.ListBean data1) {
         if (data1 != null) {
-            device1_name.setText(data1.getDeviceName()==null? "——" : data1.getDeviceName());
-            device1_co2.setText(data1.getCo2()==null? "——" : data1.getCo2());
-            device1_pm25.setText(data1.get_$Pm25267()==null? "——" : data1.get_$Pm25267());
-            device1_pm10.setText(data1.getPm10()==null? "——" : data1.getPm10());
-            device1_jiaquan.setText(data1.getJiaquan()==null? "——" : data1.getJiaquan());
-            device1_tvoc.setText(data1.getTvoc()==null? "——" : data1.getTvoc());
-            device1_shidu.setText(data1.getShidu()==null? "——" : data1.getShidu());
-            device1_wendu.setText(data1.getWendu()==null? "——" : data1.getWendu());
+            if (data1.getDeviceName() != null && !data1.getDeviceName().trim().equals(""))
+                device1_name.setText(data1.getDeviceName().trim().equals("0") ? "——" : data1.getDeviceName());
+            else
+                device1_name.setText("——");
+            if (data1.getCo2() != null && !data1.getCo2().trim().equals(""))
+                device1_co2.setText(data1.getCo2().trim().equals("0") ? "——" : data1.getCo2());
+            else
+                device1_co2.setText("——");
+            if (data1.get_$Pm25267() != null && !data1.get_$Pm25267().trim().equals(""))
+                device1_pm25.setText(data1.get_$Pm25267().trim().equals("0") ? "——" : data1.get_$Pm25267());
+            else
+                device1_pm25.setText("——");
+            if (data1.getPm10() != null && !data1.getPm10().trim().equals(""))
+                device1_pm10.setText(data1.getPm10().trim().equals("0") ? "——" : data1.getPm10());
+            else
+                device1_pm10.setText("——");
+            if (data1.getJiaquan() != null && !data1.getJiaquan().trim().equals(""))
+                device1_jiaquan.setText(data1.getJiaquan().trim().equals("0") ? "——" : data1.getJiaquan());
+            else
+                device1_jiaquan.setText("——");
+            if (data1.getTvoc() != null && !data1.getTvoc().trim().equals(""))
+                device1_tvoc.setText(data1.getTvoc().trim().equals("0") ? "——" : data1.getTvoc());
+            else
+                device1_tvoc.setText("——");
+            if (data1.getShidu() != null && !data1.getShidu().trim().equals(""))
+                device1_shidu.setText(data1.getShidu().trim().equals("0") ? "——" : data1.getShidu());
+            else
+                device1_shidu.setText("——");
+            if (data1.getWendu() != null && !data1.getWendu().trim().equals(""))
+                device1_wendu.setText(data1.getWendu().trim().equals("0") ? "——" : data1.getWendu());
+            else
+                device1_wendu.setText("——");
 
         } else {
             device1_name.setText("——");
