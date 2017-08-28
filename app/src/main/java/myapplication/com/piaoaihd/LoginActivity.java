@@ -1,11 +1,17 @@
 package myapplication.com.piaoaihd;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import myapplication.com.piaoaihd.base.BaseActivity;
 import myapplication.com.piaoaihd.bean.User;
@@ -132,10 +138,34 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     protected void onResume() {
         super.onResume();
-        if (MyApplication.newInstance().getUser() != null) {
-            User user = MyApplication.newInstance().getUser();
-            psw = user.getResBody().getPassWord();
-          loginPresenterImp.loadLogin(user.getResBody().getPhoneNumber(), MD5.getMD5(psw));
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //请求权限
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                    0);
+            //判断是否需要向用户解释，为什么要申请该权限（用户点击了不再提醒）
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.READ_CONTACTS)) {
+                Toast.makeText(this, "shouldShowRequestPermissionRationale", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            if (MyApplication.newInstance().getUser() != null) {
+                User user = MyApplication.newInstance().getUser();
+                psw = user.getResBody().getPassWord();
+                loginPresenterImp.loadLogin(user.getResBody().getPhoneNumber(), MD5.getMD5(psw));
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults[0] == 0) {
+            if (MyApplication.newInstance().getUser() != null) {
+                User user = MyApplication.newInstance().getUser();
+                psw = user.getResBody().getPassWord();
+                loginPresenterImp.loadLogin(user.getResBody().getPhoneNumber(), MD5.getMD5(psw));
+            }
         }
     }
 }

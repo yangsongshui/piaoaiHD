@@ -276,9 +276,6 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 tvoc_tv.setText("——");
                 tvoc.setText("——");
             }
-
-
-
         } else {
             main_place.setText("——");
             main_pm_tv.setText("——");

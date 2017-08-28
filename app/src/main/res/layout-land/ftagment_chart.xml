@@ -46,7 +46,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="500"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="9sp" />
 
 
             </LinearLayout>
@@ -65,7 +65,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="350"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="9sp" />
 
 
             </LinearLayout>
@@ -84,7 +84,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="250"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="9sp" />
 
 
             </LinearLayout>
@@ -102,7 +102,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="150"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="9sp" />
 
 
             </LinearLayout>
@@ -121,7 +121,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="115"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="9sp" />
 
 
             </LinearLayout>
@@ -139,7 +139,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="0"
                     android:textColor="@color/white"
-                    android:textSize="8sp"
+                    android:textSize="9sp"
                     android:visibility="invisible" />
 
                 <TextView
@@ -148,7 +148,7 @@
                     android:layout_marginTop="-3dp"
                     android:text="75"
                     android:textColor="@color/white"
-                    android:textSize="8sp" />
+                    android:textSize="9sp" />
 
 
             </LinearLayout>
@@ -165,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:text="035"
                     android:textColor="@color/white"
-                    android:textSize="8sp"
+                    android:textSize="9sp"
                     android:visibility="invisible" />
 
 
@@ -248,7 +248,7 @@
             android:gravity="center"
             android:text="PM2.5曲线图"
             android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
         <ImageView
             android:layout_width="1dp"
@@ -268,17 +268,17 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
                     android:src="@drawable/wwwwwwww_17" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="优"
+                    android:text="  优  "
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
             <TextView
@@ -316,9 +316,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:text="良"
+                    android:text="  良  "
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
             <TextView
@@ -348,8 +348,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
                     android:src="@drawable/wwwwwwww_21" />
 
                 <TextView
@@ -358,7 +358,7 @@
                     android:layout_marginStart="4dp"
                     android:text="轻度污染"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
             <TextView
@@ -388,8 +388,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
                     android:src="@drawable/wwwwwwww_23" />
 
                 <TextView
@@ -428,8 +428,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
                     android:src="@drawable/wwwwwwww_25" />
 
                 <TextView
@@ -438,7 +438,7 @@
                     android:layout_marginStart="4dp"
                     android:text="重度污染"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
             <TextView
@@ -468,8 +468,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
                     android:src="@drawable/wwwwwwww_28" />
 
                 <TextView
@@ -478,7 +478,7 @@
                     android:layout_marginStart="4dp"
                     android:text="严重污染"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
             <TextView
@@ -508,8 +508,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
                     android:src="@drawable/wwwwwwww_28" />
 
                 <TextView
@@ -518,7 +518,7 @@
                     android:layout_marginStart="4dp"
                     android:text="爆表"
                     android:textColor="@color/white"
-                    android:textSize="10sp" />
+                    android:textSize="9sp" />
             </LinearLayout>
 
             <TextView
