@@ -62,9 +62,9 @@
     <style name="mainTv4" parent="mainTv">
         <item name="android:background">@drawable/main_tv2</item>
         <item name="android:paddingTop">2dp</item>
-        <item name="android:paddingStart">18dp</item>
-        <item name="android:paddingEnd">18dp</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:paddingStart">15dp</item>
+        <item name="android:paddingEnd">15dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:paddingBottom">2dp</item>
     </style>
 
