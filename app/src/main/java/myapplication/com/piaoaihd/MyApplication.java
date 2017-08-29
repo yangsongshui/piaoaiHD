@@ -24,7 +24,7 @@ public class MyApplication extends Application {
     public User user;
     private static MyApplication instance;
     public static List<Activity> activitiesList = new ArrayList<Activity>(); // 活动管理集合
-    private   Facility.ResBodyBean.ListBean listBean;
+    private Facility.ResBodyBean.ListBean listBean;
 
 
     /**
@@ -57,6 +57,7 @@ public class MyApplication extends Application {
         if (!activitiesList.contains(activity))
             activitiesList.add(activity);
     }
+
     public RequestManager getGlide() {
 
         return Glide.with(this);
@@ -98,8 +99,9 @@ public class MyApplication extends Application {
     }
 
     public User getUser() {
-        if (user.getResBody().getPhoneNumber() != null)
-            return user;
+        if (user.getResBody() != null)
+            if (user.getResBody().getPhoneNumber() != null)
+                return user;
         String phone = SpUtils.getString("phone", "");
         String password = SpUtils.getString("password", "");
         Log.e("------", phone + " " + password);
@@ -111,6 +113,7 @@ public class MyApplication extends Application {
 
 
     }
+
     public void outLogin() {
         user.setResBody(null);
         SpUtils.putString("phone", "");

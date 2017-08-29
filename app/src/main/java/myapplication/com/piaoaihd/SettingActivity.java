@@ -1,6 +1,5 @@
 package myapplication.com.piaoaihd;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.IdRes;
 import android.view.View;
@@ -18,7 +17,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
     RadioGroup device_rg, data_rg;
     ImageButton set_back_ib;
     Button out_tv;
-
+    public static final int RESULT_CODE_QR_SCAN = 0xA1;
     @Override
     protected int getContentView() {
         return R.layout.activity_setting;
@@ -158,8 +157,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
 
     @Override
     public void onClick(View view) {
-        MyApplication.newInstance().outLogin();
-        startActivity(new Intent(this,LoginActivity.class));
+        this.setResult(RESULT_CODE_QR_SCAN);
         finish();
     }
 }

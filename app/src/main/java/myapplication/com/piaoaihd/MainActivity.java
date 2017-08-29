@@ -45,7 +45,8 @@ import static myapplication.com.piaoaihd.util.Constan.ACTION_BLE_NOTIFY_DATA;
 
 public class MainActivity extends BaseActivity implements FacilityView {
     private final static String TAG = MainActivity.class.getSimpleName();
-
+    private int REQUEST_CODE = 0x01;
+    private int RESULT_OK = 0xA1;
     private List<Fragment> frags;
     private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
@@ -118,7 +119,9 @@ public class MainActivity extends BaseActivity implements FacilityView {
         findViewById(R.id.main_set).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
+
             }
         });
     }
@@ -347,6 +350,14 @@ public class MainActivity extends BaseActivity implements FacilityView {
             }
         };
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            MyApplication.newInstance().outLogin();
+            startActivity(new Intent(this,LoginActivity.class));
+            finish();
+        }
+    }
 
 }
