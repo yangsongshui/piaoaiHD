@@ -507,70 +507,70 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="15dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:text="0"
             android:visibility="invisible"
-            android:layout_weight="0.8" />
+            android:layout_weight="0.7" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="0"
-            android:layout_marginStart="10dp"
             android:textColor="@color/white"
-            android:textSize="5sp"
+            android:textSize="8sp"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="35"
             android:textColor="@color/white"
-            android:textSize="5sp"
+            android:textSize="8sp"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="75"
             android:textColor="@color/white"
-            android:textSize="5sp"
+            android:textSize="8sp"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="115"
             android:textColor="@color/white"
-            android:textSize="5sp"
+            android:textSize="8sp"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="150"
             android:textColor="@color/white"
-            android:textSize="5sp"
+            android:textSize="8sp"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="250"
             android:textColor="@color/white"
-            android:textSize="5sp"
+            android:textSize="8sp"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="500"
             android:textColor="@color/white"
-            android:textSize="5sp"
+            android:textSize="8sp"
             android:layout_weight="1" />
     </LinearLayout>
 </LinearLayout>

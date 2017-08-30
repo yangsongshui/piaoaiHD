@@ -122,7 +122,7 @@ public class ChartFragment extends BaseFragment implements PMView {
         // xAxis.setAxisMinimum(-0.1f);
         xAxis.setGranularity(0.3f);
         xAxis.setAxisMaximum(24);
-        //xAxis.setLabelCount(8, true);
+        xAxis.setLabelCount(12, true);
         xAxis.setTextColor(Color.rgb(255, 255, 255));
         xAxis.setAxisLineColor(Color.rgb(255, 255, 255));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴在底部
