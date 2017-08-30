@@ -2,36 +2,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="#08419D"
+    android:gravity="center"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_marginTop="-5dp">
+
         <TextView
             android:id="@+id/chart_lishi"
             android:layout_width="40dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:gravity="center"
             android:text="历  史  记  录"
-            android:layout_marginStart="10dp"
             android:textColor="@color/white"
             android:textSize="30sp" />
+
         <com.github.mikephil.charting.charts.CombinedChart
             android:id="@+id/week_chart"
             android:layout_width="match_parent"
-            android:layout_toEndOf="@+id/chart_lishi"
             android:layout_height="350dp"
-            android:layout_marginStart="15dp" />
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/chart_lishi" />
+
         <LinearLayout
             android:id="@+id/text_ll"
             android:layout_width="30dp"
             android:layout_height="320dp"
             android:layout_alignTop="@+id/iv_ll"
-            android:layout_toEndOf="@+id/chart_lishi"
             android:layout_marginTop="-5dp"
+            android:layout_toEndOf="@+id/chart_lishi"
             android:orientation="vertical">
 
             <LinearLayout
@@ -238,298 +241,636 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/bg"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical"
+            android:paddingEnd="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="PM2.5"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/chart_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="日曲线图"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/tu1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="优"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/tu2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="良"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/tu3" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="轻度污染"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/tu4" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="中度污染"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/tu5" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="重度污染"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/tu6" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="严重污染"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/tu7" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/white" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="极度污染"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/chart_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_weight="0.8" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0"
             android:layout_marginStart="10dp"
-            android:gravity="center"
-            android:text="PM2.5曲线图"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="35"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/wwwwwwww_17" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="   优   "
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="0-35"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="75"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/wwwwwwww_19" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="   良   "
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="36-75"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="115"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/wwwwwwww_21" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="轻度污染"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="76-115"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="150"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/wwwwwwww_23" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="中度污染"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center|end"
-                android:text="116-150"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="250"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_weight="1" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/wwwwwwww_25" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="重度污染"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center|end"
-                android:text="151-250"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center|end"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/wwwwwwww_28" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="严重污染"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center|end"
-                android:text="250-500"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:background="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/wwwwwwww_28" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="爆表"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center|end"
-                android:text=">500"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-        </LinearLayout>
+            android:text="500"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_weight="1" />
     </LinearLayout>
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="80dp"
+         android:gravity="center_vertical"
+         android:orientation="horizontal">
+
+         <TextView
+             android:id="@+id/chart_msg"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_marginStart="10dp"
+             android:gravity="center"
+             android:text="PM2.5曲线图"
+             android:textColor="@color/white"
+             android:textSize="25sp" />
+
+         <ImageView
+             android:layout_width="0.5dp"
+             android:layout_height="match_parent"
+             android:layout_margin="4dp"
+             android:background="@color/white" />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:orientation="horizontal">
+
+                 <ImageView
+                     android:layout_width="23dp"
+                     android:layout_height="23dp"
+                     android:src="@drawable/wwwwwwww_17" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="4dp"
+                     android:text="   优   "
+                     android:textColor="@color/white"
+                     android:textSize="18sp" />
+             </LinearLayout>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:text="0-35"
+                 android:textColor="@color/white"
+                 android:textSize="20sp" />
+         </LinearLayout>
+
+         <ImageView
+             android:layout_width="0.5dp"
+             android:layout_height="match_parent"
+             android:layout_margin="4dp"
+             android:background="@color/white" />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:orientation="horizontal">
+
+                 <ImageView
+                     android:layout_width="23dp"
+                     android:layout_height="23dp"
+                     android:src="@drawable/wwwwwwww_19" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="4dp"
+                     android:text="   良   "
+                     android:textColor="@color/white"
+                     android:textSize="18sp" />
+             </LinearLayout>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:text="36-75"
+                 android:textColor="@color/white"
+                 android:textSize="20sp" />
+         </LinearLayout>
+
+         <ImageView
+             android:layout_width="0.5dp"
+             android:layout_height="match_parent"
+             android:layout_margin="4dp"
+             android:background="@color/white" />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:orientation="horizontal">
+
+                 <ImageView
+                     android:layout_width="23dp"
+                     android:layout_height="23dp"
+                     android:src="@drawable/wwwwwwww_21" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="4dp"
+                     android:text="轻度污染"
+                     android:textColor="@color/white"
+                     android:textSize="18sp" />
+             </LinearLayout>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:text="76-115"
+                 android:textColor="@color/white"
+                 android:textSize="20sp" />
+         </LinearLayout>
+
+         <ImageView
+             android:layout_width="0.5dp"
+             android:layout_height="match_parent"
+             android:layout_margin="4dp"
+             android:background="@color/white" />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:orientation="horizontal">
+
+                 <ImageView
+                     android:layout_width="23dp"
+                     android:layout_height="23dp"
+                     android:src="@drawable/wwwwwwww_23" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="4dp"
+                     android:text="中度污染"
+                     android:textColor="@color/white"
+                     android:textSize="18sp" />
+             </LinearLayout>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center|end"
+                 android:text="116-150"
+                 android:textColor="@color/white"
+                 android:textSize="20sp" />
+         </LinearLayout>
+
+         <ImageView
+             android:layout_width="0.5dp"
+             android:layout_height="match_parent"
+             android:layout_margin="4dp"
+             android:background="@color/white" />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:orientation="horizontal">
+
+                 <ImageView
+                     android:layout_width="23dp"
+                     android:layout_height="23dp"
+                     android:src="@drawable/wwwwwwww_25" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="4dp"
+                     android:text="重度污染"
+                     android:textColor="@color/white"
+                     android:textSize="18sp" />
+             </LinearLayout>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center|end"
+                 android:text="151-250"
+                 android:textColor="@color/white"
+                 android:textSize="20sp" />
+         </LinearLayout>
+
+         <ImageView
+             android:layout_width="0.5dp"
+             android:layout_height="match_parent"
+             android:layout_margin="4dp"
+             android:background="@color/white" />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center|end"
+                 android:orientation="horizontal">
+
+                 <ImageView
+                     android:layout_width="23dp"
+                     android:layout_height="23dp"
+                     android:src="@drawable/wwwwwwww_28" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="4dp"
+                     android:text="严重污染"
+                     android:textColor="@color/white"
+                     android:textSize="18sp" />
+             </LinearLayout>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center|end"
+                 android:text="250-500"
+                 android:textColor="@color/white"
+                 android:textSize="20sp" />
+         </LinearLayout>
+
+         <ImageView
+             android:layout_width="0.5dp"
+             android:layout_height="match_parent"
+             android:layout_margin="4dp"
+             android:background="@color/white" />
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:gravity="center"
+                 android:orientation="horizontal">
+
+                 <ImageView
+                     android:layout_width="23dp"
+                     android:layout_height="23dp"
+                     android:src="@drawable/wwwwwwww_28" />
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginStart="4dp"
+                     android:text="爆表"
+                     android:textColor="@color/white"
+                     android:textSize="18sp" />
+             </LinearLayout>
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:gravity="center|end"
+                 android:text=">500"
+                 android:textColor="@color/white"
+                 android:textSize="20sp" />
+         </LinearLayout>
+     </LinearLayout>-->
 </LinearLayout>

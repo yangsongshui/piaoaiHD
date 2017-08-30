@@ -233,7 +233,6 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private void initdata() {
         if (listBean != null) {
             main_place.setText(listBean.getDeviceName().trim().equals("") ? "——" : listBean.getDeviceName());
-
             if (listBean.get_$Pm25267() == null || listBean.get_$Pm25267().trim().equals("")) {
                 main_pm.setText("——");
                 main_pm_tv.setText("——");
@@ -243,11 +242,11 @@ public class MainActivity extends BaseActivity implements FacilityView {
             }
 
             if (listBean.getShidu() != null && !listBean.getShidu().trim().equals(""))
-                main_humidity.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu());
+                main_humidity.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu()+"%");
             else
                 main_humidity.setText("——");
             if (listBean.getWendu() != null && !listBean.getWendu().trim().equals(""))
-                main_temperature.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu());
+                main_temperature.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu()+"℃");
             else
                 main_temperature.setText("——");
             if (listBean.getCo2() != null && !listBean.getCo2().equals("")) {
@@ -274,7 +273,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
             if (listBean.getTvoc() != null && !listBean.getTvoc().equals("")) {
                 tvoc.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
-                Constan.jiaquan(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
+                Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
             } else {
                 tvoc_tv.setText("——");
                 tvoc.setText("——");

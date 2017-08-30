@@ -67,7 +67,7 @@ public class YearFragment extends BaseFragment implements PMView {
         month = new ArrayList<>();
         toastor = new Toastor(getActivity());
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
-        ((TextView) layout.findViewById(R.id.chart_msg)).setText("PM2.5月曲线图");
+        ((TextView) layout.findViewById(R.id.chart_msg)).setText("月曲线图");
         map = new HashMap<>();
 
         initMonth();
@@ -188,8 +188,10 @@ public class YearFragment extends BaseFragment implements PMView {
                // Log.e(TAG, i + "");
                 values1.add(new Entry(i, 0));
             } else {
-
-                values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
+                if (Double.parseDouble(mList.get(i)) <= 500)
+                    values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
+                else
+                    values1.add(new Entry(i, 500));
             }
 
         }
@@ -201,7 +203,7 @@ public class YearFragment extends BaseFragment implements PMView {
             set1.setValues(values1);
         } else {
             set1 = new LineDataSet(values1, "");
-            set1.setLineWidth(1f);//设置线宽
+            set1.setLineWidth(2f);//设置线宽
             set1.setCircleRadius(3f);//设置焦点圆心的大小
             set1.setHighlightLineWidth(0.5f);//设置点击交点后显示高亮线宽
             set1.setHighlightEnabled(false);//是否禁用点击高亮线
@@ -209,7 +211,7 @@ public class YearFragment extends BaseFragment implements PMView {
             set1.setDrawCircles(false);  //设置有圆点
             set1.setDrawValues(false);  //不显示数据
             set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER); //设置为曲线
-            // set1.setHighLightColor(Color.rgb(51, 51, 51));//设置点击交点后显示交高亮线的颜色
+
             set1.setColor(Color.rgb(255, 255, 255));    //设置曲线的颜色
 
         }

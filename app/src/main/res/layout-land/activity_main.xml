@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="20dp"
-                        android:text="飘爱城市除霾系统"
+                        android:text="飘爱云城市除霾系统"
                         android:textColor="@color/white"
                         android:textSize="17sp" />
 
@@ -111,7 +111,12 @@
                             android:text="PM2.5"
                             android:textColor="@color/selected_background"
                             android:textSize="18sp" />
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="μg/m³"
+                            android:textColor="@color/selected_background"
+                            android:textSize="12sp" />
                         <TextView
                             android:id="@+id/main_pm_tv"
                             android:layout_width="wrap_content"

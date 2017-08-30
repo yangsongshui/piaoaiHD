@@ -152,7 +152,12 @@
                     android:text="PM2.5"
                     android:textColor="@color/selected_background"
                     android:textSize="45sp" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="μg/m³"
+                    android:textColor="@color/selected_background"
+                    android:textSize="25sp" />
                 <TextView
                     android:id="@+id/main_pm_tv"
                     android:layout_width="wrap_content"
@@ -193,8 +198,8 @@
                     <TextView
                         style="@style/mainTv4"
                         android:layout_width="wrap_content"
-                        android:layout_marginStart="20dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
                         android:text="温度" />
 
                     <TextView
@@ -263,6 +268,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/textView2"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_marginTop="15dp"
@@ -270,8 +276,7 @@
                             android:gravity="center"
                             android:text="CO₂ ppm"
                             android:textColor="@color/white"
-                            android:textSize="30sp"
-                            android:id="@+id/textView2" />
+                            android:textSize="30sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"

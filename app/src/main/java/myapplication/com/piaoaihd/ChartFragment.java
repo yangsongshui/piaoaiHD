@@ -65,13 +65,13 @@ public class ChartFragment extends BaseFragment implements PMView {
         mList = new ArrayList<>();
         toastor = new Toastor(getActivity());
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
-        ((TextView) layout.findViewById(R.id.chart_msg)).setText("PM2.5天曲线图");
+        ((TextView) layout.findViewById(R.id.chart_msg)).setText("日曲线图");
         map = new HashMap<>();
         map.put("type", "1");
         //通过格式化输出日期
         String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
         map.put("endDate", time);
-        map.put("beginDate", time );
+        map.put("beginDate", time);
         initChart();
 
     }
@@ -165,7 +165,7 @@ public class ChartFragment extends BaseFragment implements PMView {
         //不画网格
         xAxis.setDrawGridLines(false);
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
-            String[] day = new String[]{"00","01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
+            String[] day = new String[]{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11"
                     , "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"};
 
             @Override
@@ -189,8 +189,18 @@ public class ChartFragment extends BaseFragment implements PMView {
             // Log.e(TAG, mList.get(i)+" " + i );
             if (i >= (mList.size())) {
                 values1.add(new Entry(i, 0));
-            } else
-                values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
+            } else {
+                if (Double.parseDouble(mList.get(i)) <= 500)
+                    values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
+                else{
+                    if (Double.parseDouble(mList.get(i)) <= 500)
+                        values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
+                    else
+                        values1.add(new Entry(i, 500));
+                }
+
+            }
+
         }
 
         LineDataSet set1;
@@ -227,11 +237,11 @@ public class ChartFragment extends BaseFragment implements PMView {
 
     @Override
     public void loadDataSuccess(PMBean tData) {
-       // toastor.showSingletonToast(tData.getResMessage());
+        // toastor.showSingletonToast(tData.getResMessage());
         if (tData.getResCode().equals("0")) {
             if (tData.getResBody().getList().size() > 0) {
                 mList = tData.getResBody().getList();
-                mList.add(0,"0");
+                mList.add(0, "0");
 
             }
             CombinedData data = new CombinedData();
@@ -243,7 +253,7 @@ public class ChartFragment extends BaseFragment implements PMView {
 
     @Override
     public void loadDataError(Throwable throwable) {
-        Log.e("ChartFragment",throwable.toString());
+        Log.e("ChartFragment", throwable.toString());
         toastor.showSingletonToast("网络连接异常");
     }
 

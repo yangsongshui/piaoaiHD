@@ -63,7 +63,7 @@ public class WeekFragment extends BaseFragment implements PMView {
         intentFilter.addAction(ACTION_BLE_NOTIFY_DATA);
         getActivity().registerReceiver(notifyReceiver, intentFilter);
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
-        ((TextView) layout.findViewById(R.id.chart_msg)).setText("PM2.5周曲线图");
+        ((TextView) layout.findViewById(R.id.chart_msg)).setText("周曲线图");
         week = new ArrayList<>();
         mList = new ArrayList<>();
         map = new HashMap<>();
