@@ -211,7 +211,6 @@ public class YearFragment extends BaseFragment implements PMView {
             set1.setDrawCircles(false);  //设置有圆点
             set1.setDrawValues(false);  //不显示数据
             set1.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER); //设置为曲线
-
             set1.setColor(Color.rgb(255, 255, 255));    //设置曲线的颜色
 
         }
