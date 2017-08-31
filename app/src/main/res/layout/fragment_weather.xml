@@ -42,13 +42,13 @@
                 android:layout_height="wrap_content"
                 android:text="PM2.5"
                 android:textColor="@color/selected_background"
-                android:textSize="45sp" />
+                android:textSize="40sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="μg/m³"
                 android:textColor="@color/selected_background"
-                android:textSize="25sp" />
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/weather_pm_tv"
                 android:layout_width="wrap_content"
@@ -394,7 +394,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="CO"
+                    android:text="CO₂"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 

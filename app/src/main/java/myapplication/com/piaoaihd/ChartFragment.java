@@ -189,16 +189,11 @@ public class ChartFragment extends BaseFragment implements PMView {
             // Log.e(TAG, mList.get(i)+" " + i );
             if (i >= (mList.size())) {
                 values1.add(new Entry(i, 0));
-            } else {
+            }  else {
                 if (Double.parseDouble(mList.get(i)) <= 500)
                     values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
-                else{
-                    if (Double.parseDouble(mList.get(i)) <= 500)
-                        values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
-                    else
-                        values1.add(new Entry(i, 500));
-                }
-
+                else
+                    values1.add(new Entry(i, 500));
             }
 
         }

@@ -48,7 +48,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
                     id = R.id.login_tv;
-                    toastor.showSingletonToast("按键获取焦点");
+                   // toastor.showSingletonToast("按键获取焦点");
                     login_tv.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                     login_tv.setTextColor(getResources().getColor(R.color.white));
                 } else {

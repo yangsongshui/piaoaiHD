@@ -336,7 +336,7 @@
                             android:layout_marginTop="15dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="PM10 mg/m³"
+                            android:text="PM10 μg/m³"
                             android:textColor="@color/white"
                             android:textSize="30sp" />
 
@@ -403,7 +403,7 @@
                             android:layout_marginTop="15dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="甲醛 μg/m³"
+                            android:text="甲醛 mg/m³"
                             android:textColor="@color/white"
                             android:textSize="30sp" />
 
@@ -465,7 +465,7 @@
                             android:layout_marginTop="15dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="TVOC μg/m³"
+                            android:text="TVOC mg/m³"
                             android:textColor="@color/white"
                             android:textSize="30sp" />
 

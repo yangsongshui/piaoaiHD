@@ -84,6 +84,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("数据更新中,请稍后");
         frags = new ArrayList<>();
+        frags.add(new TimeFragment());
         frags.add(new ChartFragment());
         frags.add(new WeekFragment());
         frags.add(new YearFragment());
@@ -305,7 +306,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         dataRunnable = new Runnable() {
             @Override
             public void run() {
-                if (indext == 3) {
+                if (indext == 4) {
                     indext = 0;
                     pager.setCurrentItem(indext);
                 } else {

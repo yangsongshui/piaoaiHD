@@ -45,15 +45,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="20dp"
-                        android:text="飘爱云城市除霾系统"
+                        android:text="飘 爱 云"
                         android:textColor="@color/white"
                         android:textSize="17sp" />
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="10dp"
+                        android:text="发布时间:"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
                     <TextClock
                         android:id="@+id/main_time"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="20dp"
+
                         android:format12Hour="yyyy-MM-dd  k:mm"
                         android:format24Hour="yyyy-MM-dd  k:mm"
                         android:timeZone="GMT+0800"
@@ -286,7 +293,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="PM10 mg/m³"
+                            android:text="PM10 μg/m³"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -346,7 +353,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="甲醛 μg/m³"
+                            android:text="甲醛 mg/m³"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -407,7 +414,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="TVOC μg/m³"
+                            android:text="TVOC mg/m³"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 

@@ -18,6 +18,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
     ImageButton set_back_ib;
     Button out_tv;
     public static final int RESULT_CODE_QR_SCAN = 0xA1;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_setting;
@@ -35,8 +36,19 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         findViewById(R.id.device_30).setOnFocusChangeListener(this);
         findViewById(R.id.device_1h).setOnFocusChangeListener(this);
         findViewById(R.id.device_2h).setOnFocusChangeListener(this);
-        out_tv.setOnFocusChangeListener(this);
-
+        out_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    out_tv.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    out_tv.setTextColor(getResources().getColor(R.color.white));
+                } else {
+                    out_tv.setBackgroundColor(getResources().getColor(R.color.orange_transparent));
+                    out_tv.setTextColor(getResources().getColor(R.color.black_opaque));
+                }
+            }
+        });
+        out_tv.setOnClickListener(this);
         findViewById(data_20).setOnFocusChangeListener(this);
         findViewById(R.id.data_40).setOnFocusChangeListener(this);
         findViewById(R.id.data_1).setOnFocusChangeListener(this);
@@ -44,12 +56,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         findViewById(R.id.data_5).setOnFocusChangeListener(this);
         findViewById(R.id.out_tv).setOnClickListener(this);
         set_back_ib.setOnFocusChangeListener(this);
-        set_back_ib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        set_back_ib.setOnClickListener(this);
         data_rg.setOnCheckedChangeListener(this);
         device_rg.setOnCheckedChangeListener(this);
 
@@ -145,19 +152,14 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 ((RadioButton) v).setTextColor(getResources().getColor(R.color.white));
             }
         }
-        if (hasFocus && v.getId() == R.id.out_tv) {
-            out_tv.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            out_tv.setTextColor(getResources().getColor(R.color.white));
-        } else {
-            out_tv.setBackgroundColor(getResources().getColor(R.color.orange_transparent));
-            out_tv.setTextColor(getResources().getColor(R.color.black_opaque));
-        }
 
     }
 
     @Override
     public void onClick(View view) {
-        this.setResult(RESULT_CODE_QR_SCAN);
+        if (view.getId() == R.id.out_tv) {
+            this.setResult(RESULT_CODE_QR_SCAN);
+        }
         finish();
     }
 }

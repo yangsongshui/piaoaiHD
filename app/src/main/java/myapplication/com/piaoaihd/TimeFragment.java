@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -27,7 +28,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,13 +48,12 @@ import static myapplication.com.piaoaihd.util.DateUtil.LONG_DATE_FORMAT;
  * Created by ys on 2017/7/25.
  */
 
-public class WeekFragment extends BaseFragment implements PMView {
+public class TimeFragment extends BaseFragment implements PMView {
     CombinedChart mChart;
-    List<String> week;
-    List<String> mList;
     PMdataPresenterImp pMdataPresenterImp;
     private Toastor toastor;
     private Map<String, String> map;
+    List<String> mList;
 
     @Override
     protected void initData(View layout, Bundle savedInstanceState) {
@@ -63,14 +63,22 @@ public class WeekFragment extends BaseFragment implements PMView {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ACTION_BLE_NOTIFY_DATA);
         getActivity().registerReceiver(notifyReceiver, intentFilter);
-        mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
-        ((TextView) layout.findViewById(R.id.chart_msg)).setText("周曲线图");
-        week = new ArrayList<>();
-        mList = new ArrayList<>();
-        map = new HashMap<>();
-        initWeek();
-        initChart();
 
+        mList = new ArrayList<>();
+        toastor = new Toastor(getActivity());
+        mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
+        ((TextView) layout.findViewById(R.id.chart_msg)).setText("时曲线图");
+        map = new HashMap<>();
+        map.put("type", "0");
+        //通过格式化输出日期
+        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
+        Calendar cal = Calendar.getInstance();//使用默认时区和语言环境获得一个日历。
+        //通过格式化输出日期
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        map.put("endDate", format.format(cal.getTime()));
+        cal.add(Calendar.HOUR, -1);
+        map.put("beginDate", format.format(cal.getTime()));
+        initChart();
 
     }
 
@@ -119,7 +127,8 @@ public class WeekFragment extends BaseFragment implements PMView {
 
         // xAxis.setAxisMinimum(-0.1f);
         xAxis.setGranularity(0.3f);
-        xAxis.setAxisMaximum(6);
+        xAxis.setAxisMaximum(11);
+        xAxis.setLabelCount(12, true);
         xAxis.setTextColor(Color.rgb(255, 255, 255));
         xAxis.setAxisLineColor(Color.rgb(255, 255, 255));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴在底部
@@ -161,30 +170,30 @@ public class WeekFragment extends BaseFragment implements PMView {
         mChart.getAxisLeft().setAxisMaximum(500);
         //不画网格
         xAxis.setDrawGridLines(false);
-        xAxis.setValueFormatter(new IAxisValueFormatter() {
+        IAxisValueFormatter formatter = new IAxisValueFormatter() {
+            String[] tiem = new String[]{"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"};
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return week.get((int) value % week.size());
+                return tiem[(int) value % tiem.length];
             }
 
-
-        });
+        };
+        xAxis.setValueFormatter(formatter);
         mChart.getLegend().setEnabled(false);
         CombinedData data = new CombinedData();
         data.setData(getLineData());
         mChart.setData(data);
         mChart.invalidate();
 
-
     }
 
     private LineData getLineData() {
         ArrayList<Entry> values1 = new ArrayList<>();
-        for (int i = 0; i < 7; i++) {
-
+        for (int i = 0; i < 12; i++) {
+            // Log.e(TAG, mList.get(i)+" " + i );
             if (i >= (mList.size())) {
                 values1.add(new Entry(i, 0));
-            } else {
+            }  else {
                 if (Double.parseDouble(mList.get(i)) <= 500)
                     values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
                 else
@@ -215,20 +224,36 @@ public class WeekFragment extends BaseFragment implements PMView {
         return new LineData(set1);
     }
 
-    private void initWeek() {
-        String string = "";
-        Date data = new Date();
-        //通过格式化输出日期
-        String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
-        String time2 = DateUtil.dateToString(DateUtil.nextDay(data, -6), LONG_DATE_FORMAT);
-        map.put("endDate", time);
-        map.put("beginDate", time2);
-        map.put("type", "2");
-        SimpleDateFormat format2 = new SimpleDateFormat("EEEE");
-        for (int i = 0; i < 7; i++) {
-            string = format2.format(DateUtil.nextDay(data, -i));
-            week.add(0, string);
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void disimissProgress() {
+
+    }
+
+    @Override
+    public void loadDataSuccess(PMBean tData) {
+        // toastor.showSingletonToast(tData.getResMessage());
+        if (tData.getResCode().equals("0")) {
+            if (tData.getResBody().getList().size() > 0) {
+                mList = tData.getResBody().getList();
+                mList.add(0, "0");
+
+            }
+            CombinedData data = new CombinedData();
+            data.setData(getLineData());
+            mChart.setData(data);
+            mChart.invalidate();
         }
+    }
+
+    @Override
+    public void loadDataError(Throwable throwable) {
+        Log.e("ChartFragment", throwable.toString());
+        toastor.showSingletonToast("网络连接异常");
     }
 
     private BroadcastReceiver notifyReceiver = new BroadcastReceiver() {
@@ -258,34 +283,5 @@ public class WeekFragment extends BaseFragment implements PMView {
         super.onDestroyView();
         EventBus.getDefault().unregister(this);//反注册EventBus
         getActivity().unregisterReceiver(notifyReceiver);
-    }
-
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void disimissProgress() {
-
-    }
-
-    @Override
-    public void loadDataSuccess(PMBean tData) {
-        if (tData.getResCode().equals("0")) {
-            if (tData.getResBody().getList().size() > 0) {
-                mList = tData.getResBody().getList();
-
-            }
-            CombinedData data = new CombinedData();
-            data.setData(getLineData());
-            mChart.setData(data);
-            mChart.invalidate();
-        }
-    }
-
-    @Override
-    public void loadDataError(Throwable throwable) {
-
     }
 }
