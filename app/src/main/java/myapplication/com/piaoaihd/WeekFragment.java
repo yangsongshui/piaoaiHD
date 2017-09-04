@@ -70,8 +70,10 @@ public class WeekFragment extends BaseFragment implements PMView {
         map = new HashMap<>();
         initWeek();
         initChart();
-
-
+        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+        }
     }
 
     @Override

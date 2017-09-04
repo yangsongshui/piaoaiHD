@@ -73,7 +73,10 @@ public class ChartFragment extends BaseFragment implements PMView {
         map.put("endDate", time);
         map.put("beginDate", time);
         initChart();
-
+        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+        }
     }
 
     @Override

@@ -72,7 +72,10 @@ public class YearFragment extends BaseFragment implements PMView {
 
         initMonth();
         initChart();
-
+        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+        }
     }
 
     @Override
@@ -203,7 +206,7 @@ public class YearFragment extends BaseFragment implements PMView {
             set1.setValues(values1);
         } else {
             set1 = new LineDataSet(values1, "");
-            set1.setLineWidth(2f);//设置线宽
+            set1.setLineWidth(1f);//设置线宽
             set1.setCircleRadius(3f);//设置焦点圆心的大小
             set1.setHighlightLineWidth(0.5f);//设置点击交点后显示高亮线宽
             set1.setHighlightEnabled(false);//是否禁用点击高亮线

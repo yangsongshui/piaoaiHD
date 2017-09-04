@@ -79,6 +79,10 @@ public class TimeFragment extends BaseFragment implements PMView {
         cal.add(Calendar.HOUR, -1);
         map.put("beginDate", format.format(cal.getTime()));
         initChart();
+        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+        }
 
     }
 
@@ -172,6 +176,7 @@ public class TimeFragment extends BaseFragment implements PMView {
         xAxis.setDrawGridLines(false);
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
             String[] tiem = new String[]{"5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"};
+
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
                 return tiem[(int) value % tiem.length];
@@ -193,7 +198,7 @@ public class TimeFragment extends BaseFragment implements PMView {
             // Log.e(TAG, mList.get(i)+" " + i );
             if (i >= (mList.size())) {
                 values1.add(new Entry(i, 0));
-            }  else {
+            } else {
                 if (Double.parseDouble(mList.get(i)) <= 500)
                     values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
                 else
