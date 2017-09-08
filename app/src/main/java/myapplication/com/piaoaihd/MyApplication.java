@@ -12,7 +12,6 @@ import java.util.List;
 import myapplication.com.piaoaihd.bean.Facility;
 import myapplication.com.piaoaihd.bean.User;
 import myapplication.com.piaoaihd.util.AppContextUtil;
-import myapplication.com.piaoaihd.util.Log;
 import myapplication.com.piaoaihd.util.SpUtils;
 
 /**
@@ -88,12 +87,12 @@ public class MyApplication extends Application {
 
     public void setUser(User user) {
         this.user = user;
-        Log.e("user", this.user.toString());
+        //Log.e("user", this.user.toString());
         Boolean IsRemember = SpUtils.getBoolean("remember", true);
         if (IsRemember) {
             SpUtils.putString("phone", user.getResBody().getPhoneNumber());
             SpUtils.putString("password", user.getResBody().getPassWord());
-            Log.e("------", user.toString());
+           // Log.e("------", user.toString());
         }
 
     }
@@ -104,7 +103,7 @@ public class MyApplication extends Application {
                 return user;
         String phone = SpUtils.getString("phone", "");
         String password = SpUtils.getString("password", "");
-        Log.e("------", phone + " " + password);
+        //Log.e("------", phone + " " + password);
         if (phone.equals("") || password.equals(""))
             return null;
         user.getResBody().setPhoneNumber(phone);

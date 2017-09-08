@@ -72,10 +72,7 @@ public class YearFragment extends BaseFragment implements PMView {
 
         initMonth();
         initChart();
-        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
-            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-            pMdataPresenterImp.binding(map);
-        }
+        getData();
     }
 
     @Override
@@ -233,7 +230,6 @@ public class YearFragment extends BaseFragment implements PMView {
         month.add(0, DateUtil.getCurrDate("dd") + "号");
         for (int i = 0; i < 30; i++) {
             string = format2.format(DateUtil.nextDay(data, -i)) + "号";
-
             month.add(0, string);
         }
     }
@@ -243,21 +239,14 @@ public class YearFragment extends BaseFragment implements PMView {
         public void onReceive(Context context, Intent intent) {
             //设备
             if (ACTION_BLE_NOTIFY_DATA.equals(intent.getAction())) {
-                if (MyApplication.newInstance().getListBean() != null) {
-                    map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-                    pMdataPresenterImp.binding(map);
-                }
+               // getData();
             }
         }
     };
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(FragmentEvent event) {
-        if (MyApplication.newInstance().getListBean() != null) {
-            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-            pMdataPresenterImp.binding(map);
-
-        }
+        getData();
     }
 
     @Override
@@ -287,6 +276,7 @@ public class YearFragment extends BaseFragment implements PMView {
             CombinedData data = new CombinedData();
             data.setData(getLineData());
             mChart.setData(data);
+            mChart.notifyDataSetChanged();
             mChart.invalidate();
         }
     }
@@ -294,5 +284,12 @@ public class YearFragment extends BaseFragment implements PMView {
     @Override
     public void loadDataError(Throwable throwable) {
 
+    }
+    private void getData(){
+        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
+           // Log.e("MainAcitvity","Year请求数据的IMEI号:"+MyApplication.newInstance().getListBean().getDeviceid()+MyApplication.newInstance().getListBean().getDeviceName());
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+        }
     }
 }

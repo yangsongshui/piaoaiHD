@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,7 +25,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,7 @@ public class ChartFragment extends BaseFragment implements PMView {
     private Toastor toastor;
     private Map<String, String> map;
     List<String> mList;
+    int hour = 0;
 
     @Override
     protected void initData(View layout, Bundle savedInstanceState) {
@@ -61,22 +63,19 @@ public class ChartFragment extends BaseFragment implements PMView {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(ACTION_BLE_NOTIFY_DATA);
         getActivity().registerReceiver(notifyReceiver, intentFilter);
-
         mList = new ArrayList<>();
         toastor = new Toastor(getActivity());
         mChart = (CombinedChart) layout.findViewById(R.id.week_chart);
         ((TextView) layout.findViewById(R.id.chart_msg)).setText("日曲线图");
         map = new HashMap<>();
+        inithour();
         map.put("type", "1");
         //通过格式化输出日期
         String time = DateUtil.getCurrDate(LONG_DATE_FORMAT);
         map.put("endDate", time);
         map.put("beginDate", time);
         initChart();
-        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
-            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-            pMdataPresenterImp.binding(map);
-        }
+        getData();
     }
 
     @Override
@@ -190,9 +189,9 @@ public class ChartFragment extends BaseFragment implements PMView {
         ArrayList<Entry> values1 = new ArrayList<>();
         for (int i = 0; i < 25; i++) {
             // Log.e(TAG, mList.get(i)+" " + i );
-            if (i >= (mList.size())) {
+            if (i >= (mList.size()) || i >= hour) {
                 values1.add(new Entry(i, 0));
-            }  else {
+            } else {
                 if (Double.parseDouble(mList.get(i)) <= 500)
                     values1.add(new Entry(i, Integer.parseInt(mList.get(i))));
                 else
@@ -245,13 +244,14 @@ public class ChartFragment extends BaseFragment implements PMView {
             CombinedData data = new CombinedData();
             data.setData(getLineData());
             mChart.setData(data);
+            mChart.notifyDataSetChanged();
             mChart.invalidate();
         }
     }
 
     @Override
     public void loadDataError(Throwable throwable) {
-        Log.e("ChartFragment", throwable.toString());
+        //Log.e("ChartFragment", throwable.toString());
         toastor.showSingletonToast("网络连接异常");
     }
 
@@ -260,21 +260,14 @@ public class ChartFragment extends BaseFragment implements PMView {
         public void onReceive(Context context, Intent intent) {
             //设备
             if (ACTION_BLE_NOTIFY_DATA.equals(intent.getAction())) {
-                if (MyApplication.newInstance().getListBean() != null) {
-                    map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-                    pMdataPresenterImp.binding(map);
-                }
+                //   getData();
             }
         }
     };
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(FragmentEvent event) {
-        if (MyApplication.newInstance().getListBean() != null) {
-            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-            pMdataPresenterImp.binding(map);
-
-        }
+        getData();
     }
 
     @Override
@@ -282,5 +275,21 @@ public class ChartFragment extends BaseFragment implements PMView {
         super.onDestroyView();
         EventBus.getDefault().unregister(this);//反注册EventBus
         getActivity().unregisterReceiver(notifyReceiver);
+    }
+
+    private void getData() {
+        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null) {
+            //Log.e("MainAcitvity","Day请求数据的IMEI号:"+MyApplication.newInstance().getListBean().getDeviceid()+MyApplication.newInstance().getListBean().getDeviceName());
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+        }
+    }
+
+    private void inithour() {
+        Date data = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("hh");
+        hour = Integer.parseInt(format.format(data));
+
+
     }
 }

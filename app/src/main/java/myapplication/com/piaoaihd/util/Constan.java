@@ -32,7 +32,7 @@ public class Constan {
     }
 
     public static void PM2_5(TextView textView, double pm, LinearLayout linearLayout) {
-        Log.e("PM2_5", " " + pm);
+        //Log.e("PM2_5", " " + pm);
         if (pm >= 0 && pm <= 35) {
             textView.setText("优");
             linearLayout.setBackgroundResource(R.drawable.heng_1);
@@ -55,7 +55,7 @@ public class Constan {
     }
 
     public static void PM10(TextView textView, double pm, ImageView imageView) {
-        Log.e("PM10", " " + pm);
+        //Log.e("PM10", " " + pm);
         if (pm >= 0 && pm <= 50) {
             textView.setText("优");
             imageView.setImageResource(R.drawable.fang_1);

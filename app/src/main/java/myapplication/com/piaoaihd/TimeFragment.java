@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -79,10 +78,7 @@ public class TimeFragment extends BaseFragment implements PMView {
         cal.add(Calendar.HOUR, -1);
         map.put("beginDate", format.format(cal.getTime()));
         initChart();
-        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
-            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-            pMdataPresenterImp.binding(map);
-        }
+       getData();
 
     }
 
@@ -251,13 +247,14 @@ public class TimeFragment extends BaseFragment implements PMView {
             CombinedData data = new CombinedData();
             data.setData(getLineData());
             mChart.setData(data);
+            mChart.notifyDataSetChanged();
             mChart.invalidate();
         }
     }
 
     @Override
     public void loadDataError(Throwable throwable) {
-        Log.e("ChartFragment", throwable.toString());
+        //Log.e("ChartFragment", throwable.toString());
         toastor.showSingletonToast("网络连接异常");
     }
 
@@ -266,21 +263,14 @@ public class TimeFragment extends BaseFragment implements PMView {
         public void onReceive(Context context, Intent intent) {
             //设备
             if (ACTION_BLE_NOTIFY_DATA.equals(intent.getAction())) {
-                if (MyApplication.newInstance().getListBean() != null) {
-                    map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-                    pMdataPresenterImp.binding(map);
-                }
+              //  getData();
             }
         }
     };
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(FragmentEvent event) {
-        if (MyApplication.newInstance().getListBean() != null) {
-            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
-            pMdataPresenterImp.binding(map);
-
-        }
+        getData();
     }
 
     @Override
@@ -288,5 +278,12 @@ public class TimeFragment extends BaseFragment implements PMView {
         super.onDestroyView();
         EventBus.getDefault().unregister(this);//反注册EventBus
         getActivity().unregisterReceiver(notifyReceiver);
+    }
+    private void getData(){
+        if (MyApplication.newInstance().getListBean() != null && MyApplication.newInstance().getListBean().getDeviceid() != null){
+           // Log.e("MainAcitvity","Time请求数据的IMEI号:"+MyApplication.newInstance().getListBean().getDeviceid()+MyApplication.newInstance().getListBean().getDeviceName());
+            map.put("imei", MyApplication.newInstance().getListBean().getDeviceid());
+            pMdataPresenterImp.binding(map);
+        }
     }
 }

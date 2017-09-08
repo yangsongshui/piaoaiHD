@@ -2,7 +2,6 @@ package myapplication.com.piaoaihd;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -80,6 +79,7 @@ public class WeatherFragment extends BaseFragment {
         weather_o3_tv = (TextView) layout.findViewById(R.id.weather_o3_tv);
         weather_co_tv = (TextView) layout.findViewById(R.id.weather_co_tv);
 
+
         weather_iv = (ImageView) layout.findViewById(R.id.weather_iv);
 
 
@@ -91,7 +91,7 @@ public class WeatherFragment extends BaseFragment {
             public void onResponse(Call<Weather> call, Response<Weather> response) {
                 //请求成功操作
                 Weather weather = response.body();
-                Log.e("weather", weather.toString());
+                //Log.e("weather", weather.toString());
                 if (weather.getShowapi_res_code() == 0) {
                     initWeather(weather);
                 } else {
@@ -123,7 +123,7 @@ public class WeatherFragment extends BaseFragment {
             if (aMapLocation != null) {
                 if (aMapLocation.getErrorCode() == 0) {
                     //可在其中解析amapLocation获取相应内容。
-                    Log.e("定位数据", aMapLocation.getCity());
+                    //Log.e("定位数据", aMapLocation.getCity());
                     city_tv.setText(aMapLocation.getCity());
                     ServiceApi service = retrofit.create(ServiceApi.class);
                     Call<Weather> call = service.getWeather(aMapLocation.getCity(), "1");
@@ -150,9 +150,9 @@ public class WeatherFragment extends BaseFragment {
                     });
                 } else {
                     //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
-                    Log.e("AmapError", "location Error, ErrCode:"
+                 /*   Log.e("AmapError", "location Error, ErrCode:"
                             + aMapLocation.getErrorCode() + ", errInfo:"
-                            + aMapLocation.getErrorInfo());
+                            + aMapLocation.getErrorInfo());*/
                     toastor.showSingletonToast("定位失败:" + aMapLocation.getErrorInfo());
                     progressDialog.dismiss();
                 }

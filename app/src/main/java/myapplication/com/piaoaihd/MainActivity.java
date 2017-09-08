@@ -19,7 +19,6 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -58,6 +57,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private Runnable deviceRunnable;
     private Runnable dataRunnable;
     private Toastor toastor;
+    private TextView textClock;
     private FacilityPresenerImp facilityPresenerImp;
     private ProgressDialog progressDialog = null;
     private boolean isOne = true;
@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         main_pm = (TextView) findViewById(R.id.main_pm);
         main_temperature = (TextView) findViewById(R.id.main_temperature);
         main_humidity = (TextView) findViewById(R.id.main_humidity);
-
+        textClock = (TextView) findViewById(R.id.main_time);
         pm_ll = (LinearLayout) findViewById(R.id.pm_ll);
         iv = (ImageView) findViewById(R.id.iv);
         iv2 = (ImageView) findViewById(R.id.iv2);
@@ -177,7 +177,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     @Override
     public void loadDataError(Throwable throwable) {
-        Log.e(TAG, throwable.toString());
+        //Log.e(TAG, throwable.toString());
 
         toastor.showSingletonToast("网络连接异常");
 
@@ -316,7 +316,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
                 //切换页面历史数据
                 handler.postDelayed(this, (dataTime * 1000));
-                Log.e("MainAcitvity", "切换历史数据");
+                //Log.e("MainAcitvity", "切换历史数据");
             }
         };
         deviceRunnable = new Runnable() {
@@ -337,13 +337,14 @@ public class MainActivity extends BaseActivity implements FacilityView {
                     listBean = null;
 
                 }
-                Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
+
                 initdata();
                 MyApplication.newInstance().setListBean(listBean);
+                //Log.e("MainAcitvity", "切换设备" + listBean.getDeviceid()+listBean.getDeviceid());
                 Intent intent = new Intent();
                 intent.setAction(ACTION_BLE_NOTIFY_DATA);
                 sendBroadcast(intent);
-                  handler.postDelayed(this, (deviceTime * 60 * 1000));
+                handler.postDelayed(this, (deviceTime * 60 * 1000));
                 handler.postDelayed(dataRunnable, (dataTime * 1000));
                // handler.postDelayed(this, 3000);
 

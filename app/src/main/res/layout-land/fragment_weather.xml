@@ -378,7 +378,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="CO₂"
+                    android:text="CO"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
