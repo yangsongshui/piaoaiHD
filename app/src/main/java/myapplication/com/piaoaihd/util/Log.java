@@ -11,7 +11,7 @@ public final class Log {
     /**
      * isPrint: print switch, true will print. false not print
      */
-    public static boolean isPrint = false;
+    public static boolean isPrint = true;
     private static String defaultTag = "Log";
 
     private Log() {}

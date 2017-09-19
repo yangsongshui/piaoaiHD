@@ -18,6 +18,7 @@ import java.util.List;
 import myapplication.com.piaoaihd.base.BaseFragment;
 import myapplication.com.piaoaihd.bean.Facility;
 import myapplication.com.piaoaihd.util.FragmentEvent;
+import myapplication.com.piaoaihd.util.Log;
 
 import static myapplication.com.piaoaihd.util.Constan.ACTION_BLE_NOTIFY_DATA;
 
@@ -223,6 +224,8 @@ public class DataFragment extends BaseFragment {
     }
 
     private void getData1(Facility.ResBodyBean.ListBean data1) {
+
+        Log.e("DataFragment", "切换设备"+data1.getDeviceName()+":" + data1.getDeviceid());
         if (data1 != null) {
             if (data1.getDeviceName() != null && !data1.getDeviceName().trim().equals(""))
                 device1_name.setText(data1.getDeviceName().trim().equals("0") ? "——" : data1.getDeviceName());

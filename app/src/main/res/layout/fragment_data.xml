@@ -35,8 +35,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="CO₂"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:text="CO₂" />
+
+        <TextView
+            style="@style/mainTv"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:text="PM10" />
 
         <TextView
             style="@style/mainTv"
@@ -44,8 +53,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="PM10"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:text="甲醛" />
 
         <TextView
             style="@style/mainTv"
@@ -53,35 +62,26 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="甲醛"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:text="TVOC" />
 
         <TextView
             style="@style/mainTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="25sp"
             android:gravity="center"
-            android:text="TVOC"
-            android:textSize="25sp" />
+            android:text="温度" />
 
         <TextView
             style="@style/mainTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="25sp"
             android:gravity="center"
-            android:text="温度"
-            android:textSize="25sp" />
-
-        <TextView
-            style="@style/mainTv"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="湿度"
-            android:textSize="25sp" />
+            android:text="湿度" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,11 +92,11 @@
         <TextView
             android:id="@+id/device1_name"
             style="@style/mainTv"
+            android:textSize="25sp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="——"
-            android:textSize="25sp" />
+            android:text="——" />
 
         <TextView
             android:id="@+id/device1_pm25"
@@ -126,10 +126,11 @@
 
         <TextView
             android:id="@+id/device1_jiaquan"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="25sp"
             android:text="——" />
 
         <TextView
@@ -150,10 +151,11 @@
 
         <TextView
             android:id="@+id/device1_shidu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="25sp"
             android:text="——" />
     </LinearLayout>
 
@@ -167,10 +169,10 @@
             android:id="@+id/device2_name"
             style="@style/mainTv"
             android:layout_width="0dp"
+            android:textSize="25sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="——"
-            android:textSize="25sp" />
+            android:text="——" />
 
         <TextView
             android:id="@+id/device2_pm25"
@@ -238,10 +240,10 @@
             android:id="@+id/device3_name"
             style="@style/mainTv"
             android:layout_width="0dp"
+            android:textSize="25sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="——"
-            android:textSize="25sp" />
+            android:text="——" />
 
         <TextView
             android:id="@+id/device3_pm25"

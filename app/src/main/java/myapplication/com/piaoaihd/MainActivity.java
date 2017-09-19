@@ -35,6 +35,7 @@ import myapplication.com.piaoaihd.bean.Facility;
 import myapplication.com.piaoaihd.presenter.FacilityPresenerImp;
 import myapplication.com.piaoaihd.util.Constan;
 import myapplication.com.piaoaihd.util.FragmentEvent;
+import myapplication.com.piaoaihd.util.Log;
 import myapplication.com.piaoaihd.util.SpUtils;
 import myapplication.com.piaoaihd.util.Toastor;
 import myapplication.com.piaoaihd.view.FacilityView;
@@ -324,23 +325,21 @@ public class MainActivity extends BaseActivity implements FacilityView {
             public void run() {
                 handler.removeCallbacks(dataRunnable);
                 //切换设备
-                if (mList.size() > mark) {
-                    listBean = mList.get(mark);
+                if (mList.size()-1 > mark) {
                     mark++;
-                    //  Log.e("MainAcitvity", "切换设备:" + mark + "" + listBean.getDeviceName());
-                } else if (mList.size() <= mark && mList.size() != 0) {
-                    mark = 1;
+                    listBean = mList.get(mark);
+                     Log.e("MainAcitvity1", "切换设备:"+mList.size()+"" + mark + "" + listBean.getDeviceName());
+                } else if (mList.size() >= mark && mList.size() != 0) {
+                    mark = 0;
                     listBean = mList.get(0);
-
-                    // Log.e("MainAcitvity", "切换设备" + listBean.getDeviceName());
+                     Log.e("MainAcitvity2", "切换设备" + listBean.getDeviceName());
                 } else {
                     listBean = null;
-
                 }
 
                 initdata();
                 MyApplication.newInstance().setListBean(listBean);
-                //Log.e("MainAcitvity", "切换设备" + listBean.getDeviceid()+listBean.getDeviceid());
+                Log.e("MainAcitvity3", "切换设备"+listBean.getDeviceName()+":" + listBean.getDeviceid());
                 Intent intent = new Intent();
                 intent.setAction(ACTION_BLE_NOTIFY_DATA);
                 sendBroadcast(intent);
