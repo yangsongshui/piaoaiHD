@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="PM2.5"
                 android:textColor="@color/selected_background"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:text="——"
                 android:textColor="@color/white"
-                android:textSize="80sp" />
+                android:textSize="70sp" />
 
             <TextView
                 android:id="@+id/weather_pm2"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="——"
                 android:textColor="@color/selected_background"
-                android:textSize="45sp" />
+                android:textSize="30sp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -214,7 +214,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/weather_pm10"
                     android:layout_marginTop="10dp"
-                    android:text="mg/m³"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -266,7 +266,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/no2"
                     android:layout_marginTop="10dp"
-                    android:text="mg/m³"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -309,7 +309,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/SO2"
                     android:layout_marginTop="10dp"
-                    android:text="ug/m³"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -361,7 +361,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/O3"
                     android:layout_marginTop="10dp"
-                    android:text="ug/m³"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -404,7 +404,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/CO"
                     android:layout_marginTop="10dp"
-                    android:text="mg/m³"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 

@@ -159,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:text="RH"
+                    android:text="湿度"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -167,7 +167,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/pm"
-                    android:text="湿度"
+                    android:text="RH"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -208,7 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/weather_pm10"
-                    android:text="细颗粒物"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -256,7 +256,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/no2"
-                    android:text="二氧化氮"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -297,7 +297,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/SO2"
-                    android:text="二氧化硫"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -345,7 +345,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/O3"
-                    android:text="臭氧"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -386,7 +386,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/CO"
-                    android:text="细颗粒物"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
