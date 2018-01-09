@@ -16,6 +16,7 @@ package myapplication.com.piaoaihd;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -50,8 +52,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private List<Fragment> frags;
     private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
+
     private ImageView iv, iv2, iv3, iv4;
-    private LinearLayout pm_ll;
+    private LinearLayout pm_ll, quxiantu_ll, data_ll;
+    private RelativeLayout co2_rl, pm10_rl, jiaquan_rl, tvoc_rl;
     private ViewPager pager;
     private Handler handler;
     private Runnable myRunnable;
@@ -104,6 +108,15 @@ public class MainActivity extends BaseActivity implements FacilityView {
         main_humidity = (TextView) findViewById(R.id.main_humidity);
         textClock = (TextView) findViewById(R.id.main_time);
         pm_ll = (LinearLayout) findViewById(R.id.pm_ll);
+        quxiantu_ll = (LinearLayout) findViewById(R.id.quxiantu_ll);
+        data_ll = (LinearLayout) findViewById(R.id.data_ll);
+
+        co2_rl = (RelativeLayout) findViewById(R.id.co2_rl);
+        pm10_rl = (RelativeLayout) findViewById(R.id.pm10_rl);
+        jiaquan_rl = (RelativeLayout) findViewById(R.id.jiaquan_rl);
+        tvoc_rl = (RelativeLayout) findViewById(R.id.tvoc_rl);
+
+
         iv = (ImageView) findViewById(R.id.iv);
         iv2 = (ImageView) findViewById(R.id.iv2);
         iv3 = (ImageView) findViewById(R.id.iv3);
@@ -117,6 +130,24 @@ public class MainActivity extends BaseActivity implements FacilityView {
         jiaquan_tv = (TextView) findViewById(R.id.jiaquan_tv);
         tvoc = (TextView) findViewById(R.id.tvoc);
         tvoc_tv = (TextView) findViewById(R.id.tvoc_tv);
+        if (SpUtils.getBoolean("chart", true)) {
+
+            quxiantu_ll.setVisibility(View.VISIBLE);
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                //竖屏
+            } else {
+                //横屏
+                data_ll.setVisibility(View.VISIBLE);
+                co2_rl.setVisibility(SpUtils.getBoolean("o2", true) ? View.VISIBLE : View.GONE);
+                pm10_rl.setVisibility(SpUtils.getBoolean("pm10", true) ? View.VISIBLE : View.GONE);
+                jiaquan_rl.setVisibility(SpUtils.getBoolean("jiaquan", true) ? View.VISIBLE : View.GONE);
+                tvoc_rl.setVisibility(SpUtils.getBoolean("tvoc", true) ? View.VISIBLE : View.GONE);
+            }
+        } else {
+            quxiantu_ll.setVisibility(View.GONE);
+            data_ll.setVisibility(View.GONE);
+        }
+
 
         findViewById(R.id.main_set).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,7 +246,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
             if (deviceTime > 0)
                 handler.removeCallbacks(deviceRunnable);
             deviceTime = SpUtils.getInt("device", 15);
-           handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
+            handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
             //handler.postDelayed(deviceRunnable, 3000);
         }
         if (dataTime != SpUtils.getInt("data", 40)) {
@@ -244,11 +275,11 @@ public class MainActivity extends BaseActivity implements FacilityView {
             }
 
             if (listBean.getShidu() != null && !listBean.getShidu().trim().equals(""))
-                main_humidity.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu()+"%");
+                main_humidity.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu() + "%");
             else
                 main_humidity.setText("——");
             if (listBean.getWendu() != null && !listBean.getWendu().trim().equals(""))
-                main_temperature.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu()+"℃");
+                main_temperature.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu() + "℃");
             else
                 main_temperature.setText("——");
             if (listBean.getCo2() != null && !listBean.getCo2().equals("")) {
@@ -325,37 +356,38 @@ public class MainActivity extends BaseActivity implements FacilityView {
             public void run() {
                 handler.removeCallbacks(dataRunnable);
                 //切换设备
-                if (mList.size()-1 > mark) {
+                if (mList.size() - 1 > mark) {
                     mark++;
                     listBean = mList.get(mark);
-                     Log.e("MainAcitvity1", "切换设备:"+mList.size()+"" + mark + "" + listBean.getDeviceName());
+                    Log.e("MainAcitvity1", "切换设备:" + mList.size() + "" + mark + "" + listBean.getDeviceName());
                 } else if (mList.size() >= mark && mList.size() != 0) {
                     mark = 0;
                     listBean = mList.get(0);
-                     Log.e("MainAcitvity2", "切换设备" + listBean.getDeviceName());
+                    Log.e("MainAcitvity2", "切换设备" + listBean.getDeviceName());
                 } else {
                     listBean = null;
                 }
 
                 initdata();
                 MyApplication.newInstance().setListBean(listBean);
-                Log.e("MainAcitvity3", "切换设备"+listBean.getDeviceName()+":" + listBean.getDeviceid());
+                Log.e("MainAcitvity3", "切换设备" + listBean.getDeviceName() + ":" + listBean.getDeviceid());
                 Intent intent = new Intent();
                 intent.setAction(ACTION_BLE_NOTIFY_DATA);
                 sendBroadcast(intent);
                 handler.postDelayed(this, (deviceTime * 60 * 1000));
                 handler.postDelayed(dataRunnable, (dataTime * 1000));
-               // handler.postDelayed(this, 3000);
+                // handler.postDelayed(this, 3000);
 
             }
         };
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             MyApplication.newInstance().outLogin();
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
     }

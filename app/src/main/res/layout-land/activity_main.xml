@@ -48,14 +48,16 @@
                         android:text="飘 爱 云"
                         android:textColor="@color/white"
                         android:textSize="17sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
                         android:paddingStart="10dp"
                         android:text="发布时间:"
-                        android:layout_marginStart="20dp"
                         android:textColor="@color/white"
                         android:textSize="17sp" />
+
                     <TextClock
                         android:id="@+id/main_time"
                         android:layout_width="wrap_content"
@@ -63,10 +65,10 @@
 
                         android:format12Hour="yyyy-MM-dd  k:mm"
                         android:format24Hour="yyyy-MM-dd  k:mm"
-                        android:timeZone="GMT+0800"
                         android:paddingEnd="20dp"
                         android:textColor="@color/white"
-                        android:textSize="17sp" />
+                        android:textSize="17sp"
+                        android:timeZone="GMT+0800" />
                 </LinearLayout>
 
                 <Button
@@ -118,12 +120,14 @@
                             android:text="PM2.5"
                             android:textColor="@color/selected_background"
                             android:textSize="18sp" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="μg/m³"
                             android:textColor="@color/selected_background"
                             android:textSize="12sp" />
+
                         <TextView
                             android:id="@+id/main_pm_tv"
                             android:layout_width="wrap_content"
@@ -142,25 +146,31 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/pager"
+                <LinearLayout
+                    android:id="@+id/quxiantu_ll"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
-                    android:layout_weight="2"
-                    android:orientation="horizontal">
+                    android:layout_weight="2">
 
-                    <FrameLayout
-                        android:id="@+id/main_fl"
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/pager"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/img_soft_opaque" />
-                </android.support.v4.view.ViewPager>
+                        android:orientation="horizontal">
+                        <FrameLayout
+                            android:id="@+id/main_fl"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/img_soft_opaque" />
+                    </android.support.v4.view.ViewPager>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/data_ll"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.2"
@@ -206,6 +216,7 @@
                 </LinearLayout>
 
                 <RelativeLayout
+                    android:id="@+id/co2_rl"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
@@ -266,6 +277,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/pm10_rl"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
@@ -326,6 +338,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/jiaquan_rl"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"
@@ -386,6 +399,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/tvoc_rl"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="5dp"

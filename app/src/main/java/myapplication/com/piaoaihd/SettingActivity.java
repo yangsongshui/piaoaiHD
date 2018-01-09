@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.support.annotation.IdRes;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,9 +15,10 @@ import myapplication.com.piaoaihd.util.SpUtils;
 
 import static myapplication.com.piaoaihd.R.id.data_20;
 
-public class SettingActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener, View.OnClickListener {
+public class SettingActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
     RadioGroup device_rg, data_rg;
     ImageButton set_back_ib;
+    CheckBox cb_chart, cb_jiaquan, cb_tvoc, cb_pm10, cb_o2, cb_pm25;
     Button out_tv;
     public static final int RESULT_CODE_QR_SCAN = 0xA1;
 
@@ -36,6 +39,12 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         findViewById(R.id.device_30).setOnFocusChangeListener(this);
         findViewById(R.id.device_1h).setOnFocusChangeListener(this);
         findViewById(R.id.device_2h).setOnFocusChangeListener(this);
+        cb_chart = (CheckBox) findViewById(R.id.cb_chart);
+        cb_jiaquan = (CheckBox) findViewById(R.id.cb_jiaquan);
+        cb_tvoc = (CheckBox) findViewById(R.id.cb_tvoc);
+        cb_pm10 = (CheckBox) findViewById(R.id.cb_pm10);
+        cb_o2 = (CheckBox) findViewById(R.id.cb_o2);
+        cb_pm25 = (CheckBox) findViewById(R.id.cb_pm25);
         out_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -48,6 +57,12 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 }
             }
         });
+        cb_pm25.setChecked(SpUtils.getBoolean("pm25", true));
+        cb_chart.setChecked(SpUtils.getBoolean("chart", true));
+        cb_jiaquan.setChecked(SpUtils.getBoolean("jiaquan", true));
+        cb_o2.setChecked(SpUtils.getBoolean("o2", true));
+        cb_pm10.setChecked(SpUtils.getBoolean("pm10", true));
+        cb_tvoc.setChecked(SpUtils.getBoolean("tvoc", true));
         out_tv.setOnClickListener(this);
         findViewById(data_20).setOnFocusChangeListener(this);
         findViewById(R.id.data_40).setOnFocusChangeListener(this);
@@ -59,6 +74,13 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         set_back_ib.setOnClickListener(this);
         data_rg.setOnCheckedChangeListener(this);
         device_rg.setOnCheckedChangeListener(this);
+
+        cb_pm25.setOnCheckedChangeListener(this);
+        cb_jiaquan.setOnCheckedChangeListener(this);
+        cb_tvoc.setOnCheckedChangeListener(this);
+        cb_pm10.setOnCheckedChangeListener(this);
+        cb_o2.setOnCheckedChangeListener(this);
+        cb_chart.setOnCheckedChangeListener(this);
 
     }
 
@@ -161,5 +183,29 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
             this.setResult(RESULT_CODE_QR_SCAN);
         }
         finish();
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()) {
+            case R.id.cb_pm25:
+                SpUtils.putBoolean("pm25", isChecked);
+                break;
+            case R.id.cb_chart:
+                SpUtils.putBoolean("chart", isChecked);
+                break;
+            case R.id.cb_jiaquan:
+                SpUtils.putBoolean("jiaquan", isChecked);
+                break;
+            case R.id.cb_o2:
+                SpUtils.putBoolean("o2", isChecked);
+                break;
+            case R.id.cb_pm10:
+                SpUtils.putBoolean("pm10", isChecked);
+                break;
+            case R.id.cb_tvoc:
+                SpUtils.putBoolean("tvoc", isChecked);
+                break;
+        }
     }
 }

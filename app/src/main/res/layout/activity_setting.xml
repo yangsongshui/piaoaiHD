@@ -10,24 +10,26 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageButton
             android:id="@+id/set_back_ib"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:background="@null"
             android:layout_centerVertical="true"
-            android:paddingStart="25dp"
-            android:paddingEnd="25dp"
-            android:paddingTop="10dp"
+            android:background="@null"
             android:paddingBottom="10dp"
-            android:src="@drawable/btn_back_white"/>
+            android:paddingEnd="25dp"
+            android:paddingStart="25dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/btn_back_white" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:padding="20dp"
-            android:text="时间设置"
+            android:text="设置"
             android:textColor="@color/white"
             android:textSize="30sp" />
     </RelativeLayout>
@@ -51,41 +53,41 @@
             android:id="@+id/device_1"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="1分钟" />
 
         <RadioButton
             android:id="@+id/device_15"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="15分钟" />
 
         <RadioButton
             android:id="@+id/device_30"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="30分钟" />
 
         <RadioButton
             android:id="@+id/device_1h"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="1小时" />
 
         <RadioButton
             android:id="@+id/device_2h"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
             android:text="2小时" />
     </RadioGroup>
 
@@ -108,50 +110,115 @@
             android:id="@+id/data_20"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="20秒" />
 
         <RadioButton
             android:id="@+id/data_40"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="40秒" />
 
         <RadioButton
             android:id="@+id/data_1"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="1分钟" />
 
         <RadioButton
             android:id="@+id/data_2"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="2分钟" />
 
         <RadioButton
             android:id="@+id/data_5"
             style="@style/setRadioButton2"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
             android:text="5分钟" />
     </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="显示选项"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_pm25"
+            style="@style/setCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PM2.5" />
+
+        <CheckBox
+            android:id="@+id/cb_o2"
+            style="@style/setCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ECO₂" />
+
+        <CheckBox
+            android:id="@+id/cb_pm10"
+            style="@style/setCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PM10" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cb_tvoc"
+            style="@style/setCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TVOC" />
+
+        <CheckBox
+            android:id="@+id/cb_jiaquan"
+            style="@style/setCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="甲醛" />
+
+        <CheckBox
+            android:id="@+id/cb_chart"
+            style="@style/setCb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="曲线图" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/out_tv"
         style="@style/loginTv"
         android:layout_width="300dp"
-        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="退出" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="退出登陆" />
 </LinearLayout>
