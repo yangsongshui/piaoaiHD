@@ -130,23 +130,6 @@ public class MainActivity extends BaseActivity implements FacilityView {
         jiaquan_tv = (TextView) findViewById(R.id.jiaquan_tv);
         tvoc = (TextView) findViewById(R.id.tvoc);
         tvoc_tv = (TextView) findViewById(R.id.tvoc_tv);
-        if (SpUtils.getBoolean("chart", true)) {
-
-            quxiantu_ll.setVisibility(View.VISIBLE);
-            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                //竖屏
-            } else {
-                //横屏
-                data_ll.setVisibility(View.VISIBLE);
-                co2_rl.setVisibility(SpUtils.getBoolean("o2", true) ? View.VISIBLE : View.GONE);
-                pm10_rl.setVisibility(SpUtils.getBoolean("pm10", true) ? View.VISIBLE : View.GONE);
-                jiaquan_rl.setVisibility(SpUtils.getBoolean("jiaquan", true) ? View.VISIBLE : View.GONE);
-                tvoc_rl.setVisibility(SpUtils.getBoolean("tvoc", true) ? View.VISIBLE : View.GONE);
-            }
-        } else {
-            quxiantu_ll.setVisibility(View.GONE);
-            data_ll.setVisibility(View.GONE);
-        }
 
 
         findViewById(R.id.main_set).setOnClickListener(new View.OnClickListener() {
@@ -255,6 +238,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
             dataTime = SpUtils.getInt("data", 40);
             handler.postDelayed(dataRunnable, (dataTime * 1000));
         }
+        inView();
     }
 
     @Override
@@ -392,4 +376,23 @@ public class MainActivity extends BaseActivity implements FacilityView {
         }
     }
 
+    private void inView() {
+        if (SpUtils.getBoolean("chart", true)) {
+            quxiantu_ll.setVisibility(View.VISIBLE);
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                //竖屏
+            } else {
+                //横屏
+             //   data_ll.setVisibility(View.VISIBLE);
+                co2_rl.setVisibility(SpUtils.getBoolean("o2", true) ? View.VISIBLE : View.GONE);
+                pm10_rl.setVisibility(SpUtils.getBoolean("pm10", true) ? View.VISIBLE : View.GONE);
+                jiaquan_rl.setVisibility(SpUtils.getBoolean("jiaquan", true) ? View.VISIBLE : View.GONE);
+                tvoc_rl.setVisibility(SpUtils.getBoolean("tvoc", true) ? View.VISIBLE : View.GONE);
+            }
+        } else {
+            quxiantu_ll.setVisibility(View.GONE);
+            data_ll.setVisibility(View.GONE);
+        }
+
+    }
 }

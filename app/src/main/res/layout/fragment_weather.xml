@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="PM2.5"
                 android:textColor="@color/selected_background"
-                android:textSize="30sp" />
+                android:textSize="35sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="——"
                 android:textColor="@color/selected_background"
-                android:textSize="30sp" />
+                android:textSize="35sp" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -309,7 +309,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/SO2"
                     android:layout_marginTop="10dp"
-                    android:text="μg/m³"
+                    android:text="ug/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 
@@ -361,7 +361,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/O3"
                     android:layout_marginTop="10dp"
-                    android:text="μg/m³"
+                    android:text="ug/m³"
                     android:textColor="@color/white"
                     android:textSize="40sp" />
 

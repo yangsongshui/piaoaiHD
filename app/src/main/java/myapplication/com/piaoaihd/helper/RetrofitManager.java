@@ -104,7 +104,6 @@ public class RetrofitManager {
                         .removeHeader("Pragma").build();
             } else {
                 return originalResponse.newBuilder()
-
                         .header("Cache-Control", "public, only-if-cached, max-stale=" + CACHE_STALE_LONG)
                         .removeHeader("Pragma").build();
             }
