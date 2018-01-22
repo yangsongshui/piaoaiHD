@@ -60,7 +60,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         cb_pm25.setChecked(SpUtils.getBoolean("pm25", true));
         cb_chart.setChecked(SpUtils.getBoolean("chart", true));
         cb_jiaquan.setChecked(SpUtils.getBoolean("jiaquan", true));
-        cb_o2.setChecked(SpUtils.getBoolean("o2", true));
+        cb_o2.setChecked(SpUtils.getBoolean("co2", true));
         cb_pm10.setChecked(SpUtils.getBoolean("pm10", true));
         cb_tvoc.setChecked(SpUtils.getBoolean("tvoc", true));
         out_tv.setOnClickListener(this);
@@ -198,7 +198,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 SpUtils.putBoolean("jiaquan", isChecked);
                 break;
             case R.id.cb_o2:
-                SpUtils.putBoolean("o2", isChecked);
+                SpUtils.putBoolean("co2", isChecked);
                 break;
             case R.id.cb_pm10:
                 SpUtils.putBoolean("pm10", isChecked);

@@ -174,7 +174,7 @@
             style="@style/setCb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ECO₂" />
+            android:text="CO₂" />
 
         <CheckBox
             android:id="@+id/cb_pm10"

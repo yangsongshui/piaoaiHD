@@ -30,7 +30,21 @@ public class Constan {
             imageView.setImageResource(R.drawable.fang_7);
         }
     }
-
+    public static void TVOC(TextView textView, double tvoc,LinearLayout linearLayout) {
+        if (tvoc >= 0 && tvoc <= 0.6) {
+            textView.setText("良好");
+            linearLayout.setBackgroundResource(R.drawable.fang_1);
+        } else if (tvoc > 0.6 && tvoc <= 1.0) {
+            textView.setText("轻度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_2);
+        } else if (tvoc > 1.0 && tvoc <= 1.6) {
+            textView.setText("中度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_5);
+        } else if (tvoc > 1.6) {
+            textView.setText("重度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_7);
+        }
+    }
     public static void PM2_5(TextView textView, double pm, LinearLayout linearLayout) {
         //Log.e("PM2_5", " " + pm);
         if (pm >= 0 && pm <= 35) {
@@ -74,6 +88,25 @@ public class Constan {
         }
     }
 
+    public static void PM10(TextView textView, double pm, LinearLayout linearLayout) {
+        //Log.e("PM10", " " + pm);
+        if (pm >= 0 && pm <= 50) {
+            textView.setText("优");
+            linearLayout.setBackgroundResource(R.drawable.fang_1);
+        } else if (pm > 51 && pm <= 100) {
+            textView.setText("良");
+            linearLayout.setBackgroundResource(R.drawable.fang_2);
+        } else if (pm > 100 && pm <= 200) {
+            textView.setText("轻度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_3);
+        } else if (pm > 200 && pm <= 300) {
+            textView.setText("中度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_5);
+        } else if (pm > 300) {
+            textView.setText("重度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_7);
+        }
+    }
     public static void CO2(TextView textView, double co2, ImageView imageView) {
         if (co2 >= 0 && co2 <= 700) {
             textView.setText("清新");
@@ -89,8 +122,22 @@ public class Constan {
             imageView.setImageResource(R.drawable.fang_7);
         }
     }
-
-    public static void jiaquan(TextView textView, double jiaquan, ImageView imageView) {
+    public static void CO2(TextView textView, double co2, LinearLayout linearLayout) {
+        if (co2 >= 0 && co2 <= 700) {
+            textView.setText("清新");
+            linearLayout.setBackgroundResource(R.drawable.fang_1);
+        } else if (co2 > 700 && co2 <= 1000) {
+            textView.setText("较好");
+            linearLayout.setBackgroundResource(R.drawable.fang_2);
+        } else if (co2 > 1000 && co2 <= 1500) {
+            textView.setText("较浊");
+            linearLayout.setBackgroundResource(R.drawable.fang_5);
+        } else if (co2 > 1500) {
+            textView.setText("浑浊");
+            linearLayout.setBackgroundResource(R.drawable.fang_7);
+        }
+    }
+       public static void jiaquan(TextView textView, double jiaquan, ImageView imageView) {
         if (jiaquan >= 0 && jiaquan <= 0.03) {
             textView.setText("优");
             imageView.setImageResource(R.drawable.fang_1);
@@ -109,6 +156,28 @@ public class Constan {
         } else if (jiaquan > 0.8) {
             textView.setText("严重污染");
             imageView.setImageResource(R.drawable.fang_7);
+        }
+    }
+
+    public static void jiaquan(TextView textView, double jiaquan,  LinearLayout linearLayout) {
+        if (jiaquan >= 0 && jiaquan <= 0.03) {
+            textView.setText("优");
+            linearLayout.setBackgroundResource(R.drawable.fang_1);
+        } else if (jiaquan > 0.03 && jiaquan <= 0.1) {
+            textView.setText("良");
+            linearLayout.setBackgroundResource(R.drawable.fang_2);
+        } else if (jiaquan > 0.1 && jiaquan <= 0.2) {
+            textView.setText("轻度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_3);
+        } else if (jiaquan > 0.2 && jiaquan <= 0.3) {
+            textView.setText("中度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_4);
+        } else if (jiaquan > 0.3 && jiaquan <= 0.8) {
+            textView.setText("重度污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_5);
+        } else if (jiaquan > 0.8) {
+            textView.setText("严重污染");
+            linearLayout.setBackgroundResource(R.drawable.fang_7);
         }
     }
 

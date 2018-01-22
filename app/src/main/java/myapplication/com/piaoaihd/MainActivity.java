@@ -20,7 +20,6 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -51,10 +50,14 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private int RESULT_OK = 0xA1;
     private List<Fragment> frags;
     private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
+    private TextView co2_1, co2_tv1, pm10_1, pm10_tv1, jiaquan_1, jiaquan_tv1, tvoc_1, tvoc_tv1;
+    private TextView co2_2, co2_tv2, pm10_2, pm10_tv2, jiaquan_2, jiaquan_tv2, tvoc_2, tvoc_tv2;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
 
     private ImageView iv, iv2, iv3, iv4;
     private LinearLayout pm_ll, quxiantu_ll, data_ll;
+    private LinearLayout co2_ll, pm10_ll, jiaquan_ll, tvoc_ll;
+    private LinearLayout co2_ll2, pm10_ll2, jiaquan_ll2, tvoc_ll2, main_ll;
     private RelativeLayout co2_rl, pm10_rl, jiaquan_rl, tvoc_rl;
     private ViewPager pager;
     private Handler handler;
@@ -110,6 +113,17 @@ public class MainActivity extends BaseActivity implements FacilityView {
         pm_ll = (LinearLayout) findViewById(R.id.pm_ll);
         quxiantu_ll = (LinearLayout) findViewById(R.id.quxiantu_ll);
         data_ll = (LinearLayout) findViewById(R.id.data_ll);
+        main_ll = (LinearLayout) findViewById(R.id.main_ll);
+
+        co2_ll = (LinearLayout) findViewById(R.id.co2_ll);
+        pm10_ll = (LinearLayout) findViewById(R.id.pm10_ll);
+        jiaquan_ll = (LinearLayout) findViewById(R.id.jiaquan_ll);
+        tvoc_ll = (LinearLayout) findViewById(R.id.tvoc_ll);
+
+        co2_ll2 = (LinearLayout) findViewById(R.id.co2_ll2);
+        pm10_ll2 = (LinearLayout) findViewById(R.id.pm10_ll2);
+        jiaquan_ll2 = (LinearLayout) findViewById(R.id.jiaquan_ll2);
+        tvoc_ll2 = (LinearLayout) findViewById(R.id.tvoc_ll2);
 
         co2_rl = (RelativeLayout) findViewById(R.id.co2_rl);
         pm10_rl = (RelativeLayout) findViewById(R.id.pm10_rl);
@@ -131,6 +145,23 @@ public class MainActivity extends BaseActivity implements FacilityView {
         tvoc = (TextView) findViewById(R.id.tvoc);
         tvoc_tv = (TextView) findViewById(R.id.tvoc_tv);
 
+        co2_1 = (TextView) findViewById(R.id.co2_1);
+        co2_tv1 = (TextView) findViewById(R.id.co2_tv2);
+        pm10_1 = (TextView) findViewById(R.id.pm10_1);
+        pm10_tv1 = (TextView) findViewById(R.id.pm10_tv1);
+        jiaquan_1 = (TextView) findViewById(R.id.jiaquan_1);
+        jiaquan_tv1 = (TextView) findViewById(R.id.jiaquan_tv1);
+        tvoc_1 = (TextView) findViewById(R.id.tvoc_1);
+        tvoc_tv1 = (TextView) findViewById(R.id.tvoc_tv1);
+
+        co2_2 = (TextView) findViewById(R.id.co2_2);
+        co2_tv2 = (TextView) findViewById(R.id.co2_tv2);
+        pm10_2 = (TextView) findViewById(R.id.pm10_2);
+        pm10_tv2 = (TextView) findViewById(R.id.pm10_tv2);
+        jiaquan_2 = (TextView) findViewById(R.id.jiaquan_2);
+        jiaquan_tv2 = (TextView) findViewById(R.id.jiaquan_tv2);
+        tvoc_2 = (TextView) findViewById(R.id.tvoc_2);
+        tvoc_tv2 = (TextView) findViewById(R.id.tvoc_tv2);
 
         findViewById(R.id.main_set).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,22 +223,12 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     @Override
     public void loadDataError(Throwable throwable) {
-        //Log.e(TAG, throwable.toString());
+        Log.e(TAG, throwable.toString());
 
         toastor.showSingletonToast("网络连接异常");
 
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_CENTER:
-                //toastor.showSingletonToast("你按下中间键");
-
-                break;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     @Override
     protected void onDestroy() {
@@ -249,7 +270,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     private void initdata() {
         if (listBean != null) {
-            main_place.setText(listBean.getDeviceName().trim().equals("") ? "——" : listBean.getDeviceName());
+            if (listBean.getDeviceName() == null || listBean.getDeviceName().trim().equals(""))
+                main_place.setText("——");
+            else
+                main_place.setText(listBean.getDeviceName());
             if (listBean.get_$Pm25267() == null || listBean.get_$Pm25267().trim().equals("")) {
                 main_pm.setText("——");
                 main_pm_tv.setText("——");
@@ -268,46 +292,98 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 main_temperature.setText("——");
             if (listBean.getCo2() != null && !listBean.getCo2().equals("")) {
                 Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()), iv);
+                Constan.CO2(co2_tv1, Double.parseDouble(listBean.getCo2()), co2_ll);
+                Constan.CO2(co2_tv2, Double.parseDouble(listBean.getCo2()), co2_ll2);
                 co2.setText(listBean.getCo2().trim().equals("0") ? "——" : listBean.getCo2());
+                co2_1.setText(listBean.getCo2().trim().equals("0") ? "——" : listBean.getCo2());
+                co2_2.setText(listBean.getCo2().trim().equals("0") ? "——" : listBean.getCo2());
             } else {
                 co2.setText("——");
+                co2_1.setText("——");
+                co2_2.setText("——");
                 co2_tv.setText("——");
+                co2_tv1.setText("——");
+                co2_tv2.setText("——");
             }
             if (listBean.getPm10() != null && !listBean.getPm10().equals("")) {
                 pm10.setText(listBean.getPm10().trim().equals("0") ? "——" : listBean.getPm10());
+                pm10_1.setText(listBean.getPm10().trim().equals("0") ? "——" : listBean.getPm10());
+                pm10_2.setText(listBean.getPm10().trim().equals("0") ? "——" : listBean.getPm10());
                 Constan.PM10(pm10_tv, Double.parseDouble(listBean.getPm10()), iv2);
+                Constan.PM10(pm10_tv1, Double.parseDouble(listBean.getPm10()), pm10_ll);
+                Constan.PM10(pm10_tv2, Double.parseDouble(listBean.getPm10()), pm10_ll2);
             } else {
                 pm10_tv.setText("——");
+                pm10_tv1.setText("——");
+                pm10_tv2.setText("——");
+                pm10_1.setText("——");
+                pm10_2.setText("——");
                 pm10.setText("——");
             }
             if (listBean.getJiaquan() != null && !listBean.getJiaquan().equals("")) {
                 jiaquan.setText(listBean.getJiaquan().trim().equals("0") ? "——" : listBean.getJiaquan());
+                jiaquan_1.setText(listBean.getJiaquan().trim().equals("0") ? "——" : listBean.getJiaquan());
+                jiaquan_2.setText(listBean.getJiaquan().trim().equals("0") ? "——" : listBean.getJiaquan());
                 Constan.jiaquan(jiaquan_tv, Double.parseDouble(listBean.getJiaquan()), iv3);
+                Constan.jiaquan(jiaquan_tv1, Double.parseDouble(listBean.getJiaquan()), jiaquan_ll);
+                Constan.jiaquan(jiaquan_tv2, Double.parseDouble(listBean.getJiaquan()), jiaquan_ll2);
             } else {
                 jiaquan_tv.setText("——");
+                jiaquan_tv2.setText("——");
+                jiaquan_tv1.setText("——");
                 jiaquan.setText("——");
+                jiaquan_1.setText("——");
+                jiaquan_2.setText("——");
             }
 
             if (listBean.getTvoc() != null && !listBean.getTvoc().equals("")) {
                 tvoc.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
+                tvoc_1.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
+                tvoc_2.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
                 Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
+                Constan.TVOC(tvoc_tv1, Double.parseDouble(listBean.getTvoc()), tvoc_ll);
+                Constan.TVOC(tvoc_tv2, Double.parseDouble(listBean.getTvoc()), tvoc_ll2);
             } else {
                 tvoc_tv.setText("——");
+                tvoc_tv2.setText("——");
+                tvoc_tv1.setText("——");
                 tvoc.setText("——");
+                tvoc_1.setText("——");
+                tvoc_2.setText("——");
             }
         } else {
             main_place.setText("——");
             main_pm_tv.setText("——");
             main_pm.setText("——");
             main_humidity.setText("——");
-            co2.setText("——");
-            co2_tv.setText("——");
-            pm10.setText("——");
-            pm10_tv.setText("——");
-            jiaquan.setText("——");
-            jiaquan_tv.setText("——");
-            tvoc.setText("——");
+
             tvoc_tv.setText("——");
+            tvoc_tv2.setText("——");
+            tvoc_tv1.setText("——");
+            tvoc.setText("——");
+            tvoc_1.setText("——");
+            tvoc_2.setText("——");
+
+            jiaquan_tv.setText("——");
+            jiaquan_tv2.setText("——");
+            jiaquan_tv1.setText("——");
+            jiaquan.setText("——");
+            jiaquan_1.setText("——");
+            jiaquan_2.setText("——");
+
+            pm10_tv.setText("——");
+            pm10_tv1.setText("——");
+            pm10_tv2.setText("——");
+            pm10_1.setText("——");
+            pm10_2.setText("——");
+            pm10.setText("——");
+
+            co2.setText("——");
+            co2_1.setText("——");
+            co2_2.setText("——");
+            co2_tv.setText("——");
+            co2_tv1.setText("——");
+            co2_tv2.setText("——");
         }
     }
 
@@ -377,21 +453,64 @@ public class MainActivity extends BaseActivity implements FacilityView {
     }
 
     private void inView() {
+        boolean pm25 = SpUtils.getBoolean("pm25", true);
+
+        boolean chart = SpUtils.getBoolean("chart", true);
+
+        boolean jiaquan = SpUtils.getBoolean("jiaquan", true);
+
+        boolean co2 = SpUtils.getBoolean("co2", true);
+
+        boolean pm10 = SpUtils.getBoolean("pm10", true);
+
+        boolean tvoc = SpUtils.getBoolean("tvoc", true);
+
         if (SpUtils.getBoolean("chart", true)) {
             quxiantu_ll.setVisibility(View.VISIBLE);
+            pager.setVisibility(View.VISIBLE);
+            data_ll.setVisibility(View.VISIBLE);
+            main_ll.setVisibility(View.VISIBLE);
+            co2_ll.setVisibility(View.GONE);
+            jiaquan_ll.setVisibility(View.GONE);
+            pm10_ll.setVisibility(View.GONE);
+            tvoc_ll.setVisibility(View.GONE);
             if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 //竖屏
             } else {
                 //横屏
-             //   data_ll.setVisibility(View.VISIBLE);
-                co2_rl.setVisibility(SpUtils.getBoolean("o2", true) ? View.VISIBLE : View.GONE);
-                pm10_rl.setVisibility(SpUtils.getBoolean("pm10", true) ? View.VISIBLE : View.GONE);
-                jiaquan_rl.setVisibility(SpUtils.getBoolean("jiaquan", true) ? View.VISIBLE : View.GONE);
-                tvoc_rl.setVisibility(SpUtils.getBoolean("tvoc", true) ? View.VISIBLE : View.GONE);
+                //   data_ll.setVisibility(View.VISIBLE);
+                co2_rl.setVisibility(co2 ? View.VISIBLE : View.GONE);
+                pm10_rl.setVisibility(pm10 ? View.VISIBLE : View.GONE);
+                jiaquan_rl.setVisibility(jiaquan ? View.VISIBLE : View.GONE);
+                tvoc_rl.setVisibility(tvoc ? View.VISIBLE : View.GONE);
+                pm_ll.setVisibility(pm25 ? View.VISIBLE : View.GONE);
             }
         } else {
-            quxiantu_ll.setVisibility(View.GONE);
+            pager.setVisibility(View.GONE);
             data_ll.setVisibility(View.GONE);
+            if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+                //竖屏
+                if (pm25 && jiaquan && co2 && pm10 && tvoc) {
+                } else {
+
+                }
+            } else {
+                if (pm25 && jiaquan && co2 && pm10 && tvoc) {
+                    main_ll.setVisibility(View.VISIBLE);
+                    quxiantu_ll.setVisibility(View.VISIBLE);
+                    co2_ll.setVisibility(View.GONE);
+                    jiaquan_ll.setVisibility(View.GONE);
+                    pm10_ll.setVisibility(View.GONE);
+                    tvoc_ll.setVisibility(View.GONE);
+                } else {
+                    quxiantu_ll.setVisibility(View.GONE);
+                    co2_ll.setVisibility(co2 ? View.VISIBLE : View.GONE);
+                    pm_ll.setVisibility(pm25 ? View.VISIBLE : View.GONE);
+                    jiaquan_ll.setVisibility(jiaquan ? View.VISIBLE : View.GONE);
+                    pm10_ll.setVisibility(pm10 ? View.VISIBLE : View.GONE);
+                    tvoc_ll.setVisibility(tvoc ? View.VISIBLE : View.GONE);
+                }
+            }
         }
 
     }
