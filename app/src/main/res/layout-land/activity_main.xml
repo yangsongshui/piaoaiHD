@@ -100,8 +100,8 @@
                         android:id="@+id/main_place"
                         style="@style/TextBg"
                         android:layout_width="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:text="会议室1(室内)"
                         android:textSize="14sp" />
 
@@ -151,16 +151,18 @@
                                 android:textColor="@color/selected_background"
                                 android:textSize="18sp" />
                         </LinearLayout>
-
+                            <!--折线图隐藏并且隐藏其中一个数据界面-->
                         <LinearLayout
+                            android:id="@+id/co2_ll"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginStart="10dp"
                             android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/heng_1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -177,6 +179,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/co2_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -184,6 +187,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
+                                android:id="@+id/co2_tv1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -192,6 +196,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/pm10_ll"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_marginTop="10dp"
@@ -215,6 +220,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/pm10_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -222,6 +228,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
+                                android:id="@+id/pm10_tv1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -230,13 +237,15 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/jiaquan_ll"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
-                            android:layout_marginTop="10dp"
                             android:layout_marginEnd="10dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/heng_1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -253,6 +262,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/jiaquan_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -260,6 +270,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
+                                android:id="@+id/jiaquan_tv1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -268,12 +279,14 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/tvoc_ll"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_marginTop="10dp"
                             android:background="@drawable/heng_1"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -290,6 +303,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tvoc_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -297,6 +311,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
+                                android:id="@+id/tvoc_tv1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -314,15 +329,13 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_weight="2"
-                    android:orientation="vertical"
-                    android:visibility="gone">
+                    android:orientation="vertical">
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/pager"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:orientation="horizontal">
 
                         <FrameLayout
                             android:id="@+id/main_fl"
@@ -330,8 +343,9 @@
                             android:layout_height="match_parent"
                             android:background="@color/img_soft_opaque" />
                     </android.support.v4.view.ViewPager>
-
+                    <!--仅隐藏折线图界面-->
                     <LinearLayout
+                        android:id="@+id/main_ll"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -339,6 +353,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/co2_ll2"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_marginEnd="40dp"
@@ -348,7 +363,6 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="CO₂"
@@ -363,6 +377,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="co2_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -370,6 +385,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
+                                android:id="co2_tv2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -378,6 +394,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/pm10_ll2"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_marginStart="40dp"
@@ -425,6 +442,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
+                            android:id="@+id/jiaquan_ll2"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_marginEnd="40dp"
@@ -441,6 +459,7 @@
                                 android:textSize="18sp" />
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="mg/m³"
@@ -448,6 +467,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/jiaquan_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -455,6 +475,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
+                                android:id="@+id/jiaquan_tv2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -463,6 +484,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/tvoc_ll2"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:layout_marginStart="40dp"
@@ -472,7 +494,6 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="TVOC"
@@ -487,6 +508,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/tvoc_2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -494,6 +516,7 @@
                                 android:textSize="40sp" />
 
                             <TextView
+                                android:id="@+id/tvoc_tv2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="——"
@@ -509,8 +532,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.2"
-                android:gravity="center"
-                android:visibility="gone">
+                android:gravity="center">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -550,7 +572,7 @@
                         android:layout_height="wrap_content"
                         android:text="湿度" />
                 </LinearLayout>
-
+                <!--折线图显示界面-->
                 <RelativeLayout
                     android:id="@+id/co2_rl"
                     android:layout_width="0dp"
