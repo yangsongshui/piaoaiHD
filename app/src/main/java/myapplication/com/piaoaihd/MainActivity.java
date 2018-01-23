@@ -49,13 +49,13 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private int REQUEST_CODE = 0x01;
     private int RESULT_OK = 0xA1;
     private List<Fragment> frags;
-    private TextView main_place, main_pm_tv, main_pm, main_temperature, main_humidity;
+    private TextView main_place, main_pm_tv, main_pm, main_temperature,main_temperature2, main_humidity,main_humidity2;
     private TextView co2_1, co2_tv1, pm10_1, pm10_tv1, jiaquan_1, jiaquan_tv1, tvoc_1, tvoc_tv1;
     private TextView co2_2, co2_tv2, pm10_2, pm10_tv2, jiaquan_2, jiaquan_tv2, tvoc_2, tvoc_tv2;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
 
     private ImageView iv, iv2, iv3, iv4;
-    private LinearLayout pm_ll, quxiantu_ll, data_ll;
+    private LinearLayout pm_ll, quxiantu_ll, data_ll,humidity_ll,temperature_ll;
     private LinearLayout co2_ll, pm10_ll, jiaquan_ll, tvoc_ll;
     private LinearLayout co2_ll2, pm10_ll2, jiaquan_ll2, tvoc_ll2, main_ll;
     private RelativeLayout co2_rl, pm10_rl, jiaquan_rl, tvoc_rl;
@@ -108,12 +108,17 @@ public class MainActivity extends BaseActivity implements FacilityView {
         main_pm_tv = (TextView) findViewById(R.id.main_pm_tv);
         main_pm = (TextView) findViewById(R.id.main_pm);
         main_temperature = (TextView) findViewById(R.id.main_temperature);
+        main_temperature2 = (TextView) findViewById(R.id.main_temperature2);
         main_humidity = (TextView) findViewById(R.id.main_humidity);
+        main_humidity2 = (TextView) findViewById(R.id.main_humidity2);
         textClock = (TextView) findViewById(R.id.main_time);
         pm_ll = (LinearLayout) findViewById(R.id.pm_ll);
         quxiantu_ll = (LinearLayout) findViewById(R.id.quxiantu_ll);
         data_ll = (LinearLayout) findViewById(R.id.data_ll);
         main_ll = (LinearLayout) findViewById(R.id.main_ll);
+        main_ll = (LinearLayout) findViewById(R.id.main_ll);
+        temperature_ll = (LinearLayout) findViewById(R.id.temperature_ll);
+        humidity_ll = (LinearLayout) findViewById(R.id.humidity_ll);
 
         co2_ll = (LinearLayout) findViewById(R.id.co2_ll);
         pm10_ll = (LinearLayout) findViewById(R.id.pm10_ll);
@@ -282,14 +287,20 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 main_pm_tv.setText(listBean.get_$Pm25267().trim().equals("0") ? "——" : listBean.get_$Pm25267());
             }
 
-            if (listBean.getShidu() != null && !listBean.getShidu().trim().equals(""))
+            if (listBean.getShidu() != null && !listBean.getShidu().trim().equals("")) {
                 main_humidity.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu() + "%");
-            else
+                main_humidity2.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu() + "%");
+            } else {
                 main_humidity.setText("——");
-            if (listBean.getWendu() != null && !listBean.getWendu().trim().equals(""))
+                main_humidity2.setText("——");
+            }
+            if (listBean.getWendu() != null && !listBean.getWendu().trim().equals("")) {
                 main_temperature.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu() + "℃");
-            else
+                main_temperature2.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu() + "℃");
+            } else {
                 main_temperature.setText("——");
+                main_temperature2.setText("——");
+            }
             if (listBean.getCo2() != null && !listBean.getCo2().equals("")) {
                 Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()), iv);
                 Constan.CO2(co2_tv1, Double.parseDouble(listBean.getCo2()), co2_ll);
@@ -469,6 +480,8 @@ public class MainActivity extends BaseActivity implements FacilityView {
             quxiantu_ll.setVisibility(View.VISIBLE);
             pager.setVisibility(View.VISIBLE);
             data_ll.setVisibility(View.VISIBLE);
+            temperature_ll.setVisibility(View.GONE);
+            humidity_ll.setVisibility(View.GONE);
             main_ll.setVisibility(View.VISIBLE);
             co2_ll.setVisibility(View.GONE);
             jiaquan_ll.setVisibility(View.GONE);
@@ -488,6 +501,8 @@ public class MainActivity extends BaseActivity implements FacilityView {
         } else {
             pager.setVisibility(View.GONE);
             data_ll.setVisibility(View.GONE);
+            temperature_ll.setVisibility(View.VISIBLE);
+            humidity_ll.setVisibility(View.VISIBLE);
             if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
                 //竖屏
                 if (pm25 && jiaquan && co2 && pm10 && tvoc) {
