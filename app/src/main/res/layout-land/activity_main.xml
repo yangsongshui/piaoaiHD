@@ -683,7 +683,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="20sp" />
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/co2_tv"
@@ -744,7 +744,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="20sp" />
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/pm10_tv"
@@ -805,7 +805,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="20sp" />
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/jiaquan_tv"
@@ -867,7 +867,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="——"
                                 android:textColor="@color/white"
-                                android:textSize="20sp" />
+                                android:textSize="16sp" />
 
                             <TextView
                                 android:id="@+id/tvoc_tv"
