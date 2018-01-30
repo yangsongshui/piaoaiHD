@@ -448,9 +448,13 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/weather_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="深圳市飘爱健康科技有限公司"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
             android:textColor="@color/white"
             android:textSize="12sp" />
 

@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 import myapplication.com.piaoaihd.api.ServiceApi;
 import myapplication.com.piaoaihd.base.BaseFragment;
 import myapplication.com.piaoaihd.bean.Weather;
+import myapplication.com.piaoaihd.util.SpUtils;
 import myapplication.com.piaoaihd.util.Toastor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +28,7 @@ import static myapplication.com.piaoaihd.util.Constan.WEATHER_URL;
 
 
 public class WeatherFragment extends BaseFragment {
-    TextView weather_pm, weatherTv, temperature_tv, city_tv, weather_pm_tv, weather_pm2_tv, weather_pm2, weather_no2_tv, weather_pm10_tv, weather_so2_tv, weather_o3_tv, weather_co_tv;
+    TextView weather_title, weather_pm, weatherTv, temperature_tv, city_tv, weather_pm_tv, weather_pm2_tv, weather_pm2, weather_no2_tv, weather_pm10_tv, weather_so2_tv, weather_o3_tv, weather_co_tv;
     ImageView weather_iv;
 
     //声明AMapLocationClient类对象
@@ -78,6 +79,7 @@ public class WeatherFragment extends BaseFragment {
         weather_so2_tv = (TextView) layout.findViewById(R.id.weather_so2_tv);
         weather_o3_tv = (TextView) layout.findViewById(R.id.weather_o3_tv);
         weather_co_tv = (TextView) layout.findViewById(R.id.weather_co_tv);
+        weather_title = (TextView) layout.findViewById(R.id.weather_title);
 
 
         weather_iv = (ImageView) layout.findViewById(R.id.weather_iv);
@@ -114,6 +116,14 @@ public class WeatherFragment extends BaseFragment {
     @Override
     protected int getContentView() {
         return R.layout.fragment_weather;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String title = SpUtils.getString("titile", "");
+        if (!title.isEmpty())
+            weather_title.setText(title);
     }
 
     //声明定位回调监听器

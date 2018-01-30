@@ -6,9 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import myapplication.com.piaoaihd.base.BaseActivity;
 import myapplication.com.piaoaihd.util.SpUtils;
@@ -19,7 +21,8 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
     RadioGroup device_rg, data_rg;
     ImageButton set_back_ib;
     CheckBox cb_chart, cb_jiaquan, cb_tvoc, cb_pm10, cb_o2, cb_pm25;
-    Button out_tv;
+    Button out_tv, ok_tv;
+    EditText title_et;
     public static final int RESULT_CODE_QR_SCAN = 0xA1;
 
     @Override
@@ -33,6 +36,8 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         data_rg = (RadioGroup) findViewById(R.id.data_rg);
         set_back_ib = (ImageButton) findViewById(R.id.set_back_ib);
         out_tv = (Button) findViewById(R.id.out_tv);
+        ok_tv = (Button) findViewById(R.id.ok_tv);
+        title_et = (EditText) findViewById(R.id.title_et);
         initView();
         findViewById(R.id.device_1).setOnFocusChangeListener(this);
         findViewById(R.id.device_15).setOnFocusChangeListener(this);
@@ -57,6 +62,18 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 }
             }
         });
+        ok_tv.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    ok_tv.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    ok_tv.setTextColor(getResources().getColor(R.color.white));
+                } else {
+                    ok_tv.setBackgroundColor(getResources().getColor(R.color.orange_transparent));
+                    ok_tv.setTextColor(getResources().getColor(R.color.black_opaque));
+                }
+            }
+        });
         cb_pm25.setChecked(SpUtils.getBoolean("pm25", true));
         cb_chart.setChecked(SpUtils.getBoolean("chart", true));
         cb_jiaquan.setChecked(SpUtils.getBoolean("jiaquan", true));
@@ -64,12 +81,12 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         cb_pm10.setChecked(SpUtils.getBoolean("pm10", true));
         cb_tvoc.setChecked(SpUtils.getBoolean("tvoc", true));
         out_tv.setOnClickListener(this);
+        ok_tv.setOnClickListener(this);
         findViewById(data_20).setOnFocusChangeListener(this);
         findViewById(R.id.data_40).setOnFocusChangeListener(this);
         findViewById(R.id.data_1).setOnFocusChangeListener(this);
         findViewById(R.id.data_2).setOnFocusChangeListener(this);
         findViewById(R.id.data_5).setOnFocusChangeListener(this);
-        findViewById(R.id.out_tv).setOnClickListener(this);
         set_back_ib.setOnFocusChangeListener(this);
         set_back_ib.setOnClickListener(this);
         data_rg.setOnCheckedChangeListener(this);
@@ -181,8 +198,15 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
     public void onClick(View view) {
         if (view.getId() == R.id.out_tv) {
             this.setResult(RESULT_CODE_QR_SCAN);
+            finish();
+        } else if (view.getId() == R.id.ok_tv) {
+            if (title_et.getText().toString().trim().length() > 0) {
+                SpUtils.putString("title", title_et.getText().toString());
+                Toast.makeText(this, "保存成功", Toast.LENGTH_SHORT).show();
+            }
+
         }
-        finish();
+
     }
 
     @Override

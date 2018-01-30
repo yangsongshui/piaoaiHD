@@ -42,12 +42,16 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/main_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingStart="20dp"
                         android:text="飘 爱 云"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
                         android:textColor="@color/white"
-                        android:textSize="17sp" />
+                        android:textSize="17sp"
+                        android:maxLines="1" />
 
                     <TextView
                         android:layout_width="wrap_content"

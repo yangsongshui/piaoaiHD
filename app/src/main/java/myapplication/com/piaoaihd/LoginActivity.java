@@ -86,19 +86,19 @@ public class LoginActivity extends BaseActivity implements LoginView {
                 break;
 
             case KeyEvent.KEYCODE_DPAD_DOWN:
-                toastor.showSingletonToast("你按下下方向键");
+              //  toastor.showSingletonToast("你按下下方向键");
                 break;
 
             case KeyEvent.KEYCODE_DPAD_LEFT:
-                toastor.showSingletonToast("你按下左方向键");
+               // toastor.showSingletonToast("你按下左方向键");
                 break;
 
             case KeyEvent.KEYCODE_DPAD_RIGHT:
-                toastor.showSingletonToast("你按下右方向键");
+               // toastor.showSingletonToast("你按下右方向键");
                 break;
 
             case KeyEvent.KEYCODE_DPAD_UP:
-                toastor.showSingletonToast("你按下上方向键");
+                //toastor.showSingletonToast("你按下上方向键");
                 break;
         }
         return super.onKeyDown(keyCode, event);

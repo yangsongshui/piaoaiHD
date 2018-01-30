@@ -20,6 +20,7 @@ import android.content.res.Configuration;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,13 +50,13 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private int REQUEST_CODE = 0x01;
     private int RESULT_OK = 0xA1;
     private List<Fragment> frags;
-    private TextView main_place, main_pm_tv, main_pm, main_temperature,main_temperature2, main_humidity,main_humidity2;
+    private TextView main_place, main_pm_tv, main_pm, main_temperature, main_temperature2, main_humidity, main_humidity2;
     private TextView co2_1, co2_tv1, pm10_1, pm10_tv1, jiaquan_1, jiaquan_tv1, tvoc_1, tvoc_tv1;
     private TextView co2_2, co2_tv2, pm10_2, pm10_tv2, jiaquan_2, jiaquan_tv2, tvoc_2, tvoc_tv2;
-    private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv;
+    private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv, main_title;
 
     private ImageView iv, iv2, iv3, iv4;
-    private LinearLayout pm_ll, quxiantu_ll, data_ll,humidity_ll,temperature_ll;
+    private LinearLayout pm_ll, quxiantu_ll, data_ll, humidity_ll, temperature_ll;
     private LinearLayout co2_ll, pm10_ll, jiaquan_ll, tvoc_ll;
     private LinearLayout co2_ll2, pm10_ll2, jiaquan_ll2, tvoc_ll2, main_ll;
     private RelativeLayout co2_rl, pm10_rl, jiaquan_rl, tvoc_rl;
@@ -106,6 +107,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         pager = (ViewPager) findViewById(R.id.pager);
         main_place = (TextView) findViewById(R.id.main_place);
         main_pm_tv = (TextView) findViewById(R.id.main_pm_tv);
+        main_title = (TextView) findViewById(R.id.main_title);
         main_pm = (TextView) findViewById(R.id.main_pm);
         main_temperature = (TextView) findViewById(R.id.main_temperature);
         main_temperature2 = (TextView) findViewById(R.id.main_temperature2);
@@ -250,7 +252,9 @@ public class MainActivity extends BaseActivity implements FacilityView {
         super.onResume();
         facilityPresenerImp.findUserDevice(MyApplication.newInstance().getUser().getResBody().getPhoneNumber());
         handler.postDelayed(myRunnable, 60000);
-
+        String title = SpUtils.getString("titile", "");
+        if (!title.isEmpty())
+            main_title.setText(title);
         if (deviceTime != SpUtils.getInt("device", 15)) {
             if (deviceTime > 0)
                 handler.removeCallbacks(deviceRunnable);
@@ -438,7 +442,6 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 } else {
                     listBean = null;
                 }
-
                 initdata();
                 MyApplication.newInstance().setListBean(listBean);
                 Log.e("MainAcitvity3", "切换设备" + listBean.getDeviceName() + ":" + listBean.getDeviceid());
@@ -528,5 +531,86 @@ public class MainActivity extends BaseActivity implements FacilityView {
             }
         }
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+
+            case KeyEvent.KEYCODE_DPAD_DOWN:
+                //切换设备
+                if (mList.size() - 1 > mark) {
+                    mark++;
+                    listBean = mList.get(mark);
+                    Log.e("MainAcitvity1", "切换设备:" + mList.size() + "" + mark + "" + listBean.getDeviceName());
+                } else if (mList.size() >= mark && mList.size() != 0) {
+                    mark = 0;
+                    listBean = mList.get(mark);
+                    Log.e("MainAcitvity2", "切换设备" + listBean.getDeviceName());
+                } else {
+                    listBean = null;
+                }
+                setMark();
+                break;
+
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                if (indext == 0) {
+                    indext = 4;
+                } else {
+                    indext--;
+                }
+                setPager(indext);
+                // toastor.showSingletonToast("你按下左方向键");
+                break;
+
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+                if (indext == 4) {
+                    indext = 0;
+                } else {
+                    indext++;
+                }
+                setPager(indext);
+
+                // toastor.showSingletonToast("你按下右方向键");
+                break;
+
+            case KeyEvent.KEYCODE_DPAD_UP:
+                if (mark > 0 && mList.size() != 0) {
+                    mark--;
+                    listBean = mList.get(mark);
+                    Log.e("MainAcitvity1", "切换设备:" + mList.size() + "" + mark + "" + listBean.getDeviceName());
+                } else if (mark == 0 && mList.size() != 0) {
+                    mark = mList.size() - 1;
+                    listBean = mList.get(mark);
+                    Log.e("MainAcitvity2", "切换设备" + listBean.getDeviceName());
+                } else {
+                    listBean = null;
+                }
+                setMark();
+                //toastor.showSingletonToast("你按下上方向键");
+                break;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void setPager(int indext) {
+        handler.removeCallbacks(dataRunnable);
+        pager.setCurrentItem(indext);
+        //切换页面历史数据
+        handler.postDelayed(dataRunnable, (dataTime * 1000));
+    }
+
+    private void setMark() {
+        handler.removeCallbacks(deviceRunnable);
+        handler.removeCallbacks(dataRunnable);
+
+        initdata();
+        MyApplication.newInstance().setListBean(listBean);
+        Log.e("MainAcitvity3", "切换设备" + listBean.getDeviceName() + ":" + listBean.getDeviceid());
+        Intent intent = new Intent();
+        intent.setAction(ACTION_BLE_NOTIFY_DATA);
+        sendBroadcast(intent);
+        handler.postDelayed(deviceRunnable, (deviceTime * 60 * 1000));
+        handler.postDelayed(dataRunnable, (dataTime * 1000));
     }
 }
