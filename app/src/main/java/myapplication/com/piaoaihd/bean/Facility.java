@@ -78,6 +78,7 @@ public class Facility implements Serializable{
             private String deviceid;
             private String deviceName;
             private String type;
+            private String statusDevice;
             private String devicePosition;
             @SerializedName("pm2.5")
             private String _$Pm25267; // FIXME check this code
@@ -202,6 +203,14 @@ public class Facility implements Serializable{
 
             public void setNum(int num) {
                 this.num = num;
+            }
+
+            public String getStatusDevice() {
+                return statusDevice;
+            }
+
+            public void setStatusDevice(String statusDevice) {
+                this.statusDevice = statusDevice;
             }
         }
     }

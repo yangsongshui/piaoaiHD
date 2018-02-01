@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private int REQUEST_CODE = 0x01;
     private int RESULT_OK = 0xA1;
     private List<Fragment> frags;
-    private TextView main_place, main_pm_tv, main_pm, main_temperature, main_temperature2, main_humidity, main_humidity2;
+    private TextView main_place, main_pm_tv, main_pm, main_temperature, main_temperature2, main_humidity, main_humidity2, main_state;
     private TextView co2_1, co2_tv1, pm10_1, pm10_tv1, jiaquan_1, jiaquan_tv1, tvoc_1, tvoc_tv1;
     private TextView co2_2, co2_tv2, pm10_2, pm10_tv2, jiaquan_2, jiaquan_tv2, tvoc_2, tvoc_tv2;
     private TextView co2, co2_tv, pm10, pm10_tv, jiaquan, jiaquan_tv, tvoc, tvoc_tv, main_title;
@@ -109,6 +109,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         main_pm_tv = (TextView) findViewById(R.id.main_pm_tv);
         main_title = (TextView) findViewById(R.id.main_title);
         main_pm = (TextView) findViewById(R.id.main_pm);
+        main_state = (TextView) findViewById(R.id.main_state);
         main_temperature = (TextView) findViewById(R.id.main_temperature);
         main_temperature2 = (TextView) findViewById(R.id.main_temperature2);
         main_humidity = (TextView) findViewById(R.id.main_humidity);
@@ -279,39 +280,43 @@ public class MainActivity extends BaseActivity implements FacilityView {
 
     private void initdata() {
         if (listBean != null) {
-            if (listBean.getDeviceName() == null || listBean.getDeviceName().trim().equals(""))
+            if (listBean.getDeviceName() == null || listBean.getDeviceName().trim().equals("")) {
                 main_place.setText("——");
-            else
+                main_state.setText("");
+            } else {
                 main_place.setText(listBean.getDeviceName());
-            if (listBean.get_$Pm25267() == null || listBean.get_$Pm25267().trim().equals("")) {
+                main_state.setText(listBean.getStatusDevice());
+            }
+
+            if (listBean.get_$Pm25267() == null || listBean.get_$Pm25267().trim().equals("")&& listBean.getStatusDevice().equals("开启")) {
                 main_pm.setText("——");
                 main_pm_tv.setText("——");
             } else {
                 Constan.PM2_5(main_pm, Double.parseDouble(listBean.get_$Pm25267()), pm_ll);
-                main_pm_tv.setText(listBean.get_$Pm25267().trim().equals("0") ? "——" : listBean.get_$Pm25267());
+                main_pm_tv.setText(listBean.get_$Pm25267());
             }
 
-            if (listBean.getShidu() != null && !listBean.getShidu().trim().equals("")) {
-                main_humidity.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu() + "%");
-                main_humidity2.setText(listBean.getShidu().trim().equals("0") ? "——" : listBean.getShidu() + "%");
+            if (listBean.getShidu() != null && !listBean.getShidu().trim().equals("")&& listBean.getStatusDevice().equals("开启")) {
+                main_humidity.setText(listBean.getShidu() + "%");
+                main_humidity2.setText(listBean.getShidu() + "%");
             } else {
                 main_humidity.setText("——");
                 main_humidity2.setText("——");
             }
-            if (listBean.getWendu() != null && !listBean.getWendu().trim().equals("")) {
-                main_temperature.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu() + "℃");
-                main_temperature2.setText(listBean.getWendu().trim().equals("0") ? "——" : listBean.getWendu() + "℃");
+            if (listBean.getWendu() != null && !listBean.getWendu().trim().equals("") && listBean.getStatusDevice().equals("开启")) {
+                main_temperature.setText( listBean.getWendu() + "℃");
+                main_temperature2.setText( listBean.getWendu() + "℃");
             } else {
                 main_temperature.setText("——");
                 main_temperature2.setText("——");
             }
-            if (listBean.getCo2() != null && !listBean.getCo2().equals("")) {
+            if (listBean.getCo2() != null && !listBean.getCo2().equals("")&& listBean.getStatusDevice().equals("开启")) {
                 Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()), iv);
                 Constan.CO2(co2_tv1, Double.parseDouble(listBean.getCo2()), co2_ll);
                 Constan.CO2(co2_tv2, Double.parseDouble(listBean.getCo2()), co2_ll2);
-                co2.setText(listBean.getCo2().trim().equals("0") ? "——" : listBean.getCo2());
-                co2_1.setText(listBean.getCo2().trim().equals("0") ? "——" : listBean.getCo2());
-                co2_2.setText(listBean.getCo2().trim().equals("0") ? "——" : listBean.getCo2());
+                co2.setText(listBean.getCo2());
+                co2_1.setText(listBean.getCo2());
+                co2_2.setText(listBean.getCo2());
             } else {
                 co2.setText("——");
                 co2_1.setText("——");
@@ -320,10 +325,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 co2_tv1.setText("——");
                 co2_tv2.setText("——");
             }
-            if (listBean.getPm10() != null && !listBean.getPm10().equals("")) {
-                pm10.setText(listBean.getPm10().trim().equals("0") ? "——" : listBean.getPm10());
-                pm10_1.setText(listBean.getPm10().trim().equals("0") ? "——" : listBean.getPm10());
-                pm10_2.setText(listBean.getPm10().trim().equals("0") ? "——" : listBean.getPm10());
+            if (listBean.getPm10() != null && !listBean.getPm10().equals("")&& listBean.getStatusDevice().equals("开启")) {
+                pm10.setText( listBean.getPm10());
+                pm10_1.setText( listBean.getPm10());
+                pm10_2.setText( listBean.getPm10());
                 Constan.PM10(pm10_tv, Double.parseDouble(listBean.getPm10()), iv2);
                 Constan.PM10(pm10_tv1, Double.parseDouble(listBean.getPm10()), pm10_ll);
                 Constan.PM10(pm10_tv2, Double.parseDouble(listBean.getPm10()), pm10_ll2);
@@ -335,10 +340,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 pm10_2.setText("——");
                 pm10.setText("——");
             }
-            if (listBean.getJiaquan() != null && !listBean.getJiaquan().equals("")) {
-                jiaquan.setText(listBean.getJiaquan().trim().equals("0") ? "——" : listBean.getJiaquan());
-                jiaquan_1.setText(listBean.getJiaquan().trim().equals("0") ? "——" : listBean.getJiaquan());
-                jiaquan_2.setText(listBean.getJiaquan().trim().equals("0") ? "——" : listBean.getJiaquan());
+            if (listBean.getJiaquan() != null && !listBean.getJiaquan().equals("")&& listBean.getStatusDevice().equals("开启")) {
+                jiaquan.setText( listBean.getJiaquan());
+                jiaquan_1.setText( listBean.getJiaquan());
+                jiaquan_2.setText( listBean.getJiaquan());
                 Constan.jiaquan(jiaquan_tv, Double.parseDouble(listBean.getJiaquan()), iv3);
                 Constan.jiaquan(jiaquan_tv1, Double.parseDouble(listBean.getJiaquan()), jiaquan_ll);
                 Constan.jiaquan(jiaquan_tv2, Double.parseDouble(listBean.getJiaquan()), jiaquan_ll2);
@@ -351,10 +356,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 jiaquan_2.setText("——");
             }
 
-            if (listBean.getTvoc() != null && !listBean.getTvoc().equals("")) {
-                tvoc.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
-                tvoc_1.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
-                tvoc_2.setText(listBean.getTvoc().trim().equals("0") ? "——" : listBean.getTvoc());
+            if (listBean.getTvoc() != null && !listBean.getTvoc().equals("")&& listBean.getStatusDevice().equals("开启")) {
+                tvoc.setText( listBean.getTvoc());
+                tvoc_1.setText( listBean.getTvoc());
+                tvoc_2.setText( listBean.getTvoc());
                 Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
                 Constan.TVOC(tvoc_tv1, Double.parseDouble(listBean.getTvoc()), tvoc_ll);
                 Constan.TVOC(tvoc_tv2, Double.parseDouble(listBean.getTvoc()), tvoc_ll2);

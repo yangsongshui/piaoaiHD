@@ -131,35 +131,35 @@ public class DataFragment extends BaseFragment {
     private void getData3(Facility.ResBodyBean.ListBean data3) {
         if (data3 != null) {
             if (data3.getDeviceName() != null && !data3.getDeviceName().trim().equals(""))
-                device3_name.setText(data3.getDeviceName().trim().equals("0") ? "——" : data3.getDeviceName());
+                device3_name.setText( data3.getDeviceName());
             else
                 device3_name.setText("——");
-            if (data3.getCo2() != null && !data3.getCo2().trim().equals(""))
-                device3_co2.setText(data3.getCo2().trim().equals("0") ? "——" : data3.getCo2());
+            if (data3.getCo2() != null && !data3.getCo2().trim().equals("")&& data3.getStatusDevice().equals("开启"))
+                device3_co2.setText( data3.getCo2());
             else
                 device3_co2.setText("——");
-            if (data3.get_$Pm25267() != null && !data3.get_$Pm25267().trim().equals(""))
-                device3_pm25.setText(data3.get_$Pm25267().trim().equals("0") ? "——" : data3.get_$Pm25267());
+            if (data3.get_$Pm25267() != null && !data3.get_$Pm25267().trim().equals("")&& data3.getStatusDevice().equals("开启"))
+                device3_pm25.setText( data3.get_$Pm25267());
             else
                 device3_pm25.setText("——");
-            if (data3.getPm10() != null && !data3.getPm10().trim().equals(""))
-                device3_pm10.setText(data3.getPm10().trim().equals("0") ? "——" : data3.getPm10());
+            if (data3.getPm10() != null && !data3.getPm10().trim().equals("")&& data3.getStatusDevice().equals("开启"))
+                device3_pm10.setText( data3.getPm10());
             else
                 device3_pm10.setText("——");
-            if (data3.getJiaquan() != null && !data3.getJiaquan().trim().equals(""))
-                device3_jiaquan.setText(data3.getJiaquan().trim().equals("0") ? "——" : data3.getJiaquan());
+            if (data3.getJiaquan() != null && !data3.getJiaquan().trim().equals("")&& data3.getStatusDevice().equals("开启"))
+                device3_jiaquan.setText(data3.getJiaquan());
             else
                 device3_jiaquan.setText("——");
-            if (data3.getTvoc() != null && !data3.getTvoc().trim().equals(""))
-                device3_tvoc.setText(data3.getTvoc().trim().equals("0") ? "——" : data3.getTvoc());
+            if (data3.getTvoc() != null && !data3.getTvoc().trim().equals("")&& data3.getStatusDevice().equals("开启"))
+                device3_tvoc.setText( data3.getTvoc());
             else
                 device3_tvoc.setText("——");
-            if (data3.getShidu() != null && !data3.getShidu().trim().equals(""))
-                device3_shidu.setText(data3.getShidu().trim().equals("0") ? "——" : data3.getShidu());
+            if (data3.getShidu() != null && !data3.getShidu().trim().equals("")&& data3.getStatusDevice().equals("开启"))
+                device3_shidu.setText( data3.getShidu());
             else
                 device3_shidu.setText("——");
-            if (data3.getWendu() != null)
-                device3_wendu.setText(data3.getWendu().trim().equals("0") ? "——" : data3.getWendu());
+            if (data3.getWendu() != null&&data3.getStatusDevice().equals("开启"))
+                device3_wendu.setText( data3.getWendu());
             else
                 device3_wendu.setText("——");
         } else {
@@ -179,35 +179,35 @@ public class DataFragment extends BaseFragment {
     private void getData2(Facility.ResBodyBean.ListBean data2) {
         if (data2 != null) {
             if (data2.getDeviceName() != null && !data2.getDeviceName().trim().equals(""))
-                device2_name.setText(data2.getDeviceName().trim().equals("0") ? "——" : data2.getDeviceName());
+                device2_name.setText(data2.getDeviceName());
             else
                 device2_name.setText("——");
-            if (data2.getCo2() != null && !data2.getCo2().trim().equals(""))
-                device2_co2.setText(data2.getCo2().trim().equals("0") ? "——" : data2.getCo2());
+            if (data2.getCo2() != null && !data2.getCo2().trim().equals("")&& data2.getStatusDevice().equals("开启"))
+                device2_co2.setText( data2.getCo2());
             else
                 device2_co2.setText("——");
-            if (data2.get_$Pm25267() != null && !data2.get_$Pm25267().trim().equals(""))
-                device2_pm25.setText(data2.get_$Pm25267().trim().equals("0") ? "——" : data2.get_$Pm25267());
+            if (data2.get_$Pm25267() != null && !data2.get_$Pm25267().trim().equals("")&& data2.getStatusDevice().equals("开启"))
+                device2_pm25.setText( data2.get_$Pm25267());
             else
                 device2_pm25.setText("——");
-            if (data2.getPm10() != null && !data2.getPm10().trim().equals(""))
-                device2_pm10.setText(data2.getPm10().trim().equals("0") ? "——" : data2.getPm10());
+            if (data2.getPm10() != null && !data2.getPm10().trim().equals("")&& data2.getStatusDevice().equals("开启"))
+                device2_pm10.setText(data2.getPm10());
             else
                 device2_pm10.setText("——");
-            if (data2.getJiaquan() != null && !data2.getJiaquan().trim().equals(""))
-                device2_jiaquan.setText(data2.getJiaquan().trim().equals("0") ? "——" : data2.getJiaquan());
+            if (data2.getJiaquan() != null && !data2.getJiaquan().trim().equals("")&& data2.getStatusDevice().equals("开启"))
+                device2_jiaquan.setText(data2.getJiaquan());
             else
                 device2_jiaquan.setText("——");
-            if (data2.getTvoc() != null && !data2.getTvoc().trim().equals(""))
-                device2_tvoc.setText(data2.getTvoc().trim().equals("0") ? "——" : data2.getTvoc());
+            if (data2.getTvoc() != null && !data2.getTvoc().trim().equals("")&& data2.getStatusDevice().equals("开启"))
+                device2_tvoc.setText( data2.getTvoc());
             else
                 device2_tvoc.setText("——");
-            if (data2.getShidu() != null && !data2.getShidu().trim().equals(""))
-                device2_shidu.setText(data2.getShidu().trim().equals("0") ? "——" : data2.getShidu());
+            if (data2.getShidu() != null && !data2.getShidu().trim().equals("")&& data2.getStatusDevice().equals("开启"))
+                device2_shidu.setText( data2.getShidu());
             else
                 device2_shidu.setText("——");
-            if (data2.getWendu() != null && !data2.getWendu().trim().equals(""))
-                device2_wendu.setText(data2.getWendu().trim().equals("0") ? "——" : data2.getWendu());
+            if (data2.getWendu() != null && !data2.getWendu().trim().equals("")&& data2.getStatusDevice().equals("开启"))
+                device2_wendu.setText( data2.getWendu());
             else
                 device2_wendu.setText("——");
         } else {
@@ -227,36 +227,36 @@ public class DataFragment extends BaseFragment {
 
         Log.e("DataFragment", "切换设备"+data1.getDeviceName()+":" + data1.getDeviceid());
         if (data1 != null) {
-            if (data1.getDeviceName() != null && !data1.getDeviceName().trim().equals(""))
-                device1_name.setText(data1.getDeviceName().trim().equals("0") ? "——" : data1.getDeviceName());
+            if (data1.getDeviceName() != null && !data1.getDeviceName().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_name.setText(data1.getDeviceName());
             else
                 device1_name.setText("——");
-            if (data1.getCo2() != null && !data1.getCo2().trim().equals(""))
-                device1_co2.setText(data1.getCo2().trim().equals("0") ? "——" : data1.getCo2());
+            if (data1.getCo2() != null && !data1.getCo2().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_co2.setText( data1.getCo2());
             else
                 device1_co2.setText("——");
-            if (data1.get_$Pm25267() != null && !data1.get_$Pm25267().trim().equals(""))
-                device1_pm25.setText(data1.get_$Pm25267().trim().equals("0") ? "——" : data1.get_$Pm25267());
+            if (data1.get_$Pm25267() != null && !data1.get_$Pm25267().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_pm25.setText(data1.get_$Pm25267());
             else
                 device1_pm25.setText("——");
-            if (data1.getPm10() != null && !data1.getPm10().trim().equals(""))
-                device1_pm10.setText(data1.getPm10().trim().equals("0") ? "——" : data1.getPm10());
+            if (data1.getPm10() != null && !data1.getPm10().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_pm10.setText(data1.getPm10());
             else
                 device1_pm10.setText("——");
-            if (data1.getJiaquan() != null && !data1.getJiaquan().trim().equals(""))
-                device1_jiaquan.setText(data1.getJiaquan().trim().equals("0") ? "——" : data1.getJiaquan());
+            if (data1.getJiaquan() != null && !data1.getJiaquan().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_jiaquan.setText( data1.getJiaquan());
             else
                 device1_jiaquan.setText("——");
-            if (data1.getTvoc() != null && !data1.getTvoc().trim().equals(""))
-                device1_tvoc.setText(data1.getTvoc().trim().equals("0") ? "——" : data1.getTvoc());
+            if (data1.getTvoc() != null && !data1.getTvoc().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_tvoc.setText( data1.getTvoc());
             else
                 device1_tvoc.setText("——");
-            if (data1.getShidu() != null && !data1.getShidu().trim().equals(""))
-                device1_shidu.setText(data1.getShidu().trim().equals("0") ? "——" : data1.getShidu());
+            if (data1.getShidu() != null && !data1.getShidu().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_shidu.setText( data1.getShidu());
             else
                 device1_shidu.setText("——");
-            if (data1.getWendu() != null && !data1.getWendu().trim().equals(""))
-                device1_wendu.setText(data1.getWendu().trim().equals("0") ? "——" : data1.getWendu());
+            if (data1.getWendu() != null && !data1.getWendu().trim().equals("")&& data1.getStatusDevice().equals("开启"))
+                device1_wendu.setText( data1.getWendu());
             else
                 device1_wendu.setText("——");
 

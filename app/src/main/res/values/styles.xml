@@ -16,7 +16,13 @@
         <item name="android:background">@drawable/weather_pm</item>
         <item name="android:textColor">#065D72</item>
     </style>
+    <style name="TextBg2">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingStart">20dp</item>
 
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textColor">#065D72</item>
+    </style>
     <style name="weatherTv">
         <item name="android:paddingTop">3dp</item>
         <item name="android:paddingStart">15dp</item>
