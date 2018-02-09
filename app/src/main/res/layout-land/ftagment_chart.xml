@@ -21,13 +21,13 @@
         <com.github.mikephil.charting.charts.CombinedChart
             android:id="@+id/week_chart"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="160dp"
             android:layout_marginStart="15dp" />
 
         <LinearLayout
             android:id="@+id/text_ll"
             android:layout_width="20dp"
-            android:layout_height="160dp"
+            android:layout_height="130dp"
             android:layout_alignTop="@+id/iv_ll"
             android:layout_marginTop="-5dp"
             android:orientation="vertical">
@@ -175,7 +175,7 @@
         <LinearLayout
             android:id="@+id/iv_ll"
             android:layout_width="10dp"
-            android:layout_height="160dp"
+            android:layout_height="130dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/text_ll"
             android:orientation="vertical">
