@@ -59,6 +59,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
     private LinearLayout pm_ll, quxiantu_ll, data_ll, humidity_ll, temperature_ll;
     private LinearLayout co2_ll, pm10_ll, jiaquan_ll, tvoc_ll;
     private LinearLayout co2_ll2, pm10_ll2, jiaquan_ll2, tvoc_ll2, main_ll;
+    private LinearLayout root_ll, info_ll, six_ll, nine_ll;
     private RelativeLayout co2_rl, pm10_rl, jiaquan_rl, tvoc_rl;
     private ViewPager pager;
     private Handler handler;
@@ -138,6 +139,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
         jiaquan_rl = (RelativeLayout) findViewById(R.id.jiaquan_rl);
         tvoc_rl = (RelativeLayout) findViewById(R.id.tvoc_rl);
 
+        root_ll = (LinearLayout) findViewById(R.id.root_ll);
+        six_ll = (LinearLayout) findViewById(R.id.six_ll);
+        nine_ll = (LinearLayout) findViewById(R.id.nine_ll);
+        info_ll = (LinearLayout) findViewById(R.id.info_ll);
 
         iv = (ImageView) findViewById(R.id.iv);
         iv2 = (ImageView) findViewById(R.id.iv2);
@@ -154,7 +159,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
         tvoc_tv = (TextView) findViewById(R.id.tvoc_tv);
 
         co2_1 = (TextView) findViewById(R.id.co2_1);
-        co2_tv1 = (TextView) findViewById(R.id.co2_tv2);
+        co2_tv1 = (TextView) findViewById(R.id.co2_tv1);
         pm10_1 = (TextView) findViewById(R.id.pm10_1);
         pm10_tv1 = (TextView) findViewById(R.id.pm10_tv1);
         jiaquan_1 = (TextView) findViewById(R.id.jiaquan_1);
@@ -270,6 +275,16 @@ public class MainActivity extends BaseActivity implements FacilityView {
             handler.postDelayed(dataRunnable, (dataTime * 1000));
         }
         inView();
+        initLL();
+    }
+
+    private void initLL() {
+        int info = SpUtils.getInt("six", 0);
+        info_ll.setVisibility(info == 0 ? View.VISIBLE : View.GONE);
+        root_ll.setVisibility(info == 0 ? View.VISIBLE : View.GONE);
+        nine_ll.setVisibility(info == 1 ? View.VISIBLE : View.GONE);
+        six_ll.setVisibility(info == 2 ? View.VISIBLE : View.GONE);
+
     }
 
     @Override
@@ -288,7 +303,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 main_state.setText(listBean.getStatusDevice());
             }
 
-            if (listBean.get_$Pm25267() == null || listBean.get_$Pm25267().trim().equals("")&& listBean.getStatusDevice().equals("开启")) {
+            if (listBean.get_$Pm25267() == null || listBean.get_$Pm25267().trim().equals("") && listBean.getStatusDevice().equals("开启")) {
                 main_pm.setText("——");
                 main_pm_tv.setText("——");
             } else {
@@ -296,7 +311,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 main_pm_tv.setText(listBean.get_$Pm25267());
             }
 
-            if (listBean.getShidu() != null && !listBean.getShidu().trim().equals("")&& listBean.getStatusDevice().equals("开启")) {
+            if (listBean.getShidu() != null && !listBean.getShidu().trim().equals("") && listBean.getStatusDevice().equals("开启")) {
                 main_humidity.setText(listBean.getShidu() + "%");
                 main_humidity2.setText(listBean.getShidu() + "%");
             } else {
@@ -304,13 +319,13 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 main_humidity2.setText("——");
             }
             if (listBean.getWendu() != null && !listBean.getWendu().trim().equals("") && listBean.getStatusDevice().equals("开启")) {
-                main_temperature.setText( listBean.getWendu() + "℃");
-                main_temperature2.setText( listBean.getWendu() + "℃");
+                main_temperature.setText(listBean.getWendu() + "℃");
+                main_temperature2.setText(listBean.getWendu() + "℃");
             } else {
                 main_temperature.setText("——");
                 main_temperature2.setText("——");
             }
-            if (listBean.getCo2() != null && !listBean.getCo2().equals("")&& listBean.getStatusDevice().equals("开启")) {
+            if (listBean.getCo2() != null && !listBean.getCo2().equals("") && listBean.getStatusDevice().equals("开启")) {
                 Constan.CO2(co2_tv, Double.parseDouble(listBean.getCo2()), iv);
                 Constan.CO2(co2_tv1, Double.parseDouble(listBean.getCo2()), co2_ll);
                 Constan.CO2(co2_tv2, Double.parseDouble(listBean.getCo2()), co2_ll2);
@@ -325,10 +340,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 co2_tv1.setText("——");
                 co2_tv2.setText("——");
             }
-            if (listBean.getPm10() != null && !listBean.getPm10().equals("")&& listBean.getStatusDevice().equals("开启")) {
-                pm10.setText( listBean.getPm10());
-                pm10_1.setText( listBean.getPm10());
-                pm10_2.setText( listBean.getPm10());
+            if (listBean.getPm10() != null && !listBean.getPm10().equals("") && listBean.getStatusDevice().equals("开启")) {
+                pm10.setText(listBean.getPm10());
+                pm10_1.setText(listBean.getPm10());
+                pm10_2.setText(listBean.getPm10());
                 Constan.PM10(pm10_tv, Double.parseDouble(listBean.getPm10()), iv2);
                 Constan.PM10(pm10_tv1, Double.parseDouble(listBean.getPm10()), pm10_ll);
                 Constan.PM10(pm10_tv2, Double.parseDouble(listBean.getPm10()), pm10_ll2);
@@ -340,10 +355,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 pm10_2.setText("——");
                 pm10.setText("——");
             }
-            if (listBean.getJiaquan() != null && !listBean.getJiaquan().equals("")&& listBean.getStatusDevice().equals("开启")) {
-                jiaquan.setText( listBean.getJiaquan());
-                jiaquan_1.setText( listBean.getJiaquan());
-                jiaquan_2.setText( listBean.getJiaquan());
+            if (listBean.getJiaquan() != null && !listBean.getJiaquan().equals("") && listBean.getStatusDevice().equals("开启")) {
+                jiaquan.setText(listBean.getJiaquan());
+                jiaquan_1.setText(listBean.getJiaquan());
+                jiaquan_2.setText(listBean.getJiaquan());
                 Constan.jiaquan(jiaquan_tv, Double.parseDouble(listBean.getJiaquan()), iv3);
                 Constan.jiaquan(jiaquan_tv1, Double.parseDouble(listBean.getJiaquan()), jiaquan_ll);
                 Constan.jiaquan(jiaquan_tv2, Double.parseDouble(listBean.getJiaquan()), jiaquan_ll2);
@@ -356,10 +371,10 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 jiaquan_2.setText("——");
             }
 
-            if (listBean.getTvoc() != null && !listBean.getTvoc().equals("")&& listBean.getStatusDevice().equals("开启")) {
-                tvoc.setText( listBean.getTvoc());
-                tvoc_1.setText( listBean.getTvoc());
-                tvoc_2.setText( listBean.getTvoc());
+            if (listBean.getTvoc() != null && !listBean.getTvoc().equals("") && listBean.getStatusDevice().equals("开启")) {
+                tvoc.setText(listBean.getTvoc());
+                tvoc_1.setText(listBean.getTvoc());
+                tvoc_2.setText(listBean.getTvoc());
                 Constan.TVOC(tvoc_tv, Double.parseDouble(listBean.getTvoc()), iv4);
                 Constan.TVOC(tvoc_tv1, Double.parseDouble(listBean.getTvoc()), tvoc_ll);
                 Constan.TVOC(tvoc_tv2, Double.parseDouble(listBean.getTvoc()), tvoc_ll2);
@@ -594,6 +609,7 @@ public class MainActivity extends BaseActivity implements FacilityView {
                 setMark();
                 //toastor.showSingletonToast("你按下上方向键");
                 break;
+
         }
         return super.onKeyDown(keyCode, event);
     }

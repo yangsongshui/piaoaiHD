@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#053C88"
+    android:background="@drawable/tianq14_04"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,8 +17,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="场所"
-            android:textSize="25sp" />
+            android:text="场所" />
 
         <TextView
             style="@style/mainTv"
@@ -26,8 +25,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="PM2.5"
-            android:textSize="25sp" />
+            android:text="PM2.5" />
 
         <TextView
             style="@style/mainTv"
@@ -35,7 +33,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
             android:text="CO₂" />
 
         <TextView
@@ -43,7 +40,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="25sp"
             android:gravity="center"
             android:text="PM10" />
 
@@ -53,7 +49,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
             android:text="甲醛" />
 
         <TextView
@@ -62,7 +57,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="25sp"
             android:text="TVOC" />
 
         <TextView
@@ -70,7 +64,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="25sp"
             android:gravity="center"
             android:text="温度" />
 
@@ -79,7 +72,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="25sp"
             android:gravity="center"
             android:text="湿度" />
     </LinearLayout>
@@ -92,7 +84,6 @@
         <TextView
             android:id="@+id/device1_name"
             style="@style/mainTv"
-            android:textSize="25sp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -100,7 +91,7 @@
 
         <TextView
             android:id="@+id/device1_pm25"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -108,7 +99,7 @@
 
         <TextView
             android:id="@+id/device1_co2"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -118,7 +109,7 @@
 
         <TextView
             android:id="@+id/device1_pm10"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -130,12 +121,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="25sp"
             android:text="——" />
 
         <TextView
             android:id="@+id/device1_tvoc"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -143,7 +133,7 @@
 
         <TextView
             android:id="@+id/device1_wendu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -155,7 +145,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="25sp"
             android:text="——" />
     </LinearLayout>
 
@@ -169,14 +158,13 @@
             android:id="@+id/device2_name"
             style="@style/mainTv"
             android:layout_width="0dp"
-            android:textSize="25sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="——" />
 
         <TextView
             android:id="@+id/device2_pm25"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -184,7 +172,7 @@
 
         <TextView
             android:id="@+id/device2_co2"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -192,7 +180,7 @@
 
         <TextView
             android:id="@+id/device2_pm10"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -200,7 +188,7 @@
 
         <TextView
             android:id="@+id/device2_jiaquan"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -208,7 +196,7 @@
 
         <TextView
             android:id="@+id/device2_tvoc"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -216,7 +204,7 @@
 
         <TextView
             android:id="@+id/device2_wendu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -224,7 +212,7 @@
 
         <TextView
             android:id="@+id/device2_shidu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -240,22 +228,19 @@
             android:id="@+id/device3_name"
             style="@style/mainTv"
             android:layout_width="0dp"
-            android:textSize="25sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="——" />
-
         <TextView
             android:id="@+id/device3_pm25"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="——" />
-
         <TextView
             android:id="@+id/device3_co2"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -263,7 +248,7 @@
 
         <TextView
             android:id="@+id/device3_pm10"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -271,7 +256,7 @@
 
         <TextView
             android:id="@+id/device3_jiaquan"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -279,7 +264,7 @@
 
         <TextView
             android:id="@+id/device3_tvoc"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -287,7 +272,7 @@
 
         <TextView
             android:id="@+id/device3_wendu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -295,40 +280,10 @@
 
         <TextView
             android:id="@+id/device3_shidu"
-            style="@style/mainTv2"
+            style="@style/mainTv5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="——" />
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/white" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="深圳市飘爱健康科技有限公司"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="www.piaoai365.com"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

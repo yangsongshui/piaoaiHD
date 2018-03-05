@@ -18,7 +18,7 @@ import myapplication.com.piaoaihd.util.SpUtils;
 import static myapplication.com.piaoaihd.R.id.data_20;
 
 public class SettingActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnFocusChangeListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
-    RadioGroup device_rg, data_rg;
+    RadioGroup device_rg, data_rg, six_rg;
     ImageButton set_back_ib;
     CheckBox cb_chart, cb_jiaquan, cb_tvoc, cb_pm10, cb_o2, cb_pm25;
     Button out_tv, ok_tv;
@@ -34,6 +34,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
     protected void init() {
         device_rg = (RadioGroup) findViewById(R.id.device_rg);
         data_rg = (RadioGroup) findViewById(R.id.data_rg);
+        six_rg = (RadioGroup) findViewById(R.id.six_rg);
         set_back_ib = (ImageButton) findViewById(R.id.set_back_ib);
         out_tv = (Button) findViewById(R.id.out_tv);
         ok_tv = (Button) findViewById(R.id.ok_tv);
@@ -91,6 +92,7 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
         set_back_ib.setOnClickListener(this);
         data_rg.setOnCheckedChangeListener(this);
         device_rg.setOnCheckedChangeListener(this);
+        six_rg.setOnCheckedChangeListener(this);
 
         cb_pm25.setOnCheckedChangeListener(this);
         cb_jiaquan.setOnCheckedChangeListener(this);
@@ -104,6 +106,20 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
     private void initView() {
         int deviceTime = SpUtils.getInt("device", 15);
         int dataTime = SpUtils.getInt("data", 40);
+        int info = SpUtils.getInt("six", 0);
+        switch (info) {
+            case 0:
+                six_rg.check(R.id.info_rb);
+                break;
+            case 1:
+                six_rg.check(R.id.six_rb);
+                break;
+            case 2:
+                six_rg.check(R.id.nine_rb);
+                break;
+            default:
+                break;
+        }
         switch (deviceTime) {
             case 1:
                 device_rg.check(R.id.device_1);
@@ -119,6 +135,8 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 break;
             case 120:
                 device_rg.check(R.id.device_2h);
+                break;
+            default:
                 break;
         }
         switch (dataTime) {
@@ -136,6 +154,8 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 break;
             case 300:
                 data_rg.check(R.id.data_5);
+                break;
+            default:
                 break;
         }
     }
@@ -173,6 +193,17 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
             case R.id.data_5:
                 SpUtils.putInt("data", 300);
                 break;
+            case R.id.info_rb:
+                SpUtils.putInt("six", 0);
+                break;
+            case R.id.six_rb:
+                SpUtils.putInt("six", 1);
+                break;
+            case R.id.nine_rb:
+                SpUtils.putInt("six", 2);
+                break;
+            default:
+                break;
         }
     }
 
@@ -205,6 +236,8 @@ public class SettingActivity extends BaseActivity implements RadioGroup.OnChecke
                 Toast.makeText(this, "保存成功", Toast.LENGTH_SHORT).show();
             }
 
+        }else if (view.getId()==R.id.set_back_ib){
+            finish();
         }
 
     }

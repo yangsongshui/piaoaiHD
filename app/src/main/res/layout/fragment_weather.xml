@@ -2,37 +2,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/img_soft_opaque"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="myapplication.com.piaoaihd.WeatherFragment">
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+
+        android:background="@drawable/tianq14_01"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/weather_tv2"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingEnd="30dp"
-            android:paddingStart="30dp"
-            android:paddingTop="5dp"
-            android:text="室外"
-            android:textColor="@color/soft_opaque"
-            android:textSize="40sp" />
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/weather_pm"
+                        style="@style/TextBg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/weather_pm"
+                        android:text="——"
+                        android:textColor="#065D72"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/weather_iv"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/tianqi" />
+
+                    <TextView
+                        android:id="@+id/weatherTv"
+                        style="@style/weatherTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="——"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
+                        android:text="室外天气"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/temperature_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center|bottom"
+                        android:paddingBottom="10dp"
+                        android:text="——"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/city_tv"
+                        style="@style/weatherTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="——"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:background="@drawable/yuan_3"
             android:gravity="center"
             android:orientation="vertical">
@@ -42,20 +117,20 @@
                 android:layout_height="wrap_content"
                 android:text="PM2.5"
                 android:textColor="@color/selected_background"
-                android:textSize="35sp" />
+                android:textSize="12sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="μg/m³"
                 android:textColor="@color/selected_background"
-                android:textSize="20sp" />
+                android:textSize="10sp" />
             <TextView
                 android:id="@+id/weather_pm_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="——"
                 android:textColor="@color/white"
-                android:textSize="70sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/weather_pm2"
@@ -63,89 +138,13 @@
                 android:layout_height="wrap_content"
                 android:text="——"
                 android:textColor="@color/selected_background"
-                android:textSize="35sp" />
+                android:textSize="12sp" />
         </LinearLayout>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1.3"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/temperature_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="——"
-                android:textColor="@color/white"
-                android:textSize="45sp" />
-
-
-            <ImageView
-                android:id="@+id/weather_iv"
-                android:layout_width="0dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:src="@drawable/tianqi" />
-
-            <TextView
-                android:id="@+id/weatherTv"
-                style="@style/weatherTv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="——"
-                android:textSize="35sp" />
-
-            <TextView
-                android:id="@+id/city_tv"
-                style="@style/weatherTv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="20dp"
-                android:text="——"
-                android:textSize="35sp" />
-
-            <TextView
-                android:id="@+id/weather_pm"
-                style="@style/TextBg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/weather_pm"
-                android:text="——"
-                android:textColor="#065D72"
-                android:textSize="45sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:text="室外天气"
-                android:textColor="@color/white"
-                android:textSize="35sp"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -162,33 +161,30 @@
                     android:layout_alignParentTop="true"
                     android:text="湿度"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/rh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/pm"
-                    android:layout_marginTop="10dp"
                     android:text="RH"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/weather_pm2_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="65sp" />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-
-                    android:layout_below="@+id/rh"
+                    android:layout_below="@+id/weather_pm2_tv"
                     android:background="@color/selected_background" />
             </RelativeLayout>
 
@@ -206,42 +202,38 @@
                     android:layout_alignParentTop="true"
                     android:text="PM10"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/mg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/weather_pm10"
-                    android:layout_marginTop="10dp"
                     android:text="μg/m³"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/weather_pm10_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="65sp" />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/mg"
+                    android:layout_below="@+id/weather_pm10_tv"
                     android:background="@color/selected_background" />
             </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -258,32 +250,30 @@
                     android:layout_alignParentTop="true"
                     android:text="NO₂"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/mg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/no2"
-                    android:layout_marginTop="10dp"
                     android:text="μg/m³"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/weather_no2_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="65sp" />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/mg2"
+                    android:layout_below="@+id/weather_no2_tv"
                     android:background="@color/selected_background" />
             </RelativeLayout>
 
@@ -301,42 +291,38 @@
                     android:layout_alignParentTop="true"
                     android:text="SO₂"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/ug"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/SO2"
-                    android:layout_marginTop="10dp"
-                    android:text="ug/m³"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/weather_so2_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="65sp" />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/ug"
+                    android:layout_below="@+id/weather_so2_tv"
                     android:background="@color/selected_background" />
             </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -353,32 +339,30 @@
                     android:layout_alignParentTop="true"
                     android:text="O₃"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/ug2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/O3"
-                    android:layout_marginTop="10dp"
-                    android:text="ug/m³"
+                    android:text="μg/m³"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/weather_o3_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
                     android:text="——"
-                    android:layout_centerVertical="true"
                     android:textColor="@color/white"
-                    android:textSize="65sp" />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/ug2"
+                    android:layout_below="@+id/weather_o3_tv"
                     android:background="@color/selected_background" />
             </RelativeLayout>
 
@@ -396,32 +380,30 @@
                     android:layout_alignParentTop="true"
                     android:text="CO"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
-                    android:id="@+id/mg3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/CO"
-                    android:layout_marginTop="10dp"
                     android:text="μg/m³"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/weather_co_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:text="——"
                     android:textColor="@color/white"
-                    android:textSize="65sp" />
+                    android:textSize="25sp" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_below="@+id/mg3"
+                    android:layout_below="@+id/weather_co_tv"
                     android:background="@color/selected_background" />
             </RelativeLayout>
         </LinearLayout>
@@ -429,5 +411,59 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/tianq14_03"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_launcher" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/erweima" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="扫一扫微信关注"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/weather_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="深圳市飘爱健康科技有限公司"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="www.piaoai365.com"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
 
 </LinearLayout>
